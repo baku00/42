@@ -8,14 +8,17 @@ char  *get_next_line(int fd)
   char  *temp;
   char  *result;
 
-  buf[1] = 0;
+  buf[1] = '\0';
   result = NULL;
+  temp = NULL;
   i = 0;
-  printf("Buffer: (%d)\n", BUFFER_SIZE);
   while ((ret = read(fd, buf, 1))) {
-    printf("Ret: (%d)\n", ret);
     if (ret == -1)
+    {
+      if (result)
+        free(result);
       return (0);
+    }
     if (!result)
       result = "";
     temp = ft_strjoin(result, buf);
@@ -23,10 +26,7 @@ char  *get_next_line(int fd)
     free(temp);
     i++;
     if (buf[0] == '\n')
-    {
-      printf("======\nBreak\n=====\n");
       break;
-    }
   }
   if (i == 0)
     return (0);
