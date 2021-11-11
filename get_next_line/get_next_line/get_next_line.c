@@ -1,4 +1,5 @@
 #include "get_next_line.h"
+#include <malloc/malloc.h>
 
 char  *get_next_line(int fd)
 {
@@ -6,6 +7,7 @@ char  *get_next_line(int fd)
   int   ret;
   char  buf[2];
   char  *temp;
+  char  *before_return;
   char  *result;
 
   buf[1] = '\0';
@@ -28,7 +30,19 @@ char  *get_next_line(int fd)
     if (buf[0] == '\n')
       break;
   }
+  printf("Malloc_size: (%zu) ", malloc_size(result));
+  if (result)
+  {
+    before_return = ft_strdup(result);
+    free(result);
+    printf("Malloc_size: (%zu) ", malloc_size(before_return));
+    printf("=> (%zu)", ft_strlen(before_return));
+  }
+  printf("\n");
   if (i == 0)
+  {
+    printf("Malloc_size 1: (%zu)\n", malloc_size(before_return));
     return (0);
-  return (result);
+  }
+  return (before_return);
 }

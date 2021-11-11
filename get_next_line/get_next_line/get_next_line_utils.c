@@ -6,29 +6,12 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:33:30 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/11/11 15:06:34 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/11 16:07:58 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-char	*ft_strchr(const char *s, int c)
-{
-	int		i;
-	char	*str;
-
-	str = (char *) s;
-	i = 0;
-	while (str[i])
-	{
-		if ((char) str[i] == (char) c)
-			return (&str[i]);
-		i++;
-	}
-	if ((char) str[i] == (char) c)
-		return (&str[i]);
-	return (0);
-}
 
 void	*ft_calloc(size_t count, size_t size)
 {
