@@ -1,38 +1,71 @@
-#include "get_next_line.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/12 16:19:04 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/11/12 16:44:28 by dgloriod         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char  *get_next_line(int fd)
+#include "get_next_line_bonus.h"
+
+static char	*ft_return(int i, char *result)
 {
-	int   i;
-	int   ret;
-	char  buf[2];
-	char  *temp;
-	char  *result;
+	if (i == 0)
+		return (0);
+	return (result);
+}
 
+static char	*ft_return_ret(char *result)
+{
+	if (result)
+		free(result);
+	return (0);
+}
+
+static char	*ft_join(char *result, char buf[2])
+{
+	char	*temp;
+
+	temp = ft_strjoin(result, buf);
+	result = ft_strdup(temp);
+	free(temp);
+	return (result);
+}
+
+static void	ft_init(int *i, char buf[2])
+{
 	buf[1] = '\0';
-	result = NULL;
-	temp = NULL;
 	i = 0;
-	while ((ret = read(fd, buf, 1))) {
+}
+
+char	*get_next_line(int fd)
+{
+	int		i;
+	int		ret;
+	char	buf[2];
+	char	*result;
+
+	ft_init(&i, buf);
+	ret = read(fd, buf, 1);
+	while (ret)
+	{
 		if (ret == -1)
-		{
-			if (result)
-				free(result);
-			return (0);
-		}
+			return (ft_return_ret(result));
 		if (!result)
 		{
 			result = ft_calloc(1, sizeof(char));
 			if (!result)
 				return (0);
 		}
-		temp = ft_strjoin(result, buf);
-		result = ft_strdup(temp);
-		free(temp);
+		result = ft_join(result, buf);
 		i++;
 		if (buf[0] == '\n')
-			break;
+			break ;
+		ret = read(fd, buf, 1);
 	}
-	if (i == 0)
-		return (0);
-	return (result);
+	return (ft_return(i, result));
 }
