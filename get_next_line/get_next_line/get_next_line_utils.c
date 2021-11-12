@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:33:30 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/11/11 18:17:04 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:19:20 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*str;
 	int		i;
@@ -64,6 +64,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len = ft_strlen(s2);
 	while (i < len)
 		str[j++] = s2[i++];
+	free(s1);
 	return (str);
 }
 

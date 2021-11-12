@@ -21,7 +21,11 @@ char  *get_next_line(int fd)
 			return (0);
 		}
 		if (!result)
-			result = "";
+		{
+			result = ft_calloc(1, sizeof(char));
+			if (!result)
+				return (0);
+		}
 		temp = ft_strjoin(result, buf);
 		result = ft_strdup(temp);
 		free(temp);
