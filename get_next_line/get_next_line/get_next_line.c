@@ -1,5 +1,4 @@
 #include "get_next_line.h"
-#include <malloc/malloc.h>
 
 char  *get_next_line(int fd)
 {
