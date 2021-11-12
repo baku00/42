@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:19:04 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/11/12 16:44:28 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/12 16:45:23 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*get_next_line(int fd)
 	char	buf[2];
 	char	*result;
 
+	result = NULL;
 	ft_init(&i, buf);
 	ret = read(fd, buf, 1);
 	while (ret)
