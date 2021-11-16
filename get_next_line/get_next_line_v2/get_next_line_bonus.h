@@ -6,14 +6,14 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:33:49 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/11/16 14:40:14 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/12 16:41:52 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE
+# define BUFFER_SIZE
 # endif
 # include <stdlib.h>
 # include <fcntl.h>
