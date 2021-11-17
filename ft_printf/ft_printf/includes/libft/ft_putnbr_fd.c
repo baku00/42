@@ -6,12 +6,13 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 20:13:22 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/10/20 14:30:23 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/17 18:01:09 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <unistd.h>
+#include <stdio.h>
 
 void	ft_putnbr_fd(int nb, int fd)
 {
