@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:34:33 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/11/16 14:38:26 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/17 14:18:33 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,49 +45,66 @@ static char	*ft_strchr(const char *s, int c)
 
 char	*get_next_line(int fd)
 {
-	int	i;
 	int	ret;
-	static char *buf;
+	static char	*buf;
 	char	*result;
 	char	*strfchr;
+	char	*temp;
 
-	strfchr = NULL;
 	if (fd == -1)
 		return (0);
-	result = ft_calloc(1, sizeof(char));
+	result = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!result)
 		return (0);
-	if (!buf)
+	if (!buf || !buf[0])
 	{
 		buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (!buf)
+		{
+			free(result);
 			return (0);
+		}
 	}
 	else
 	{
 		strfchr = ft_strfchr(buf, '\n');
 		if (strfchr)
 		{
-			buf = ft_strchr(buf, '\n') + 1;
+			free(result);
+			if (ft_strlen(buf) == ft_strlen(strfchr))
+				free(buf);
+			else
+			{
+				result = ft_strdup(buf);
+				free(buf);
+				buf = ft_strdup(ft_strchr(result, '\n') + 1);
+				free(result);
+			}
 			return (strfchr);
 		}
-		result = ft_strjoin(result, buf);
+		return (buf);
 	}
-	i = 0;
 	ret = read(fd, buf, BUFFER_SIZE);
 	while (ret > 0 && !strfchr) {
-		printf("BUF: %s\n", buf);
-		i = 1;
 		strfchr = ft_strfchr(buf, '\n');
-		if (!strfchr)
-			result = ft_strjoin(result, buf);
+		if (strfchr)
+		{
+			temp = ft_strjoin(result, strfchr);
+			free(strfchr);
+			strfchr = ft_strdup(buf);
+			buf = ft_strdup(ft_strchr(strfchr, '\n'));
+			free(strfchr);
+			return (temp);
+		}
 		else
-			result = ft_strjoin(result, strfchr);
+			result = ft_strjoin(result, buf);
 		ret = read(fd, buf, BUFFER_SIZE);
 	}
-	if (!i)
+	if (ret == -1)
+	{
+		if (buf)
+			free(buf);
+		if ()
 		return (0);
-	return (result);
-	printf("Ret: %d, I: %d, Strfchr: (%s)\n", ret, i, strfchr);
-	return (0);
+	}
 }
