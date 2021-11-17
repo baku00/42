@@ -35,57 +35,28 @@ CFILES = $(LIBFT)/ft_atoi.c \
 					$(LIBFT)/ft_substr.c \
 					$(LIBFT)/ft_tolower.c \
 					$(LIBFT)/ft_toupper.c \
-					ft_printf.c
-
-OFILES = $(LIBFT)/ft_atoi.o \
-					$(LIBFT)/ft_bzero.o \
-					$(LIBFT)/ft_calloc.o \
-					$(LIBFT)/ft_isalnum.o \
-					$(LIBFT)/ft_isalpha.o \
-					$(LIBFT)/ft_isascii.o \
-					$(LIBFT)/ft_isdigit.o \
-					$(LIBFT)/ft_isprint.o \
-					$(LIBFT)/ft_itoa.o \
-					$(LIBFT)/ft_memchr.o \
-					$(LIBFT)/ft_memcmp.o \
-					$(LIBFT)/ft_memcpy.o \
-					$(LIBFT)/ft_memmove.o \
-					$(LIBFT)/ft_memset.o \
-					$(LIBFT)/ft_putchar_fd.o \
-					$(LIBFT)/ft_putendl_fd.o \
-					$(LIBFT)/ft_putnbr_fd.o \
-					$(LIBFT)/ft_putstr_fd.o \
-					$(LIBFT)/ft_split.o \
-					$(LIBFT)/ft_strchr.o \
-					$(LIBFT)/ft_strdup.o \
-					$(LIBFT)/ft_striteri.o \
-					$(LIBFT)/ft_strjoin.o \
-					$(LIBFT)/ft_strlcat.o \
-					$(LIBFT)/ft_strlcpy.o \
-					$(LIBFT)/ft_strlen.o \
-					$(LIBFT)/ft_strmapi.o \
-					$(LIBFT)/ft_strncmp.o \
-					$(LIBFT)/ft_strnstr.o \
-					$(LIBFT)/ft_strrchr.o \
-					$(LIBFT)/ft_strtrim.o \
-					$(LIBFT)/ft_substr.o \
-					$(LIBFT)/ft_tolower.o \
-					$(LIBFT)/ft_toupper.o \
-					ft_printf.o
+					$(PRINT)/ft_print_c.c \
+					$(PRINT)/ft_print_d.c \
+					$(PRINT)/ft_print_p.c \
+					$(PRINT)/ft_print_pourcent.c \
+					$(PRINT)/ft_print_s.c \
+					$(PRINT)/ft_print_x.c
 
 H_LIB = ft_printf.h \
 					$(LIBFT)/libft.h
-LIBFT = libft
+LIBFT = includes/libft
+SRC = srcs
+PRINT = $(SRC)/print
 OBJS = $(SRCS:.c=.o)
 SRCS = $(CFILES) $(H_LIB)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OFILES)
+	ar rc $(NAME) $(OBJS)
 
 clean:
-	rm -rf $(OFILES)
+	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
