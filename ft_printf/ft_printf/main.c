@@ -3,10 +3,13 @@
 
 int main()
 {
-  char *s = "%d";
-  int c = -2000000000;
-  int result = ft_printf(s, c);
-  int result_printf = printf(s, c);
+  //          1  2  3  4  5  6  7  8 9  10 11 12 13 14 15
+  char *s = " %34d ";
+  // unsigned long int c = -1;
+  printf("\n\nFT_PRINTF\n");
+  int result = 0;//ft_printf(s, 'A');
+  printf("\n\nPRINTF\n");
+  int result_printf = printf(s, 357);
   printf("\nResult: %d, %d\n", result, result_printf);
   return (0);
 }

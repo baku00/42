@@ -38,6 +38,7 @@ CFILES = $(LIBFT)/ft_atoi.c \
 					ft_printf.c \
 					$(FUNCS)/ft_putunsigned_fd.c \
 					$(FUNCS)/ft_intlen.c \
+					$(FUNCS)/ft_itob.c \
 					$(PRINT)/ft_print_c.c \
 					$(PRINT)/ft_print_d.c \
 					$(PRINT)/ft_print_u.c \
@@ -82,6 +83,7 @@ OFILES = $(LIBFT)/ft_atoi.o \
 					ft_printf.o \
 					$(FUNCS)/ft_putunsigned_fd.o \
 					$(FUNCS)/ft_intlen.o \
+					$(FUNCS)/ft_itob.o \
 					$(PRINT)/ft_print_c.o \
 					$(PRINT)/ft_print_d.o \
 					$(PRINT)/ft_print_u.o \

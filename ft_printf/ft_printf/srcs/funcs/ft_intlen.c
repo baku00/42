@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/18 17:57:05 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/11/18 17:58:20 by dgloriod         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
 int	ft_intlen(long int nbr)
 {
 	unsigned long int	n;
 	unsigned long int	nb;
-	int			l;
+	int					l;
 
 	n = 1;
 	l = 1;
@@ -14,8 +26,6 @@ int	ft_intlen(long int nbr)
 		nb = nbr * -1;
 		l++;
 	}
-  else
-    nb = nbr;
 	if (nb < 10)
 		return (l);
 	while (n < nb)
