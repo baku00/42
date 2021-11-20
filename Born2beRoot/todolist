@@ -1,0 +1,65 @@
+Rendu: signature.txt
+OS: Debian latest stable
+Partition: Au minimum 2 chiffrées
+
+Services:
+  SSH:
+    PORT: 4242
+    Root: desactive
+  Pare-feu:
+    Name: UFW
+    PORT ouvert: 4242
+
+Config:
+  Hostname: dgloriod42
+
+Utilisateurs:
+  dgloriod:
+    - user42
+    - sudo
+
+Mot de passe:
+  Expiration: 30j
+  Temps avant modification: 2j
+  Avertissement: 7j avant expiration
+  Politique:
+    Caractere minimum: 10
+    Majuscule: 1
+    Chiffre: 1
+    Caractere identique consecutifs: 3
+    Caractere different du precedent: 7 (Pas pour root)
+    Autre:
+      - Pas de nom d'utilisateur
+
+Sudo:
+  Nombre essais max: 3
+  Message d'erreur: au choix
+  Archivage: Chaque action
+    - Type: Inputs / Outputs
+    - Chemin: /var/log/sudo/
+  Mode TTY: Active
+  Endroit: Limite
+
+Developpement:
+  Monitoring.sh:
+    Langage: Bash
+    Utilite: Ecrire une information sur tous les terminaux
+    Frequence: 10min
+    Conseil: man wall
+    information a afficher:
+      - Architecture systeme + version kernel
+      - Nombre de processeurs physique
+      - Nombre de processeurs virtuel
+      - Memoire vive actuellement disponible sur le serveur + utilisation en pourcentage
+      - Memoire actuellement disponible sur le serveur + utilisation en pourcentage
+      - Utilisation processeurs en pourcentage
+      - Date et heure dernier redemarrage
+      - Status de LVM
+      - Nombre de connexion active
+      - Nombre d'utilisateur utilisant le serveur
+      - IPv4 et MAC Address serveur
+      - Nombre de commande avant sudo
+
+Paquet:
+  Sudo:
+    Installation et configuration
