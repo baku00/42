@@ -8,7 +8,9 @@ int main()
   mlx = mlx_init();
   int h = 1000;
   int w = 1000;
-  window = mlx_new_window(mlx, h * 2, w * 2, "SO_LONG");
+  int img_h = 10;
+  int img_w = 10;
+  window = mlx_new_window(mlx, h, w, "SO_LONG");
   // int wall[19][19] =
   // {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
   // {0,0,0,0,0,0,0,0,0,10000,10000,0,0,0,0,0,0,0,0,0},
@@ -35,10 +37,11 @@ int main()
   //     mlx_put_image_to_window(mlx, window, x, y, wall[x][y - 10]);
   //mlx_string_put(mlx, window, 0, 10, 20000, "Hello");
 
-  void *image = mlx_xpm_file_to_image(mlx, "./srcs/img/potion3.png", &w, &h);
+  // void *image = //mlx_xpm_file_to_image(mlx, "./srcs/img/avatar.xpm", &img_h, &img_w);
+  void *image = mlx_png_file_to_image(mlx, "./srcs/img/potion3.png", &img_h, &img_w);
   //printf("%s\n", );
-  //mlx_put_image_to_window(mlx, window, image, 500, 500);
-  mlx_png_file_to_image(mlx, "./srcs/img/potion3.png", &w, &h);
+  mlx_put_image_to_window(mlx, window, image, 10, 10);
+  // mlx_png_file_to_image(mlx, "./srcs/img/avatar.xpm", &w, &h);
   /*int pixel_bits;
   int line_bytes;
   int endian;
