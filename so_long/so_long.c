@@ -6,7 +6,7 @@
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:06 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:08:38 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/15 04:22:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,4 +141,3 @@ int main(int argc, char **argv)
   mlx_loop(mlx.mlx);
   return 0;
 }
-//gcc mlx/libmlx.a main.c -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx

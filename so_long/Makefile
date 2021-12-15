@@ -19,7 +19,6 @@ SRCS = $(FUNCS)/error.c \
 				$(MAP)/valid_map.c \
 				$(MAP)/valid_shape.c \
 				$(MAP)/valid_close.c \
-				$(MAP)/fill_map.c \
 				$(STR)/is_n_only.c \
 				$(STR)/is_at.c \
 				$(NAME).c
