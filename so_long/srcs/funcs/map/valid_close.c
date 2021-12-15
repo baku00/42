@@ -13,7 +13,6 @@ int valid_close(char *filename)
   first = 1;
   while (map.line) {
     map.line = get_next_line(map.fd);
-    printf("Line: %s\n", map.line);
     if (map.line)
       length = ft_strlen(map.line);
     else

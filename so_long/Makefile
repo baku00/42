@@ -3,9 +3,23 @@ FUNCS = srcs/funcs
 MAP = $(FUNCS)/map
 STR = $(FUNCS)/str
 SRCS = $(FUNCS)/error.c \
+				$(FUNCS)/events/hook.c \
+				$(FUNCS)/item/get_point.c \
+				$(FUNCS)/events/close.c \
+				$(FUNCS)/events/move/check/checkWall.c \
+				$(FUNCS)/events/move/check/checkDoor.c \
+				$(FUNCS)/utils/win.c \
+				$(FUNCS)/utils/print_move.c \
+				$(FUNCS)/events/move/check/checkCoin.c \
+				$(FUNCS)/events/move/remove/removeCoin.c \
+				$(FUNCS)/events/move/up.c \
+				$(FUNCS)/events/move/down.c \
+				$(FUNCS)/events/move/right.c \
+				$(FUNCS)/events/move/left.c \
 				$(MAP)/valid_map.c \
 				$(MAP)/valid_shape.c \
 				$(MAP)/valid_close.c \
+				$(MAP)/fill_map.c \
 				$(STR)/is_n_only.c \
 				$(STR)/is_at.c \
 				$(NAME).c
