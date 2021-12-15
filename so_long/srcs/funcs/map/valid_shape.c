@@ -20,7 +20,7 @@ int	valid_shape(char *filename, t_map *map)
 	map->line = "";
 	map->width = 0;
 	map->height = 0;
-	map.first = 1;
+	map->first = 1;
 	while (map->line)
 	{
 		map->line = get_next_line(map->fd);
@@ -29,12 +29,12 @@ int	valid_shape(char *filename, t_map *map)
 		else
 			break ;
 		map->height++;
-		if (map.first)
+		if (map->first)
 		{
 			map->char_to_string[0] = map->accepted_chars[1];
 			if (!is_n_only(map->line, map->char_to_string, length - 1))
 				error();
-			map.first = 0;
+			map->first = 0;
 			map->width = length;
 		}
 		else if (map->width != length || !is_at(map->line, \

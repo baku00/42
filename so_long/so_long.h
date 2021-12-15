@@ -19,7 +19,18 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
-
+# ifndef CONST
+#  define CONST
+#  define SRCS "./srcs"
+#  define IMG SRCS"/img"
+#  define MAPS SRCS"/maps"
+#  define EMPTY 'O'
+#  define EMPTY '0'
+#  define WALL '1'
+#  define COLLECTIBLE 'C'
+#  define EXIT 'E'
+#  define START_PLAYER_POSITION 'P'
+# endif
 typedef struct s_define
 {
 	char	empty;
