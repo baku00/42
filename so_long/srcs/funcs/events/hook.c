@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_close.c                                      :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:54:30 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:59:04 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:27:28 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:32:56 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../so_long.h"
 
-int	valid_close(char *filename)
+int	hook(int keycode, t_mlx *mlx)
 {
-	t_map	map;
-
-	map.fd = open(filename, O_RDONLY);
-	map.line = "";
-	map.height = 0;
-	map.first = 1;
-	while (map.line)
-	{
-		map.line = get_next_line(map.fd);
-		if (map.line)
-			map.length = ft_strlen(map.line);
-		else
-			break ;
-		map.height++;
-		if (first)
-		{
-			first = 0;
-			map.width = map.length;
-		}
-		else if (map.width != map.length)
-			error();
-	}
-	if (map.width == map.height)
-		error();
-	return (1);
+	if (keycode == ESCAPE)
+		mlx_close(mlx);
+	if (keycode == UP)
+		mlx->player->move += up(mlx);
+	else if (keycode == DOWN)
+		mlx->player->move += down(mlx);
+	else if (keycode == LEFT)
+		mlx->player->move += left(mlx);
+	else if (keycode == RIGHT)
+		mlx->player->move += right(mlx);
+	print_move(mlx);
+	return (0);
 }

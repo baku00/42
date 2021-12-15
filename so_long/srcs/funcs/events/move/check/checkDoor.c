@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_n_only.c                                        :+:      :+:    :+:   */
+/*   checkDoor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:25:29 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:26:26 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:48:41 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:49:02 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../so_long.h"
+#include "../../../../../so_long.h"
 
-int	is_n_only(const char *str, const char *search, const int length)
+int	check_door(t_mlx *mlx)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] && i < length)
-	{
-		if (!ft_strchr(search, str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	return (mlx->player->point.x == mlx->exit->point.x && \
+			mlx->player->point.y == mlx->exit->point.y);
 }

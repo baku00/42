@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_close.c                                      :+:      :+:    :+:   */
+/*   get_point.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:54:30 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:59:04 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../so_long.h"
 
-int	valid_close(char *filename)
+char	*get_point(char *point, int x, int y)
 {
-	t_map	map;
+	char	*cx;
+	char	*cy;
 
-	map.fd = open(filename, O_RDONLY);
-	map.line = "";
-	map.height = 0;
-	map.first = 1;
-	while (map.line)
-	{
-		map.line = get_next_line(map.fd);
-		if (map.line)
-			map.length = ft_strlen(map.line);
-		else
-			break ;
-		map.height++;
-		if (first)
-		{
-			first = 0;
-			map.width = map.length;
-		}
-		else if (map.width != map.length)
-			error();
-	}
-	if (map.width == map.height)
-		error();
-	return (1);
+	cx = ft_itoa(x);
+	cy = ft_itoa(y);
+	if (ft_strlen(point))
+		point = ft_strjoin(point, ",");
+	point = ft_strjoin(point, "x:");
+	point = ft_strjoin(point, cx);
+	point = ft_strjoin(point, ";y:");
+	point = ft_strjoin(point, cy);
+	free(cx);
+	free(cy);
+	return (point);
 }

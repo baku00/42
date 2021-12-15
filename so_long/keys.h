@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_n_only.c                                        :+:      :+:    :+:   */
+/*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:25:29 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:26:26 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:06:16 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:06:41 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../so_long.h"
-
-int	is_n_only(const char *str, const char *search, const int length)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && i < length)
-	{
-		if (!ft_strchr(search, str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
+#ifndef KEYS_H
+# define KEYS_H
+# define ESCAPE 53
+# define UP 13
+# define DOWN 1
+# define LEFT 0
+# define RIGHT 2
+#endif
