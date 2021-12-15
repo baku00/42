@@ -38,6 +38,7 @@ static char	*ft_join(char *result, char buf[2])
 
 static void	ft_init(int *i, char buf[2])
 {
+	(void) i;
 	buf[1] = '\0';
 	i = 0;
 }

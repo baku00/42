@@ -5,13 +5,12 @@ STR = $(FUNCS)/str
 SRCS = $(FUNCS)/error.c \
 				$(MAP)/valid_map.c \
 				$(MAP)/valid_shape.c \
-				$(MAP)/valid_close.c \
 				$(STR)/is_n_only.c \
 				$(STR)/is_at.c \
 				$(NAME).c
 OBJS = $(SRCS:.c=.o)
 MLX_DIR = ./mlx
-MLX = $(MLX_DIR)/libmlx.a
+MLX = $(MLX_DIR)/libmlx_Linux.a
 INClUDES = includes
 LIBFT = $(INClUDES)/libft
 MAKE_LIBFT = -C $(LIBFT)
@@ -24,7 +23,7 @@ GNL_A = $(GNL)/get_next_line.a
 all: $(NAME)
 
 $(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS)
-	gcc $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
+	gcc $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
 
 $(MLX):
 	make -C ./mlx
