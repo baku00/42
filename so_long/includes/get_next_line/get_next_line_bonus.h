@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:33:49 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/11/16 14:40:14 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:09:29 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include <stdio.h>
 
 char	*ft_strdup(const char *str);
-char	*ft_strjoin_line(char *s1, char const *s2);
+char	*ft_strjoin_free(char *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *str);
-void	*ft_calloc_line(size_t count, size_t size);
+size_t	ft_strlen_line(const char *str);
+void	*ft_calloc(size_t count, size_t size);
 char	*get_next_line(int fd);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 #endif

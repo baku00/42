@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:33:30 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/11/12 14:19:20 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:10:02 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_calloc_line(size_t count, size_t size)
 	return ((void *) calloc);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_line(const char *str)
 {
 	size_t	i;
 
@@ -39,7 +39,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin_line(char *s1, char const *s2)
+char	*ft_strjoin_free(char *s1, char const *s2)
 {
 	char	*str;
 	int		i;
@@ -48,8 +48,8 @@ char	*ft_strjoin_line(char *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (0);
-	str = ft_calloc_line(ft_strlen((char *) s1) + \
-			ft_strlen((char *) s2) + 1, sizeof(char));
+	str = ft_calloc_line(ft_strlen_line((char *) s1) + \
+			ft_strlen_line((char *) s2) + 1, sizeof(char));
 	if (!str)
 		return (0);
 	i = 0;
@@ -57,11 +57,11 @@ char	*ft_strjoin_line(char *s1, char const *s2)
 		str[i++] = '\0';
 	i = 0;
 	j = 0;
-	len = ft_strlen(s1);
+	len = ft_strlen_line(s1);
 	while (i < len)
 		str[j++] = s1[i++];
 	i = 0;
-	len = ft_strlen(s2);
+	len = ft_strlen_line(s2);
 	while (i < len)
 		str[j++] = s2[i++];
 	free(s1);
@@ -75,7 +75,7 @@ char	*ft_strdup(const char *str)
 	int		i;
 
 	src = (char *) str;
-	dest = ft_calloc_line((ft_strlen(src) + 1), sizeof(char));
+	dest = ft_calloc_line((ft_strlen_line(src) + 1), sizeof(char));
 	if (!dest)
 		return (0);
 	i = 0;
