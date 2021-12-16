@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:19:04 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/10 18:02:14 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/12 16:45:23 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*ft_join(char *result, char buf[2])
 {
 	char	*temp;
 
-	temp = ft_strjoin_free(result, buf);
+	temp = ft_strjoin_line(result, buf);
 	result = ft_strdup(temp);
 	free(temp);
 	return (result);
@@ -58,7 +58,7 @@ char	*get_next_line(int fd)
 			return (ft_return_ret(result));
 		if (!result)
 		{
-			result = ft_calloc(1, sizeof(char));
+			result = ft_calloc_line(1, sizeof(char));
 			if (!result)
 				return (0);
 		}

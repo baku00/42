@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:34:33 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/10 18:09:55 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/12 16:36:27 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*ft_join(char *result, char buf[2])
 {
 	char	*temp;
 
-	temp = ft_strjoin_free(result, buf);
+	temp = ft_strjoin_line(result, buf);
 	result = ft_strdup(temp);
 	free(temp);
 	return (result);

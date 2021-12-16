@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:28:52 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/10 18:10:21 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/11/16 14:40:03 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdio.h>
 
 char	*ft_strdup(const char *str);
-char	*ft_strjoin_free(char *s1, char const *s2);
+char	*ft_strjoin_line(char *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *str);
 void	*ft_calloc_line(size_t count, size_t size);

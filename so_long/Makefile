@@ -1,27 +1,24 @@
 NAME = so_long
-FUNCS = srcs/funcs
-MAP = $(FUNCS)/map
-STR = $(FUNCS)/str
-SRCS = $(FUNCS)/error.c \
-				$(FUNCS)/events/hook.c \
-				$(FUNCS)/item/get_point.c \
-				$(FUNCS)/events/close.c \
-				$(FUNCS)/events/move/check/checkWall.c \
-				$(FUNCS)/events/move/check/checkDoor.c \
-				$(FUNCS)/utils/win.c \
-				$(FUNCS)/utils/print_move.c \
-				$(FUNCS)/events/move/check/checkCoin.c \
-				$(FUNCS)/events/move/remove/removeCoin.c \
-				$(FUNCS)/events/move/up.c \
-				$(FUNCS)/events/move/down.c \
-				$(FUNCS)/events/move/right.c \
-				$(FUNCS)/events/move/left.c \
-				$(MAP)/valid_map.c \
-				$(MAP)/valid_shape.c \
-				$(STR)/is_n_only.c \
-				$(STR)/is_at.c \
-				$(NAME).c
-OBJS = $(SRCS:.c=.o)
+SRCS = srcs
+FUNCS = $(SRCS)/funcs
+UTILS = $(FUNCS)/utils
+INIT = $(FUNCS)/init
+CALL = $(INIT)/call
+ITEM = $(CALL)/item
+SRC = $(NAME).c \
+		$(UTILS)/error.c \
+		$(INIT)/init_game.c \
+		$(INIT)/init_map.c \
+		$(CALL)/init_window.c \
+		$(CALL)/init_item.c \
+		$(CALL)/init_define.c \
+		$(ITEM)/init_wall.c \
+		$(ITEM)/init_player.c \
+		$(ITEM)/init_exit.c \
+		$(ITEM)/init_empty.c \
+		$(ITEM)/init_coin.c
+
+OBJS = $(SRC:.c=.o)
 MLX_DIR = ./mlx
 MLX = $(MLX_DIR)/libmlx_Linux.a
 INClUDES = includes
@@ -35,8 +32,9 @@ GNL_A = $(GNL)/get_next_line.a
 
 all: $(NAME)
 
-$(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS)
-	gcc $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+$(NAME): $(MLX) $(OBJS) $(LIBFT_A) $(GNL_A)
+	ar rc $(NAME).a $(OBJS) $(MLX)
+	gcc -Wall -Werror -Wextra $(NAME).a $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
 
 $(MLX):
 	make -C ./mlx
@@ -49,6 +47,7 @@ fclean: clean $(LIBFT_A)_fclean $(GNL_A)_fclean
 
 $(LIBFT_A):
 	make $(MAKE_LIBFT)
+	OBJS += $(LIBFT_A)
 
 $(LIBFT_A)_clean:
 	make clean $(MAKE_LIBFT)
