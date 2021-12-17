@@ -39,6 +39,7 @@ typedef struct s_error_message
 	char	*wrong_map_format;
 	char	*wrong_char_map;
 	char	*invalid_char;
+	char	*missing_char;
 }	t_error_message;
 
 typedef struct s_message
@@ -104,17 +105,32 @@ typedef struct s_line
 	char	**line;
 }	t_line;
 
+typedef struct s_contains
+{
+	int	empty;
+	int	wall;
+	int	exit;
+	int	player;
+	int	coin;
+}	t_contains;
+
 typedef struct s_map
 {
-	int		width;
-	int		height;
-	int		fd;
-	char	accepted_chars[6];
-	char	char_to_string[2];
-	int		item_width;
-	int		item_height;
-	int		line_counter;
-	t_line	line;
+	int			width;
+	int			height;
+	int			fd;
+	char		accepted_chars[6];
+	char		char_to_string[2];
+	int			item_width;
+	int			item_height;
+	int			line_counter;
+	int			wall;
+	int			empty;
+	int			player;
+	int			coin;
+	int			exit;
+	t_line		line;
+	t_contains	contains;
 }	t_map;
 
 typedef struct s_window
@@ -179,4 +195,7 @@ void			enable_door(t_mlx *mlx, int x, int y);
 int				win(t_mlx *mlx);
 int				move(t_mlx *mlx);
 void			print_move(t_mlx *mlx);
+t_contains		init_contains();
+int				valid_contains(t_contains contains);
+void			contains_object(char *line, t_mlx *mlx);
 #endif

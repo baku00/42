@@ -24,11 +24,14 @@ SRCS = $(NAME).c \
 		$(PLATEFORME)/init_map.c \
 		$(PLATEFORME)/init_window.c \
 		$(PLATEFORME)/init_point.c \
+		$(PLATEFORME)/init_contains.c \
 		$(PLATEFORME)/init_coin.c \
 		$(REMOVE)/remove_coin.c \
 		$(ENABLE)/enable_door.c \
 		$(VERIFY)/verify_map.c \
 		$(VALID)/valid_map_shape.c \
+		$(VALID)/valid_contains.c \
+		$(VALID)/contains_object.c \
 		$(PUT)/put_image.c \
 		$(PUT)/put_wall.c \
 		$(PUT)/put_empty.c \

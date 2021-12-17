@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_message.c                                     :+:      :+:    :+:   */
+/*   init_contains.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,14 @@
 
 #include "../../../../so_long.h"
 
-t_error_message	init_error_message()
+t_contains	init_contains(t_mlx *mlx)
 {
-	t_error_message	error_message;
+	t_contains	contains;
 
-	error_message.wrong_count_argument = "Merci de préciser une map";
-	error_message.wrong_map_width = "La largeur de la map n'est pas correct";
-	error_message.wrong_map_size = "La taille de la map n'est pas correct (La largeur est égal à la hauteur)";
-	error_message.line_error = "";
-	error_message.line_number_error = 0;
-	error_message.wrong_map_format = "Le format de la map est incorrect (Format requis: rectangulaire)";
-	error_message.wrong_map_close = "La map n'est pas fermée";
-	error_message.wrong_char_map = "La map contient des caractères non valide";
-	error_message.missing_char = "Des caractères sont manquant";
-	return (error_message);
+	contains.coin = 0;
+	contains.player = 0;
+	contains.wall = 0;
+	contains.exit = 0;
+	contains.empty = 0;
+	return (contains);
 }
