@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/10/19 18:22:12 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "libft.h"
 
-void	error(char *message)
+int	ft_isprint(int c)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	return (c >= 32 && c <= 126);
 }

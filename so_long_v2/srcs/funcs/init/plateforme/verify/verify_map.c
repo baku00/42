@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../../../so_long.h"
 
-void	error(char *message)
+void	verify_map(t_mlx *mlx)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	char	*shape;
+
+	shape = valid_map_shape(mlx);
+	if (shape)
+		error(shape);
 }

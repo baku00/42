@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/10/29 15:44:42 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/10/29 15:46:38 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "libft.h"
 
-void	error(char *message)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	unsigned int	i;
+	char			*str;
+
+	if (!s || !f)
+		return (0);
+	i = 0;
+	str = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!str)
+		return (0);
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	return (str);
 }

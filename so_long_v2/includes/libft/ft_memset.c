@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/10/21 19:26:03 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "libft.h"
 
-void	error(char *message)
+void	*ft_memset(void *b, unsigned char c, int len)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	int		i;
+	char	*string;
+
+	i = 0;
+	string = b;
+	while (i < len)
+	{
+		string[i] = c;
+		i++;
+	}
+	b = string;
+	return (b);
 }

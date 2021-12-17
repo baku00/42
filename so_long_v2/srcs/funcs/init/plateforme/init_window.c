@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../../so_long.h"
 
-void	error(char *message)
+void	init_window(t_mlx *mlx)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	t_window	window;
+
+	window.width = (mlx->map.width + 0) * mlx->map.item_width;
+	window.height = (mlx->map.height + 0) * mlx->map.item_height;
+	window.title = "So Long";
+	window.ptr = mlx_new_window(mlx->ptr, window.width, window.height, window.title);
+	mlx->window = window;
 }

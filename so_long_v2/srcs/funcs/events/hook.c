@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   is_at.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:25:03 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:25:20 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../so_long.h"
 
-void	error(char *message)
+int	hook(int keycode, t_mlx *mlx)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	if(keycode == mlx->keys.escape)
+		mlx_close(mlx);
+	if(keycode == mlx->keys.up)
+		mlx->player.move += up(mlx);
+	if(keycode == mlx->keys.down)
+		mlx->player.move += down(mlx);
+	if(keycode == mlx->keys.left)
+		mlx->player.move += left(mlx);
+	if(keycode == mlx->keys.right)
+		mlx->player.move += right(mlx);
+	print_move(mlx);
 }

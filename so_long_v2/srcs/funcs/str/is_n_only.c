@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   is_n_only.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:25:29 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:26:26 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../so_long.h"
 
-void	error(char *message)
+int	is_n_only(const char *str, const char *search, const int length)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	int	i;
+
+	i = 0;
+	while (str[i] && i < length)
+	{
+		if (!ft_strchr(search, str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

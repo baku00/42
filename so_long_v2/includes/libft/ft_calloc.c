@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/10/29 15:34:23 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/10/29 15:34:36 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "libft.h"
 
-void	error(char *message)
+void	*ft_calloc(size_t count, size_t size)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	char	*calloc;
+	size_t	total;
+	int		i;
+
+	i = 0;
+	total = count * size;
+	calloc = malloc(total);
+	if (!calloc)
+		return (0);
+	while (total--)
+		calloc[i++] = '\0';
+	return ((void *) calloc);
 }

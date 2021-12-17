@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../../so_long.h"
 
-void	error(char *message)
+t_line	get_line(t_mlx *mlx)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	t_line	lines;
+	char	*line;
+	char	*l;
+
+	l = "";
+	line = ft_calloc(1, sizeof(char));
+	while (l)
+	{
+		line = ft_strjoin_free(line, l);
+		l = get_next_line(mlx->map.fd);
+	}
+	lines.line = ft_split(line, '\n');
+	return (lines);
 }

@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   is_at.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:26:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:27:02 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:25:03 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:25:20 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../so_long.h"
 
-void	error(char *message)
+int	count_char(const char *str, const char c)
 {
-	printf("Error\n");
-	printf("%s\n", message);
-	exit(0);
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i]) {
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
 }
