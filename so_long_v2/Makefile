@@ -56,6 +56,7 @@ OBJS = $(SRCS:.c=.o)
 MLX_DIR = ./mlx
 MLX = $(MLX_DIR)/libmlx_Linux.a
 INClUDES = includes
+BONUS = 0
 LIBFT = $(INClUDES)/libft
 MAKE_LIBFT = -C $(LIBFT)
 LIBFT_A = $(LIBFT)/libft.a
@@ -68,10 +69,15 @@ all: $(NAME)
 
 $(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS)
 	ar rc $(NAME).a $(OBJS) $(MLX)
-	gcc -Wall -Werror -Wextra $(NAME).a $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+	gcc -Wall -Werror -Wextra $(NAME).a $(LIBFT_A) $(GNL_A) -D BONUS=$(BONUS) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
 
 $(MLX):
 	make -C ./mlx
+
+bonus:
+	rm -rf $(OBJS)
+	rm -rf $(NAME) $(NAME).a
+	$(MAKE) BONUS=1
 
 clean: $(LIBFT_A)_clean $(GNL_A)_clean
 	rm -rf $(OBJS)
