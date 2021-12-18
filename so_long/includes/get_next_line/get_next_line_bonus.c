@@ -31,7 +31,7 @@ static char	*ft_join(char *result, char buf[2])
 	char	*temp;
 
 	temp = ft_strjoin_free(result, buf);
-	result = ft_strdup(temp);
+	result = ft_strdup_line(temp);
 	free(temp);
 	return (result);
 }

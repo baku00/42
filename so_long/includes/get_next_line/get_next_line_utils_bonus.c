@@ -29,7 +29,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return ((void *) calloc);
 }
 
-size_t	ft_strlen_line(const char *str)
+size_t	ft_strlen_line_line(const char *str)
 {
 	size_t	i;
 
@@ -48,8 +48,8 @@ char	*ft_strjoin_free(char *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (0);
-	str = ft_calloc(ft_strlen_line((char *) s1) + \
-			ft_strlen_line((char *) s2) + 1, sizeof(char));
+	str = ft_calloc(ft_strlen_line_line((char *) s1) + \
+			ft_strlen_line_line((char *) s2) + 1, sizeof(char));
 	if (!str)
 		return (0);
 	i = 0;
@@ -57,25 +57,25 @@ char	*ft_strjoin_free(char *s1, char const *s2)
 		str[i++] = '\0';
 	i = 0;
 	j = 0;
-	len = ft_strlen_line(s1);
+	len = ft_strlen_line_line(s1);
 	while (i < len)
 		str[j++] = s1[i++];
 	i = 0;
-	len = ft_strlen_line(s2);
+	len = ft_strlen_line_line(s2);
 	while (i < len)
 		str[j++] = s2[i++];
 	free(s1);
 	return (str);
 }
 
-char	*ft_strdup(const char *str)
+char	*ft_strdup_line(const char *str)
 {
 	char	*dest;
 	char	*src;
 	int		i;
 
 	src = (char *) str;
-	dest = ft_calloc((ft_strlen_line(src) + 1), sizeof(char));
+	dest = ft_calloc((ft_strlen_line_line(src) + 1), sizeof(char));
 	if (!dest)
 		return (0);
 	i = 0;

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:43:23 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:44:50 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,7 @@
 
 int	left(t_mlx *mlx)
 {
-	int	item_margin_width;
-
-	item_margin_width = mlx->map->item_margin_width;
-	if (mlx->player->point.x - 40 < 0 + item_margin_width || \
-			check_wall(mlx, mlx->player->point.x - 40, mlx->player->point.y))
-		return (0);
-	if (check_coin(mlx, mlx->player->point.x - 40, mlx->player->point.y))
-		remove_coin(mlx);
-	if (!mlx->coin->count)
-	{
-		mlx_put_image_to_window(mlx->mlx, mlx->window, \
-				mlx->exit->img, mlx->exit->point.x, mlx->exit->point.y);
-		mlx->exit->is_enable = 1;
-	}
-	mlx_put_image_to_window(mlx->mlx, mlx->window, \
-			mlx->empty, mlx->player->point.x, mlx->player->point.y);
-	mlx->player->point.x -= 40;
-	if (mlx->exit->is_enable && check_door(mlx))
-		win();
-	mlx_put_image_to_window(mlx->mlx, mlx->window, \
-			mlx->player->img, mlx->player->point.x, mlx->player->point.y);
-	return (1);
+	mlx->player.point.current_y = mlx->player.point.y;
+	mlx->player.point.current_x = mlx->player.point.x - 1;
+	return (move(mlx));
 }
