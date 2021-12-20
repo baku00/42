@@ -71,7 +71,7 @@ static char	**ft_set_words(char **result, char const *str, char c, int words)
 	return (result);
 }
 
-char	**ft_split(char const *str, char c)
+char	**ft_split(char *str, char c)
 {
 	char	**result;
 	char	*string;
@@ -94,5 +94,6 @@ char	**ft_split(char const *str, char c)
 		return (0);
 	result = ft_set_words(result, string, c, words);
 	free(string);
+	free(str);
 	return (result);
 }
