@@ -3,17 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/21 12:34:41 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../so_long.h"
 
+void	check_filename(char *filename)
+{
+	if (ft_strncmp(filename + ft_strlen(filename) - 4, ".ber", 4))
+		error("Nom de map invalide");
+}
+
 void	init_game(t_mlx *mlx, char *filename)
 {
+	check_filename(filename);
 	mlx->ptr = mlx_init();
 	mlx->define = init_define();
 	mlx->keys = init_keys();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/21 11:23:51 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@ int	win(t_mlx *mlx)
 {
 	printf("You have win\n");
 	mlx_close(mlx);
+	return (0);
 }

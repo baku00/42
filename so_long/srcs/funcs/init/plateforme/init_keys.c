@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_keys.c                                      :+:      :+:    :+:   */
+/*   init_keys.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/21 11:51:50 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_keys	init_keys(void)
 {
 	t_keys	keys;
 
-	keys.escape = 65307;
-	keys.up = 119;
-	keys.down = 115;
-	keys.left = 97;
-	keys.right = 100;
+	keys.escape = 53;
+	keys.up = 13;
+	keys.down = 1;
+	keys.left = 0;
+	keys.right = 2;
 	return (keys);
 }

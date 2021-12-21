@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_at.c                                            :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:25:03 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:25:20 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/21 11:52:03 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int	hook(int keycode, t_mlx *mlx)
 	else if (keycode == mlx->keys.right)
 		mlx->player.move += right(mlx);
 	print_move(mlx);
+	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   valid_map_shape.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/21 13:32:53 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static char	*last_check(t_mlx *mlx, int i)
 		return (mlx->error_message.wrong_map_size);
 	if (!valid_contains(mlx->map.contains))
 		return (mlx->error_message.missing_char);
+	if (mlx->map.contains.player != 1)
+		return ("Un seul joueur est necessaire");
 	return (0);
 }
 
@@ -58,6 +60,8 @@ char	*valid_map_shape(t_mlx *mlx)
 
 	i = 0;
 	mlx->map.line.length = 0;
+	if (!mlx->map.line.line[0])
+		error("La map contient une erreur");
 	while (mlx->map.line.line[i])
 	{
 		contains_object(mlx->map.line.line[i], mlx);

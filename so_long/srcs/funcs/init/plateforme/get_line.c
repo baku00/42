@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   get_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/21 13:28:18 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_line	get_line(t_mlx *mlx)
 
 	l = "";
 	line = ft_calloc(1, sizeof(char));
+	if (mlx->map.fd < 0)
+		error("Map invalid");
 	while (l)
 	{
 		line = ft_strjoin_free(line, l);

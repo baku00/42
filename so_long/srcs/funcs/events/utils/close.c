@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/21 11:50:52 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,7 @@
 
 int	mlx_close(t_mlx *mlx)
 {
-	int	i;
-
-	i = 0;
-	while (mlx->map.line.line[i])
-		free(mlx->map.line.line[i++]);
 	free(mlx->map.line.line);
-	i = 0;
-	while (mlx->point.point[i])
-		free(mlx->point.point[i++]);
 	free(mlx->point.point);
 	mlx_destroy_window(mlx->ptr, mlx->window.ptr);
 	exit(0);
