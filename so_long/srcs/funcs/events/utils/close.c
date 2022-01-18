@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:51:40 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/21 11:50:52 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/15 04:52:05 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	mlx_close(t_mlx *mlx)
 {
-	free(mlx->map.line.line);
-	free(mlx->point.point);
 	mlx_destroy_window(mlx->ptr, mlx->window.ptr);
 	exit(0);
 }

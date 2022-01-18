@@ -12,7 +12,7 @@
 
 #include "../../../../so_long.h"
 
-t_contains	init_contains(void)
+t_contains	init_contains()
 {
 	t_contains	contains;
 

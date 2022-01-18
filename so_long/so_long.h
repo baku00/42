@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/21 11:23:41 by dgloriod         ###   ########.fr       */
+/*   Updated: 2021/12/15 04:58:33 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 # include "includes/get_next_line/get_next_line.h"
 # include "includes/libft/libft.h"
+# include "config/elements/limits.h"
 # include "mlx/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
@@ -30,6 +31,12 @@ typedef struct s_keys
 
 typedef struct s_error_message
 {
+	char	*wrong_wall_number;
+	char	*wrong_empty_number;
+	char	*wrong_exit_number;
+	char	*wrong_player_number;
+	char	*wrong_coin_number;
+	char	*wrong_filename;
 	char	*wrong_count_argument;
 	char	*wrong_map_width;
 	char	*wrong_map_size;
@@ -199,4 +206,5 @@ void			print_move(t_mlx *mlx);
 t_contains		init_contains(void);
 int				valid_contains(t_contains contains);
 void			contains_object(char *line, t_mlx *mlx);
+void			verify_map_filename(t_mlx *mlx, char *filename);
 #endif

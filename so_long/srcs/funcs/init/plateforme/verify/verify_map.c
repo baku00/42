@@ -16,6 +16,7 @@ void	verify_map(t_mlx *mlx)
 {
 	char	*shape;
 
+	
 	shape = valid_map_shape(mlx);
 	if (shape)
 		error(shape);

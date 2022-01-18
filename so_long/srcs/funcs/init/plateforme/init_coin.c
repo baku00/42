@@ -18,6 +18,6 @@ t_coin	init_coin(t_mlx *mlx)
 
 	coin.count = 0;
 	coin.img = mlx_xpm_file_to_image(mlx->ptr, \
-		"./srcs/img/coin.xpm", &mlx->map.item_width, &mlx->map.item_height);
+		"./config/img/coin.xpm", &mlx->map.item_width, &mlx->map.item_height);
 	return (coin);
 }
