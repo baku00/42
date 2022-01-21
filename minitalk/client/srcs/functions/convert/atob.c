@@ -17,19 +17,15 @@ int	*atob(char *message)
 	j = 0;
 	while (i <= length)
 	{
-		state = 64;
+		state = 128;
 		c = message[i];
 		while (state) {
-			result[j] = c > state;
+			result[j] = c >= state;
 			if (result[j])
 				c -= state;
 			state /= 2;
 			j++;
 		}
-		result[j] = c > state;
-		if (result[j])
-			c -= state;
-		j++;
 		i++;
 	}
 	return (result);
