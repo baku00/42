@@ -22,7 +22,6 @@ void my_handler(int signum)
 	if (!transmition.state)
 	{
 		transmition.message = ft_strjoin(transmition.message, transmition.c);
-		printf("Char: %s\n", transmition.c);
 		if (!transmition.c[0])
 		{
 			printf("Message: %s\n\n\n\n", transmition.message);
@@ -30,7 +29,6 @@ void my_handler(int signum)
 			transmition.message = NULL;
 		}
 	}
-	// printf("%d\n", signum);
 }
 
 int	main(void)
@@ -40,8 +38,6 @@ int	main(void)
 	signal(SIGUSR1, my_handler);
 	signal(SIGUSR2, my_handler);
 	while (1)
-	{
 		pause();
-	}
 	return (0);
 }

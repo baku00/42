@@ -8,11 +8,7 @@ DIR_CONVERT = $(DIR_FUNCTIONS)/convert
 DIR_TRANSMITION = $(DIR_SRCS)/transmition
 
 SRCS = $(NAME).c \
-		$(DIR_FUNCTIONS)/exit.c \
-		$(DIR_CONVERT)/atob.c \
-		$(DIR_CONVERT)/btoa.c \
-		$(DIR_TRANSMITION)/init.c \
-		$(DIR_TRANSMITION)/send.c \
+		$(DIR_FUNCTIONS)/exit.c
 
 OBJS = $(SRCS:.c=.o)
 
