@@ -33,11 +33,21 @@ GNL_A = $(GNL)/get_next_line.a
 ifeq ($(shell uname), Linux)
 CREATE_MLX = cp -R mlx_linux mlx
 MLX = $(MLX_DIR)/libmlx_Linux.a
-COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(NAME).a $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+ESCAPE = 65307
+UP = 119
+LEFT = 97
+RIGHT = 100
+DOWN = 115
+COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(NAME).a $(LIBFT_A) $(GNL_A) -D ESCAPE=$(ESCAPE) -D LEFT=$(LEFT) -D RIGHT=$(RIGHT) -D DOWN=$(DOWN) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
 else
 CREATE_MLX = cp -R mlx_mac mlx
 MLX = $(MLX_DIR)/libmlx.a
-COMPILE = gcc $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
+ESCAPE = 65307
+UP = 119
+LEFT = 97
+RIGHT = 100
+DOWN = 115
+COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -D ESCAPE=$(ESCAPE) -D LEFT=$(LEFT) -D RIGHT=$(RIGHT) -D DOWN=$(DOWN) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
 endif
 
 all: $(NAME)

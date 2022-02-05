@@ -20,7 +20,7 @@
 # include "./headers/errors.h"
 # include "./headers/messages.h"
 # include "./headers/collectible.h"
-# include "./headers/keys.h"
+# include "./headers/keys_linux.h"
 # include "./headers/exit.h"
 # include "./headers/items.h"
 # include "./headers/player.h"
