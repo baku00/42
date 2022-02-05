@@ -14,25 +14,30 @@
 
 void	check_char(t_mlx *mlx, int y, int x)
 {
-	if (mlx->file.point[y][x] == 'C')
+	char	c;
+
+	c = mlx->file.point[y][x];
+	if (c == 'C')
 	{
 		mlx->elements.collectible.count++;
 		mlx->elements.collectible.total_count++;
 	}
-	else if (mlx->file.point[y][x] == 'E')
+	else if (c == 'E')
 	{
 		mlx->elements.exit.x = x;
 		mlx->elements.exit.y = y;
 		mlx->elements.exit.count++;
 	}
-	else if (mlx->file.point[y][x] == '1')
+	else if (c == '1')
 		mlx->elements.wall.count++;
-	else if (mlx->file.point[y][x] == 'P')
+	else if (c == 'P')
 	{
 		mlx->elements.player.x = x;
 		mlx->elements.player.y = y;
 		mlx->elements.player.count++;
 	}
+	else if (c != '0' && c != '1' && c != 'E' && c != 'P' && c != 'C')
+		ft_exit(ERROR_BAD_CHAR, 1);
 }
 
 void	check_limit(t_mlx *mlx)

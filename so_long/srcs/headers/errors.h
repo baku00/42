@@ -28,4 +28,6 @@
 # define ERROR_TO_MANY_EXIT "Il y a trop de sortie"
 # define ERROR_NOT_ENOUGH_EXIT "Il n'y a pas assez de sortie"
 # define ERROR_MAP_WALL "La map n'est pas fermée"
+# define ERROR_BAD_CHAR "Des caractères invalid ont été trouvé \
+	(Caractères valide: 01EPC)"
 #endif
