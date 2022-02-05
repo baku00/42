@@ -21,7 +21,6 @@ OBJS = $(SRCS:.c=.o)
 
 MLX_DIR = ./mlx
 INClUDES = includes
-MLX = $(MLX_DIR)/libmlx_Linux.a
 
 LIBFT = $(INClUDES)/libft
 MAKE_LIBFT = -C $(LIBFT)
@@ -32,8 +31,12 @@ MAKE_GNL = -C $(GNL)
 GNL_A = $(GNL)/get_next_line.a
 
 ifeq ($(shell uname), Linux)
+CREATE_MLX = cp -R mlx_linux mlx
+MLX = $(MLX_DIR)/libmlx_Linux.a
 COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(NAME).a $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
 else
+CREATE_MLX = cp -R mlx_mac mlx
+MLX = $(MLX_DIR)/libmlx.a
 COMPILE = gcc $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
 endif
 
@@ -44,6 +47,7 @@ $(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS)
 	$(COMPILE)
 
 $(MLX):
+	$(CREATE_MLX)
 	make -C ./mlx
 
 bonus:
@@ -56,6 +60,7 @@ clean: $(LIBFT_A)_clean $(GNL_A)_clean
 
 fclean: clean $(LIBFT_A)_fclean $(GNL_A)_fclean
 	rm -rf $(NAME) $(NAME).a
+	rm -rf mlx
 
 $(LIBFT_A):
 	make $(MAKE_LIBFT)
