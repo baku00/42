@@ -1,11 +1,12 @@
 #include "../../../so_long.h"
 
-static void	load_map(t_mlx *mlx) {
+static void	load_map(t_mlx *mlx)
+{
 	printf("Récupération de la ligne 1\n");
 	mlx->file.line = get_next_line(mlx->file.fd);
 	mlx->file.content = ft_calloc(1, sizeof(char));
 	if (!mlx->file.line)
-		return;
+		return ;
 	mlx->file.width = ft_strlen(mlx->file.line);
 	mlx->file.height = 0;
 	while (mlx->file.line && ft_strncmp(mlx->file.line, "\n", 1))
@@ -25,14 +26,15 @@ static void	load_map(t_mlx *mlx) {
 	mlx->file.content_length = ft_strlen(mlx->file.content);
 }
 
-static void	create_mapper(t_mlx *mlx){
+static void	create_mapper(t_mlx *mlx)
+{
 	int	y;
 
 	y = 0;
 	printf("Création de la map virtuel\n");
 	mlx->file.point = ft_calloc(mlx->file.height, sizeof(int *));
 	if (!mlx->file.point)
-		return;
+		return ;
 	while (y < mlx->file.height)
 	{
 		mlx->file.point[y] = ft_calloc(mlx->file.width, sizeof(int));
@@ -41,7 +43,7 @@ static void	create_mapper(t_mlx *mlx){
 			while (--y >= 0)
 				free(mlx->file.point[y]);
 			free(mlx->file.point);
-			return;
+			return ;
 		}
 		y++;
 	}
@@ -64,7 +66,7 @@ static void	save_map(t_mlx *mlx)
 			i++;
 			y++;
 			x = 0;
-			continue;
+			continue ;
 		}
 		mlx->file.point[y][x] = mlx->file.content[i];
 		check_char(mlx, y, x);
@@ -81,11 +83,13 @@ static void	check_map(t_mlx *mlx)
 
 	i = -1;
 	while (++i < mlx->file.width - 1)
-		if (mlx->file.point[0][i] != '1' || mlx->file.point[mlx->file.height - 1][i] != '1')
+		if (mlx->file.point[0][i] != '1' || \
+		mlx->file.point[mlx->file.height - 1][i] != '1')
 			ft_exit(ERROR_MAP_WALL, 1);
 	i = -1;
 	while (++i < mlx->file.height)
-		if (mlx->file.point[i][0] != '1' || mlx->file.point[i][mlx->file.width - 2] != '1')
+		if (mlx->file.point[i][0] != '1' || \
+		mlx->file.point[i][mlx->file.width - 2] != '1')
 			ft_exit(ERROR_MAP_WALL, 1);
 }
 

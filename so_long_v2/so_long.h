@@ -12,22 +12,14 @@
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "mlx/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include "mlx/mlx.h"
 # include "srcs/header.h"
 # include "includes/get_next_line/get_next_line.h"
 # include "includes/libft/libft.h"
 # include "srcs/struct/window.h"
-typedef struct s_mlx
-{
-	void			*ptr;
-	t_window		window;
-	t_elements		elements;
-	t_file			file;
-}	t_mlx;
 # include "srcs/protos.h"
-
 #endif

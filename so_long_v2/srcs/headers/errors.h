@@ -4,7 +4,8 @@
 # define ERROR_SYNTAXE "./so_long <map>"
 # define ERROR_FILENAME "La map doit-être un '.ber'"
 # define ERROR_OPEN "Une erreur est survenu lors de l'ouverture du fichier"
-# define ERROR_FILE_WIDTH "Erreur au niveau de la largeur de la map (Vérification la longueur des lignes)"
+# define ERROR_FILE_WIDTH "Erreur au niveau de la largeur \
+	de la map (Vérification la longueur des lignes)"
 # define ERROR_FILE_SIZE "La largeur et la longueur sont identique"
 # define ERROR_TO_MANY_PLAYER "Il ne peut y avoir qu'il seul joueur"
 # define ERROR_NOT_ENOUGH_PLAYER "Il manque un joueur"

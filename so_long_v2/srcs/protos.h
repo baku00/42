@@ -1,6 +1,14 @@
 #ifndef PROTOS_H
 # define PROTOS_H
 # include "../so_long.h"
+
+typedef struct s_mlx
+{
+	void			*ptr;
+	t_window		window;
+	t_elements		elements;
+	t_file			file;
+}	t_mlx;
 int		main(int argc, char **argv);
 void	ft_exit(char *message, int error);
 void	ft_check_file(t_mlx *mlx, char *filename);

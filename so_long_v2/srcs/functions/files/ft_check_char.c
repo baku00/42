@@ -1,6 +1,6 @@
 #include "../../../so_long.h"
 
-void check_char(t_mlx *mlx, int y, int x)
+void	check_char(t_mlx *mlx, int y, int x)
 {
 	if (mlx->file.point[y][x] == 'C')
 	{
@@ -23,7 +23,7 @@ void check_char(t_mlx *mlx, int y, int x)
 	}
 }
 
-void check_limit(t_mlx *mlx)
+void	check_limit(t_mlx *mlx)
 {
 	if (mlx->elements.wall.count > MAX_WALL_LIMIT && \
 		MAX_WALL_LIMIT != -1)

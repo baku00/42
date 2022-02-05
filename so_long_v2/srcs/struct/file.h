@@ -1,6 +1,7 @@
 #ifndef FILE_H
 # define FILE_H
 # include "../header.h"
+
 typedef struct s_file
 {
 	char	*name;
