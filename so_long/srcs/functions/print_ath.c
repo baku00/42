@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   print_ath.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:58:33 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:34:44 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:34:45 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "mlx/mlx.h"
-# include "srcs/header.h"
-# include "includes/get_next_line/get_next_line.h"
-# include "includes/libft/libft.h"
-# include "srcs/struct/window.h"
-# include "srcs/protos.h"
-#endif
+#include "../../so_long.h"
+
+void	print_ath(t_mlx *mlx)
+{
+	printf("----------------------\n");
+	printf("Nombre de movements:\t%d\n", mlx->elements.player.movement);
+	printf("Pièce récupéré:\t\t%d\n", \
+	mlx->elements.collectible.total_count - mlx->elements.collectible.count);
+	printf("Pièce restante:\t\t%d\n", mlx->elements.collectible.count);
+}

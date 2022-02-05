@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   file.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:58:33 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:36:41 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:36:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "mlx/mlx.h"
-# include "srcs/header.h"
-# include "includes/get_next_line/get_next_line.h"
-# include "includes/libft/libft.h"
-# include "srcs/struct/window.h"
-# include "srcs/protos.h"
+#ifndef FILE_H
+# define FILE_H
+# include "../header.h"
+
+typedef struct s_file
+{
+	char	*name;
+	char	*content;
+	char	*line;
+	int		width;
+	int		height;
+	int		**point;
+	int		fd;
+	size_t	content_length;
+}	t_file;
 #endif

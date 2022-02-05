@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/15 04:58:33 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:36:45 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:36:46 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "mlx/mlx.h"
-# include "srcs/header.h"
-# include "includes/get_next_line/get_next_line.h"
-# include "includes/libft/libft.h"
-# include "srcs/struct/window.h"
-# include "srcs/protos.h"
+#ifndef MAP_H
+# define MAP_H
+# include "../header.h"
+
+typedef struct s_width
+{
+	int			width;
+}	t_width;
+
+typedef struct s_height
+{
+	int			height;
+}	t_height;
+
+typedef struct s_map
+{
+	int				**point;
+	t_width			width;
+	t_height		height;
+}	t_map;
 #endif

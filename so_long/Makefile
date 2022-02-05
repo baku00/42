@@ -1,82 +1,46 @@
 NAME = so_long
-FUNCS = srcs/funcs
-CONFIG = config
-MESSAGES = $(CONFIG)/messages
-INIT = $(FUNCS)/init
-EVENTS = $(FUNCS)/events
-UTILS = $(EVENTS)/utils
-MOVE = $(EVENTS)/move
-CHECK = $(EVENTS)/check
-ENABLE = $(EVENTS)/enable
-MESSAGE = $(INIT)/message
-PLATEFORME = $(INIT)/plateforme
-PUT = $(PLATEFORME)/put
-REMOVE = $(PLATEFORME)/remove
-VERIFY = $(PLATEFORME)/verify
-VALID = $(VERIFY)/valid
-STR = $(FUNCS)/str
+
+SRCS_DIR = srcs
+FUNCTIONS_DIR = $(SRCS_DIR)/functions
+FILES_DIR = $(FUNCTIONS_DIR)/files
+
 SRCS = $(NAME).c \
-		$(INIT)/init_game.c \
-		$(FUNCS)/error.c \
-		$(MESSAGES)/messages.c \
-		$(MESSAGES)/errors.c \
-		$(PLATEFORME)/get_line.c \
-		$(PLATEFORME)/init_define.c \
-		$(PLATEFORME)/init_keys.c \
-		$(PLATEFORME)/init_map.c \
-		$(PLATEFORME)/init_window.c \
-		$(PLATEFORME)/init_point.c \
-		$(PLATEFORME)/init_contains.c \
-		$(PLATEFORME)/init_coin.c \
-		$(REMOVE)/remove_coin.c \
-		$(ENABLE)/enable_door.c \
-		$(VERIFY)/verify_map.c \
-		$(VERIFY)/verify_map_filename.c \
-		$(VALID)/valid_map_shape.c \
-		$(VALID)/valid_contains.c \
-		$(VALID)/contains_object.c \
-		$(PUT)/put_image.c \
-		$(PUT)/put_wall.c \
-		$(PUT)/put_empty.c \
-		$(PUT)/put_exit.c \
-		$(PUT)/put_player.c \
-		$(PUT)/put_coin.c \
-		$(STR)/is_at.c \
-		$(UTILS)/close.c \
-		$(UTILS)/win.c \
-		$(UTILS)/print_move.c \
-		$(EVENTS)/hook.c \
-		$(MOVE)/up.c \
-		$(MOVE)/down.c \
-		$(MOVE)/left.c \
-		$(MOVE)/right.c \
-		$(MOVE)/move.c \
-		$(CHECK)/coin.c \
-		$(CHECK)/door.c \
-		$(CHECK)/wall.c \
-		$(STR)/is_n_only.c
+		$(FUNCTIONS_DIR)/ft_exit.c \
+		$(FUNCTIONS_DIR)/ft_create_map.c \
+		$(FUNCTIONS_DIR)/set_images.c \
+		$(FUNCTIONS_DIR)/key_hook.c \
+		$(FUNCTIONS_DIR)/move.c \
+		$(FUNCTIONS_DIR)/mlx_close.c \
+		$(FUNCTIONS_DIR)/get_collectible.c \
+		$(FUNCTIONS_DIR)/print_ath.c \
+		$(FUNCTIONS_DIR)/win.c \
+		$(FILES_DIR)/ft_check_char.c \
+		$(FILES_DIR)/ft_check_file.c
+
 OBJS = $(SRCS:.c=.o)
+
 MLX_DIR = ./mlx
-MLX = $(MLX_DIR)/libmlx_Linux.a
 INClUDES = includes
-BONUS = 0
+MLX = $(MLX_DIR)/libmlx_Linux.a
+
 LIBFT = $(INClUDES)/libft
 MAKE_LIBFT = -C $(LIBFT)
 LIBFT_A = $(LIBFT)/libft.a
-ifeq ($(shell uname), Linux)
-COMPILE = gcc -Wall -Werror -Wextra $(NAME).a $(LIBFT_A) $(GNL_A) -D BONUS=$(BONUS) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
-else
-COMPILE = gcc $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
-endif
 
 GNL = $(INClUDES)/get_next_line
 MAKE_GNL = -C $(GNL)
 GNL_A = $(GNL)/get_next_line.a
 
+ifeq ($(shell uname), Linux)
+COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(NAME).a $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+else
+COMPILE = gcc $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
+endif
+
 all: $(NAME)
 
 $(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS)
-	ar rc $(NAME).a $(OBJS) $(MLX)
+	ar rc $(NAME).a $(OBJS)
 	$(COMPILE)
 
 $(MLX):
