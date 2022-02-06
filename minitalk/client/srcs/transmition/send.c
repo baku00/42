@@ -16,7 +16,7 @@ void	ft_send_transmition(t_transmition *transmition)
 			kill(transmition->pid, SIGUSR2);
 		else
 			kill(transmition->pid, SIGUSR1);
-		usleep(600);
+		usleep(100);
 	}
 	printf("SENDED\n");
 }

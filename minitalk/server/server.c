@@ -31,38 +31,12 @@ void my_handler(int signum)
 	}
 }
 
-void handler(int signo, siginfo_t *info, void *context)
-{
-    struct sigaction oldact;
-    if (sigaction(SIGSEGV, NULL, &oldact) == -1) {
-        exit(EXIT_FAILURE);
-    }
-    exit(EXIT_SUCCESS);
-}
-
 int	main(void)
 {
 	t_transmition	transmition;
-	struct sigaction act = { 0 };
-
-	act.sa_flags = SA_SIGINFO;
-	act.sa_sigaction = &handler;
-	if (sigaction(SIGSEGV, &act, NULL) == -1){
-		printf("Sigaction error\n");
-		exit(EXIT_FAILURE);
-	}
-	// raise(SIGSEGV);
-	// t_transmition	transmition;
-	// struct sigaction act = { 0 };
 	printf("%d\n", getpid());
-	// act.sa_flags = SA_SIGINFO;
-    // act.sa_sigaction = &handler;
-	// if (sigaction(SIGSEGV, &act, NULL) == -1) {
-    //     perror("sigaction");
-    //     exit(EXIT_FAILURE);
-    // }
-	// signal(SIGUSR1, my_handler);
-	// signal(SIGUSR2, my_handler);
+	signal(SIGUSR1, my_handler);
+	signal(SIGUSR2, my_handler);
 	while (1)
 	pause();
 	return (0);
