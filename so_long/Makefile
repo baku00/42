@@ -1,10 +1,10 @@
 NAME = so_long
 
-SRCS_DIR = srcs
+FOLDER = basic
+SRCS_DIR = $(FOLDER)/srcs
 FUNCTIONS_DIR = $(SRCS_DIR)/functions
 FILES_DIR = $(FUNCTIONS_DIR)/files
-
-SRCS = $(NAME).c \
+SRCS = $(FOLDER)/$(NAME).c \
 		$(FUNCTIONS_DIR)/ft_exit.c \
 		$(FUNCTIONS_DIR)/ft_create_map.c \
 		$(FUNCTIONS_DIR)/set_images.c \
@@ -16,6 +16,13 @@ SRCS = $(NAME).c \
 		$(FUNCTIONS_DIR)/win.c \
 		$(FILES_DIR)/ft_check_char.c \
 		$(FILES_DIR)/ft_check_file.c
+
+ifeq ($(shell uname), Linux)
+KEYS = -D ESCAPE=65307 -D UP=119 -D LEFT=97 -D RIGHT=100 -D DOWN=115
+else
+KEYS = -D ESCAPE=53 -D UP=13 -D LEFT=0 -D RIGHT=2 -D DOWN=1
+endif
+CFLAGS = -Wall -Werror -Wextra $(KEYS)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -33,21 +40,11 @@ GNL_A = $(GNL)/get_next_line.a
 ifeq ($(shell uname), Linux)
 CREATE_MLX = cp -R mlx_linux mlx
 MLX = $(MLX_DIR)/libmlx_Linux.a
-ESCAPE = 65307
-UP = 119
-LEFT = 97
-RIGHT = 100
-DOWN = 115
-COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(NAME).a $(LIBFT_A) $(GNL_A) -D ESCAPE=$(ESCAPE) -D LEFT=$(LEFT) -D RIGHT=$(RIGHT) -D DOWN=$(DOWN) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(NAME).a $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
 else
 CREATE_MLX = cp -R mlx_mac mlx
 MLX = $(MLX_DIR)/libmlx.a
-ESCAPE = 65307
-UP = 119
-LEFT = 97
-RIGHT = 100
-DOWN = 115
-COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -D ESCAPE=$(ESCAPE) -D LEFT=$(LEFT) -D RIGHT=$(RIGHT) -D DOWN=$(DOWN) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
+COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
 endif
 
 all: $(NAME)
