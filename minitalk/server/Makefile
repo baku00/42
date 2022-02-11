@@ -7,8 +7,7 @@ DIR_FUNCTIONS = $(DIR_SRCS)/functions
 DIR_CONVERT = $(DIR_FUNCTIONS)/convert
 DIR_TRANSMITION = $(DIR_SRCS)/transmition
 
-SRCS = $(NAME).c \
-		$(DIR_FUNCTIONS)/exit.c
+SRCS = $(NAME).c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -23,9 +22,10 @@ $(PRINTF_A):
 	make -C $(PRINTF)
 
 clean:
-	rm $(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm $(NAME).a
+	rm -rf $(NAME).a
+	rm -rf $(NAME)
 
 re: fclean all
