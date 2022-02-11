@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef printf_H
-# define printf_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # ifndef HEXA
 #  define HEXA 16
 # endif
@@ -20,6 +20,7 @@
 # endif
 # include "includes/libft/libft.h"
 
+int		ft_printf(const char *s, ...);
 void	ft_putunsigned_fd(unsigned long long int nb, int fd);
 char	*ft_itob(unsigned long int n, int base, int maj);
 int		ft_intlen(long int nb);

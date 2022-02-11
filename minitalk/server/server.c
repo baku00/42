@@ -17,9 +17,9 @@ static void	print_message(t_transmition *transmition)
 	transmition->message = NULL;
 }
 
-void my_handler(int signum)
+void	my_handler(int signum)
 {
-	static t_transmition transmition;
+	static t_transmition	transmition;
 
 	transmition.c[1] = 0;
 	if (!transmition.message)

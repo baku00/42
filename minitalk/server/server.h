@@ -1,11 +1,12 @@
-#ifndef CLIENT_H
-# define CLIENT_H
-# include "includes/ft_printf/ft_printf.h"
-# include "config/messages/errors.h"
+#ifndef SERVER_H
+# define SERVER_H
 # include <stdlib.h>
 # include <stdio.h>
 # include <signal.h>
 # include <unistd.h>
+# include "includes/ft_printf/ft_printf.h"
+# include "config/messages/errors.h"
+
 typedef struct s_transmition
 {
 	char	*message;
