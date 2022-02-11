@@ -14,6 +14,8 @@ SRCS = $(NAME).c \
 		$(DIR_TRANSMITION)/init.c \
 		$(DIR_TRANSMITION)/send.c \
 
+CFLAGS = -Wall -Werror -Wextra
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
@@ -27,9 +29,12 @@ $(PRINTF_A):
 	make -C $(PRINTF)
 
 clean:
-	rm $(OBJS)
+	make clean -C $(PRINTF)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm $(NAME).a
+	make fclean -C $(PRINTF)
+	rm -rf $(NAME).a
+	rm -rf $(NAME)
 
 re: fclean all

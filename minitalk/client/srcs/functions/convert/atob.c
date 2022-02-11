@@ -3,30 +3,27 @@
 int	*atob(char *message)
 {
 	int		*result;
-	int		i;
-	int		j;
-	int		state;
-	size_t	length;
+	size_t	size_ts[3];
 	char	c;
 
-	length = ft_strlen(message);
-	result = ft_calloc(length * 8 + 8, sizeof(int));
+	size_ts[2] = ft_strlen(message);
+	result = ft_calloc(size_ts[2] * 8 + 8, sizeof(int));
 	if (!result)
 		return (0);
-	i = 0;
-	j = 0;
-	while (i <= length)
+	size_ts[0] = -1;
+	size_ts[1] = 0;
+	while (++size_ts[0] <= size_ts[2])
 	{
 		state = 128;
-		c = message[i];
-		while (state) {
-			result[j] = c >= state;
-			if (result[j])
+		c = message[size_ts[0]];
+		while (state)
+		{
+			result[size_ts[1]] = c >= state;
+			if (result[size_ts[1]])
 				c -= state;
 			state /= 2;
-			j++;
+			size_ts[1]++;
 		}
-		i++;
 	}
 	return (result);
 }

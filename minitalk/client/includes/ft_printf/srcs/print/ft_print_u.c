@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../printf.h"
+#include "../../ft_printf.h"
 #include <stdio.h>
 
 int	ft_print_u(unsigned int n)

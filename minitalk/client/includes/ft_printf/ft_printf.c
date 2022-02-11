@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -40,7 +40,7 @@ static int	ft_check_char(char c, va_list args)
 	return (c_counter);
 }
 
-int	printf(const char *s, ...)
+int	ft_printf(const char *s, ...)
 {
 	int			i;
 	int			c_counter;

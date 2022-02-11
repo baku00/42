@@ -1,5 +1,22 @@
 #include "server.h"
 
+static void	check_state(t_transmition *transmition)
+{
+	if (!transmition->state)
+	{
+		transmition->message = ft_strjoin(transmition->message, transmition->c);
+		if (!transmition->c[0])
+			print_message(transmition);
+	}
+}
+
+static void	print_message(t_transmition *transmition)
+{
+	ft_printf("Message: %s\n\n", transmition->message);
+	free(transmition->message);
+	transmition->message = NULL;
+}
+
 void my_handler(int signum)
 {
 	static t_transmition transmition;
@@ -9,7 +26,7 @@ void my_handler(int signum)
 	{
 		transmition.message = ft_calloc(1, sizeof(char));
 		if (!transmition.message)
-			return;
+			return ;
 	}
 	if (!transmition.state)
 	{
@@ -19,25 +36,17 @@ void my_handler(int signum)
 	if (signum == SIGUSR2)
 		transmition.c[0] += transmition.state;
 	transmition.state /= 2;
-	if (!transmition.state)
-	{
-		transmition.message = ft_strjoin(transmition.message, transmition.c);
-		if (!transmition.c[0])
-		{
-			printf("Message: %s\n\n\n\n", transmition.message);
-			free(transmition.message);
-			transmition.message = NULL;
-		}
-	}
+	check_state(&transmition);
 }
 
 int	main(void)
 {
 	t_transmition	transmition;
-	printf("%d\n", getpid());
+
+	ft_printf("PID Server: %d\n", getpid());
 	signal(SIGUSR1, my_handler);
 	signal(SIGUSR2, my_handler);
 	while (1)
-	pause();
+		pause();
 	return (0);
 }

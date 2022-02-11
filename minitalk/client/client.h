@@ -6,6 +6,7 @@
 # include <stdio.h>
 # include <signal.h>
 # include <unistd.h>
+
 typedef struct s_transmition
 {
 	int		pid;

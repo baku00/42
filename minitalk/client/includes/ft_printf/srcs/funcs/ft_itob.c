@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../printf.h"
+#include "../../ft_printf.h"
 #include <stdio.h>
 
 static char	ft_convert(int rest, int maj)

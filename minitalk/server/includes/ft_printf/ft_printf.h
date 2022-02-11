@@ -20,7 +20,6 @@
 # endif
 # include "includes/libft/libft.h"
 
-int		printf(const char *s, ...);
 void	ft_putunsigned_fd(unsigned long long int nb, int fd);
 char	*ft_itob(unsigned long int n, int base, int maj);
 int		ft_intlen(long int nb);

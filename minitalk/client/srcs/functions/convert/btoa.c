@@ -11,9 +11,10 @@ char	*btoa(int *binary, int length)
 	result = ft_calloc(length / 8, sizeof(char));
 	state = 128;
 	c = 0;
-	if(!result)
+	if (!result)
 		return (0);
-	while (i < length) {
+	while (i < length)
+	{
 		if (binary[i])
 			c += state;
 		state /= 2;

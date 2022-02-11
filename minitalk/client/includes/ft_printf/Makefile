@@ -35,7 +35,7 @@ CFILES = $(LIBFT)/ft_atoi.c \
 					$(LIBFT)/ft_substr.c \
 					$(LIBFT)/ft_tolower.c \
 					$(LIBFT)/ft_toupper.c \
-					printf.c \
+					ft_printf.c \
 					$(FUNCS)/ft_putunsigned_fd.c \
 					$(FUNCS)/ft_intlen.c \
 					$(FUNCS)/ft_itob.c \
@@ -80,7 +80,7 @@ OFILES = $(LIBFT)/ft_atoi.o \
 					$(LIBFT)/ft_substr.o \
 					$(LIBFT)/ft_tolower.o \
 					$(LIBFT)/ft_toupper.o \
-					printf.o \
+					ft_printf.o \
 					$(FUNCS)/ft_putunsigned_fd.o \
 					$(FUNCS)/ft_intlen.o \
 					$(FUNCS)/ft_itob.o \
@@ -91,7 +91,7 @@ OFILES = $(LIBFT)/ft_atoi.o \
 					$(PRINT)/ft_print_s.o \
 					$(PRINT)/ft_print_x.o
 
-H_LIB = printf.h \
+H_LIB = ft_printf.h \
 					$(LIBFT)/libft.h
 LIBFT = includes/libft
 SRC = srcs
