@@ -61,6 +61,8 @@ int	main(int argc, char **argv)
 	mlx_key_hook(mlx.window.ptr, key_hook, &mlx);
 	mlx_hook(mlx.window.ptr, 17, 1L << 17, mlx_close, &mlx);
 	printf("\n\n\nDébut du jeu\n");
+	change_animations(&mlx);
+	print_ath(&mlx);
 	mlx_loop(mlx.ptr);
 	return (0);
 }

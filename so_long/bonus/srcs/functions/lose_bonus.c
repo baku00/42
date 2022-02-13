@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ath.h                                              :+:      :+:    :+:   */
+/*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:35:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:35:56 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:34:20 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:34:21 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ATH_H
-# define ATH_H
-# include "../header_bonus.h"
-# define ATH 'I'
-# define ATH_IMG "./img/ath.xpm"
-# define MAX_ATH_LIMIT -1
-# define MIN_ATH_LIMIT 1
-#endif
+#include "../../so_long_bonus.h"
+
+void	lose(t_mlx *mlx)
+{
+	printf("Perdu !\n");
+	mlx_close(mlx);
+}

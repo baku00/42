@@ -27,11 +27,11 @@ static void	put_images(t_mlx *mlx)
 			img = mlx->elements.empty.img;
 			if (mlx->file.point[y][x] == COLLECTIBLE)
 				img = mlx->elements.collectible.img;
-			else if (mlx->file.point[y][x] == PLAYER)
+			if (mlx->file.point[y][x] == PLAYER)
 				img = mlx->elements.player.img;
-			else if (mlx->file.point[y][x] == WALL)
+			if (mlx->file.point[y][x] == WALL)
 				img = mlx->elements.wall.img;
-			else if (mlx->file.point[y][x] == IA)
+			if (mlx->file.point[y][x] == IA)
 				img = mlx->elements.ia.img;
 			mlx_put_image_to_window(mlx->ptr, mlx->window.ptr, \
 				img, x * ITEM_WIDTH, y * ITEM_HEIGHT);
@@ -50,6 +50,8 @@ void	set_images(t_mlx *mlx)
 		mlx_xpm_file_to_image(mlx->ptr, COLLECTIBLE_IMG, &width, &height);
 	mlx->elements.ia.img = \
 		mlx_xpm_file_to_image(mlx->ptr, IA_IMG, &width, &height);
+	mlx->elements.ia.img_2 = \
+		mlx_xpm_file_to_image(mlx->ptr, IA_2_IMG, &width, &height);
 	mlx->elements.exit.img = \
 		mlx_xpm_file_to_image(mlx->ptr, EXIT_IMG, &width, &height);
 	mlx->elements.empty.img = \

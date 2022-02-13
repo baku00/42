@@ -23,6 +23,7 @@ typedef struct s_wall
 typedef struct s_ia
 {
 	void		*img;
+	void		*img_2;
 	int			count;
 }	t_ia;
 

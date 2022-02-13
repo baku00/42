@@ -41,17 +41,18 @@ int	move(t_mlx *mlx, int y, int x)
 	mlx->elements.player.current_x = mlx->elements.player.x + x;
 	c = mlx->file.point[mlx->elements.player.current_y] \
 		[mlx->elements.player.current_x];
-	printf("1\n");
+	if (c == IA)
+		lose(mlx);
 	if (c == COLLECTIBLE)
 		get_collectible(mlx, mlx->elements.player.current_y, \
 			mlx->elements.player.current_x);
 	else if (c == EXIT && mlx->elements.exit.is_enabled)
 		win(mlx);
-	printf("2\n");
 	can_move = (c == COLLECTIBLE || c == EXIT || c == EMPTY);
-	printf("3\n");
 	if (can_move)
+	{
 		apply_move(mlx);
-	printf("4\n");
+		change_animations(mlx);
+	}
 	return (can_move);
 }

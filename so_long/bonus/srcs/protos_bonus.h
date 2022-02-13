@@ -34,4 +34,6 @@ void	get_collectible(t_mlx *mlx, int y, int x);
 int		move(t_mlx *mlx, int y, int x);
 void	win(t_mlx *mlx);
 void	print_ath(t_mlx *mlx);
+void	lose(t_mlx *mlx);
+void	change_animations(t_mlx *mlx);
 #endif

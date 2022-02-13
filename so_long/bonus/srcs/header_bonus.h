@@ -20,7 +20,6 @@
 # include "./headers/errors_bonus.h"
 # include "./headers/messages_bonus.h"
 # include "./headers/collectible_bonus.h"
-# include "./headers/ath_bonus.h"
 # include "./headers/keys_linux_bonus.h"
 # include "./headers/exit_bonus.h"
 # include "./headers/items_bonus.h"

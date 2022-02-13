@@ -56,7 +56,7 @@ static void	create_mapper(t_mlx *mlx)
 				free(mlx->file.point[y]);
 			free(mlx->file.point[0]);
 			free(mlx->file.point);
-			return ;
+			exit(0);
 		}
 		y++;
 	}

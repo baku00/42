@@ -3,13 +3,12 @@ NAME = so_long
 FOLDER = basic
 FOLDER_BONUS = bonus
 
-ifdef WITH_BONUS
-SRCS_DIR = $(FOLDER_BONUS)/srcs
-else
+SRCS_DIR_BONUS = $(FOLDER_BONUS)/srcs
 SRCS_DIR = $(FOLDER)/srcs
-endif
 FUNCTIONS_DIR = $(SRCS_DIR)/functions
+FUNCTIONS_DIR_BONUS = $(SRCS_DIR_BONUS)/functions
 FILES_DIR = $(FUNCTIONS_DIR)/files
+FILES_DIR_BONUS = $(FUNCTIONS_DIR_BONUS)/files
 SRCS = $(FOLDER)/$(NAME).c \
 		$(FUNCTIONS_DIR)/ft_exit.c \
 		$(FUNCTIONS_DIR)/ft_create_map.c \
@@ -24,17 +23,19 @@ SRCS = $(FOLDER)/$(NAME).c \
 		$(FILES_DIR)/ft_check_file.c
 
 SRCS_BONUS = $(FOLDER_BONUS)/$(NAME)_bonus.c \
-		$(FUNCTIONS_DIR)/ft_exit_bonus.c \
-		$(FUNCTIONS_DIR)/ft_create_map_bonus.c \
-		$(FUNCTIONS_DIR)/set_images_bonus.c \
-		$(FUNCTIONS_DIR)/key_hook_bonus.c \
-		$(FUNCTIONS_DIR)/move_bonus.c \
-		$(FUNCTIONS_DIR)/mlx_close_bonus.c \
-		$(FUNCTIONS_DIR)/get_collectible_bonus.c \
-		$(FUNCTIONS_DIR)/print_ath_bonus.c \
-		$(FUNCTIONS_DIR)/win_bonus.c \
-		$(FILES_DIR)/ft_check_char_bonus.c \
-		$(FILES_DIR)/ft_check_file_bonus.c
+		$(FUNCTIONS_DIR_BONUS)/ft_exit_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/ft_create_map_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/set_images_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/key_hook_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/move_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/mlx_close_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/get_collectible_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/print_ath_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/win_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/lose_bonus.c \
+		$(FUNCTIONS_DIR_BONUS)/animations.c \
+		$(FILES_DIR_BONUS)/ft_check_char_bonus.c \
+		$(FILES_DIR_BONUS)/ft_check_file_bonus.c
 
 ifeq ($(shell uname), Linux)
 KEYS = -D ESCAPE=65307 -D UP=119 -D LEFT=97 -D RIGHT=100 -D DOWN=115
@@ -96,9 +97,11 @@ bonus:
 
 clean: $(LIBFT_A)_clean $(GNL_A)_clean
 	rm -rf $(OBJS)
+	rm -rf $(OBJS_BONUS)
 
 fclean: clean $(LIBFT_A)_fclean $(GNL_A)_fclean
 	rm -rf $(NAME) $(NAME).a
+	rm -rf $(NAME)_bonus.a
 	rm -rf mlx
 
 $(LIBFT_A):
