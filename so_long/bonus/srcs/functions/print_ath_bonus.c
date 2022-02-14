@@ -12,7 +12,7 @@
 
 #include "../../so_long_bonus.h"
 
-static voids	print(t_mlx *mlx, char *movement, \
+static void	print(t_mlx *mlx, char *movement, \
 	char *collected, char *remaning)
 {
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 3, 10, 0xffffff, \
@@ -25,9 +25,9 @@ static voids	print(t_mlx *mlx, char *movement, \
 		"Piece restante: ");
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 140, 30, 0xffffff, remaning);
 	printf("----------------------\n");
-	printf("Nombre de movements:\t%s\n", movements);
-	printf("Pièce récupéré:\t\t%s\n", collectible_collected);
-	printf("Pièce restante:\t\t%s\n", collectible_remaning);
+	printf("Nombre de movements:\t%s\n", movement);
+	printf("Pièce récupéré:\t\t%s\n", collected);
+	printf("Pièce restante:\t\t%s\n", remaning);
 }
 
 void	print_ath(t_mlx *mlx)
@@ -48,7 +48,7 @@ void	print_ath(t_mlx *mlx)
 			mlx->elements.wall.img, \
 			i * ITEM_WIDTH, \
 			0 * ITEM_HEIGHT);
-	print(mlx, movement, collectible_collected, collectible_remaning);
+	print(mlx, movements, collectible_collected, collectible_remaning);
 	free(movements);
 	free(collectible_collected);
 	free(collectible_remaning);

@@ -12,7 +12,7 @@
 
 #include "../../../so_long_bonus.h"
 
-static void	check_char(t_mlx *mlx, int y, int x)
+static void	check_next_char(t_mlx *mlx, int y, int x)
 {
 	char	c;
 
