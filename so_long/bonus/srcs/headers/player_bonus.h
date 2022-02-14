@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#ifndef PLAYERBONUS_
+# define PLAYERBONUS_
 # include "../header_bonus.h"
 # define PLAYER 'P'
 # define PLAYER_IMG "./img/player.xpm"

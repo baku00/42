@@ -12,11 +12,12 @@
 
 #include "../../so_long_bonus.h"
 
-static voids	print(t_mlx *mlx, char *movement, char *collected, char *remaning)
+static voids	print(t_mlx *mlx, char *movement, \
+	char *collected, char *remaning)
 {
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 3, 10, 0xffffff, \
 		"Nombre de mouvements: ");
-		mlx_string_put(mlx->ptr, mlx->window.ptr, 140, 10, 0xffffff, movement);
+	mlx_string_put(mlx->ptr, mlx->window.ptr, 140, 10, 0xffffff, movement);
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 3, 20, 0xffffff, \
 		"Piece recupere: ");
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 140, 20, 0xffffff, collected);
@@ -37,7 +38,8 @@ void	print_ath(t_mlx *mlx)
 	int		i;
 
 	movements = ft_itoa(mlx->elements.player.movement);
-	collectible_collected = ft_itoa(mlx->elements.collectible.total_count - mlx->elements.collectible.count);
+	collectible_collected = \
+		ft_itoa(mlx->elements.collectible.total_count - mlx->elements.collectible.count);
 	collectible_remaning = ft_itoa(mlx->elements.collectible.count);
 	i = -1;
 	while (++i < 5)

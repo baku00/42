@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MESSAGES_H
-# define MESSAGES_H
+#ifndef MESSAGESBONUS_
+# define MESSAGESBONUS_
 # include "../header_bonus.h"
 # define WIN "./so_long <map>"
 #endif

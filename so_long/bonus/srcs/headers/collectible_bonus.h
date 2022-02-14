@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLLECTIBLE_H
-# define COLLECTIBLE_H
+#ifndef COLLECTIBLEBONUS_
+# define COLLECTIBLEBONUS_
 # include "../header_bonus.h"
 # define COLLECTIBLE 'C'
 # define COLLECTIBLE_IMG "./img/collectible.xpm"

@@ -38,8 +38,23 @@ void	check_char(t_mlx *mlx, int y, int x)
 		mlx->elements.player.y = y;
 		mlx->elements.player.count++;
 	}
-	else if (c != '0' && c != '1' && c != 'E' && c != 'P' && c != 'C' && c != 'I')
+	else if (c != '0' && c != '1' && c != 'E' && \
+		c != 'P' && c != 'C' && c != 'I')
 		ft_exit(ERROR_BAD_CHAR, 1);
+}
+
+static voids	send_error(t_mlx *mlx)
+{
+	if (mlx->elements.collectible.count > MAX_COLLECTIBLE_LIMIT && \
+		MAX_COLLECTIBLE_LIMIT != -1)
+		ft_exit(ERROR_TO_MANY_COLLECTIBLE, 1);
+	else if (mlx->elements.collectible.count < MIN_COLLECTIBLE_LIMIT)
+		ft_exit(ERROR_NOT_ENOUGH_COLLECTIBLE, 1);
+	else if (mlx->elements.exit.count > MAX_EXIT_LIMIT && \
+		MAX_EXIT_LIMIT != -1)
+		ft_exit(ERROR_TO_MANY_EXIT, 1);
+	else if (mlx->elements.exit.count < MIN_EXIT_LIMIT)
+		ft_exit(ERROR_NOT_ENOUGH_EXIT, 1);
 }
 
 void	check_limit(t_mlx *mlx)
@@ -54,14 +69,5 @@ void	check_limit(t_mlx *mlx)
 		ft_exit(ERROR_TO_MANY_PLAYER, 1);
 	else if (mlx->elements.player.count < MIN_PLAYER_LIMIT)
 		ft_exit(ERROR_NOT_ENOUGH_PLAYER, 1);
-	else if (mlx->elements.collectible.count > MAX_COLLECTIBLE_LIMIT && \
-		MAX_COLLECTIBLE_LIMIT != -1)
-		ft_exit(ERROR_TO_MANY_COLLECTIBLE, 1);
-	else if (mlx->elements.collectible.count < MIN_COLLECTIBLE_LIMIT)
-		ft_exit(ERROR_NOT_ENOUGH_COLLECTIBLE, 1);
-	else if (mlx->elements.exit.count > MAX_EXIT_LIMIT && \
-		MAX_EXIT_LIMIT != -1)
-		ft_exit(ERROR_TO_MANY_EXIT, 1);
-	else if (mlx->elements.exit.count < MIN_EXIT_LIMIT)
-		ft_exit(ERROR_NOT_ENOUGH_EXIT, 1);
+	send_error(mlx);
 }

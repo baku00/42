@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EMPTY_H
-# define EMPTY_H
+#ifndef EMPTYBONUS_
+# define EMPTYBONUS_
 # include "../header_bonus.h"
 # define EMPTY '0'
 # define EMPTY_IMG "./img/empty.xpm"
