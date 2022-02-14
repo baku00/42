@@ -48,9 +48,6 @@ int	move(t_mlx *mlx, int y, int x)
 		win(mlx);
 	can_move = (c == COLLECTIBLE || c == EXIT || c == EMPTY);
 	if (can_move)
-	{
 		apply_move(mlx);
-		print_ath(mlx);
-	}
 	return (can_move);
 }

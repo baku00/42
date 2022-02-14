@@ -52,7 +52,6 @@ int	move(t_mlx *mlx, int y, int x)
 	if (can_move)
 	{
 		apply_move(mlx);
-		print_ath(mlx);
 		change_animations(mlx);
 	}
 	return (can_move);
