@@ -38,7 +38,7 @@ SRCS_BONUS = $(FOLDER_BONUS)/$(NAME)_bonus.c \
 		$(FILES_DIR_BONUS)/ft_check_file_bonus.c
 
 ifeq ($(shell uname), Linux)
-KEYS = -D ESCAPE=65307 -D UP=119 -D LEFT=97 -D RIGHT=100 -D DOWN=115
+KEYS = -D ESCAPE=65307 -D UP=119 -D LEFT=97 -D RIGHT=100 -D DOWN=115 -D PLATEFORME=1
 else
 KEYS = -D ESCAPE=53 -D UP=13 -D LEFT=0 -D RIGHT=2 -D DOWN=1
 endif

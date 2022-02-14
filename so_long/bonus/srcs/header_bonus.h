@@ -20,7 +20,11 @@
 # include "./headers/errors_bonus.h"
 # include "./headers/messages_bonus.h"
 # include "./headers/collectible_bonus.h"
-# include "./headers/keys_linux_bonus.h"
+# ifdef PLATEFORME
+#  include "./headers/keys_linux_bonus.h"
+# else
+#  include "./headers/keys_mac_bonus.h"
+# endif
 # include "./headers/exit_bonus.h"
 # include "./headers/items_bonus.h"
 # include "./headers/player_bonus.h"
