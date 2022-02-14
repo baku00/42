@@ -39,7 +39,8 @@ void	print_ath(t_mlx *mlx)
 
 	movements = ft_itoa(mlx->elements.player.movement);
 	collectible_collected = \
-		ft_itoa(mlx->elements.collectible.total_count - mlx->elements.collectible.count);
+		ft_itoa(mlx->elements.collectible.total_count \
+			- mlx->elements.collectible.count);
 	collectible_remaning = ft_itoa(mlx->elements.collectible.count);
 	i = -1;
 	while (++i < 5)

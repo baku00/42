@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IABONUS_
-# define IABONUS_
+#ifndef IA_BONUS_H
+# define IA_BONUS_H
 # include "../header_bonus.h"
 # define IA 'I'
 # define IA_IMG "./img/ia.xpm"

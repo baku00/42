@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITEMSBONUS_
-# define ITEMSBONUS_
+#ifndef ITEMS_BONUS_H
+# define ITEMS_BONUS_H
 # include "../header_bonus.h"
 # define ITEM_WIDTH 32
-# define ITEMBONUS_EIGHT 32
+# define ITEM_BONUS_HEIGHT 32
 # define ACCEPTED_CHAR "1C0EPI"
 #endif

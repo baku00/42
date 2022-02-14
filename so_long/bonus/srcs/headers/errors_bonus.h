@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORSBONUS_
-# define ERRORSBONUS_
+#ifndef ERRORS_BONUS_H
+# define ERRORS_BONUS_H
 # include "../header_bonus.h"
 # define ERROR_SYNTAXE "./so_long <map>"
 # define ERROR_FILENAME "La map doit-être un '.ber'"

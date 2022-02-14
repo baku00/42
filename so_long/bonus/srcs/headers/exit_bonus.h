@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXITBONUS_
-# define EXITBONUS_
+#ifndef EXIT_BONUS_H
+# define EXIT_BONUS_H
 # include "../header_bonus.h"
 # define EXIT 'E'
 # define EXIT_IMG "./img/exit.xpm"

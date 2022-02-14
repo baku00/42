@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WALLBONUS_
-# define WALLBONUS_
+#ifndef WALL_BONUS_H
+# define WALL_BONUS_H
 # include "../header_bonus.h"
 # define WALL '1'
 # define WALL_IMG "./img/wall.xpm"
