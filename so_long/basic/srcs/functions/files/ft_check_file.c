@@ -17,10 +17,10 @@ static void	load_map(t_mlx *mlx)
 	printf("Récupération de la ligne 1\n");
 	mlx->file.line = get_next_line(mlx->file.fd);
 	mlx->file.content = ft_calloc(1, sizeof(char));
+	mlx->file.height = 0;
 	if (!mlx->file.line)
 		return ;
 	mlx->file.width = ft_strlen(mlx->file.line);
-	mlx->file.height = 0;
 	while (mlx->file.line && ft_strncmp(mlx->file.line, "\n", 1))
 	{
 		printf("Copie du contenu\n");
