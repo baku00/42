@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOS_H
-# define PROTOS_H
+#ifndef PROTOS_BONUS_H
+# define PROTOS_BONUS_H
 # include "../so_long_bonus.h"
 
 typedef struct s_mlx

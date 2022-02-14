@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#ifndef HEADER_BONUS_H
+# define HEADER_BONUS_H
 # include "../so_long_bonus.h"
 # include "./struct/elements_bonus.h"
 # include "./struct/file_bonus.h"
