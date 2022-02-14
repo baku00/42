@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#ifndef KEYS_MAC_H
+# define KEYS_MAC_H
 # include "../header.h"
 # define ESCAPE 53
 # define UP 13

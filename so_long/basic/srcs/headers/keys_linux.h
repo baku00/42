@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#ifndef KEYS_LINUX_H
+# define KEYS_LINUX_H
 # include "../header.h"
 /*# define ESCAPE 65307
 # define UP 119
