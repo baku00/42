@@ -18,7 +18,7 @@ void	ft_create_map(t_mlx *mlx)
 
 	mlx->ptr = mlx_init();
 	window.width = \
-		(int)(mlx->file.width - 1)) * ITEM_WIDTH;
+		(int)(mlx->file.width - 1) * ITEM_WIDTH;
 	window.height = \
 		(int)(mlx->file.height) * ITEM_HEIGHT;
 	window.title = "So Long";

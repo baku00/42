@@ -33,7 +33,7 @@ SRCS_BONUS = $(FOLDER_BONUS)/$(NAME)_bonus.c \
 		$(FUNCTIONS_DIR_BONUS)/print_ath_bonus.c \
 		$(FUNCTIONS_DIR_BONUS)/win_bonus.c \
 		$(FUNCTIONS_DIR_BONUS)/lose_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/zanimations.c \
+		$(FUNCTIONS_DIR_BONUS)/animations.c \
 		$(FILES_DIR_BONUS)/ft_check_char_bonus.c \
 		$(FILES_DIR_BONUS)/ft_check_file_bonus.c
 
