@@ -50,7 +50,7 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 MLX_DIR = ./mlx
 INClUDES = includes
 
-LIBFT = $(INClUDES)/libft
+LIBFT = libft
 MAKE_LIBFT = -C $(LIBFT)
 LIBFT_A = $(LIBFT)/libft.a
 

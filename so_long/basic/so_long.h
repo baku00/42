@@ -19,7 +19,7 @@
 # include "../mlx/mlx.h"
 # include "srcs/header.h"
 # include "../includes/get_next_line/get_next_line.h"
-# include "../includes/libft/libft.h"
+# include "../libft/libft.h"
 # include "srcs/struct/window.h"
 # include "srcs/protos.h"
 #endif
