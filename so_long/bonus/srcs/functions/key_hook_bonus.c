@@ -24,6 +24,5 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx->elements.player.movement += move(mlx, 0, -1);
 	else if (keycode == RIGHT)
 		mlx->elements.player.movement += move(mlx, 0, 1);
-	print_ath(mlx);
 	return (0);
 }
