@@ -5,7 +5,6 @@
 # include <signal.h>
 # include <unistd.h>
 # include "includes/ft_printf/ft_printf.h"
-# include "config/messages/errors.h"
 
 typedef struct s_transmition
 {

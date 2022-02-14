@@ -2,7 +2,7 @@
 
 void	ft_send_transmition(t_transmition *transmition)
 {
-	int			i;
+	size_t	i;
 
 	i = 0;
 	while (i < transmition->length)

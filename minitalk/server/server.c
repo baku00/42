@@ -1,5 +1,12 @@
 #include "server.h"
 
+static void	print_message(t_transmition *transmition)
+{
+	ft_printf("Message: %s\n\n", transmition->message);
+	free(transmition->message);
+	transmition->message = NULL;
+}
+
 static void	check_state(t_transmition *transmition)
 {
 	if (!transmition->state)
@@ -8,13 +15,6 @@ static void	check_state(t_transmition *transmition)
 		if (!transmition->c[0])
 			print_message(transmition);
 	}
-}
-
-static void	print_message(t_transmition *transmition)
-{
-	ft_printf("Message: %s\n\n", transmition->message);
-	free(transmition->message);
-	transmition->message = NULL;
 }
 
 void	my_handler(int signum)

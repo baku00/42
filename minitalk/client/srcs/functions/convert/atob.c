@@ -1,28 +1,36 @@
 #include "../../../client.h"
 
+typedef struct s_convert
+{
+	size_t	len;
+	size_t	index;
+	int		c;
+	int		state;
+}	t_convert;
+
 int	*atob(char *message)
 {
-	int		*result;
-	size_t	size_ts[3];
-	char	c;
+	int			*result;
+	t_convert	convert;
+	char		c;
 
-	size_ts[2] = ft_strlen(message);
-	result = ft_calloc(size_ts[2] * 8 + 8, sizeof(int));
+	convert.len = ft_strlen(message);
+	result = ft_calloc(convert.len * 8 + 8, sizeof(int));
 	if (!result)
 		return (0);
-	size_ts[0] = -1;
-	size_ts[1] = 0;
-	while (++size_ts[0] <= size_ts[2])
+	convert.index = -1;
+	convert.c = 0;
+	while (++convert.index <= convert.len)
 	{
-		state = 128;
-		c = message[size_ts[0]];
-		while (state)
+		convert.state = 128;
+		c = message[convert.index];
+		while (convert.state)
 		{
-			result[size_ts[1]] = c >= state;
-			if (result[size_ts[1]])
-				c -= state;
-			state /= 2;
-			size_ts[1]++;
+			result[convert.c] = c >= convert.state;
+			if (result[convert.c])
+				c -= convert.state;
+			convert.state /= 2;
+			convert.c++;
 		}
 	}
 	return (result);
