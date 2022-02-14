@@ -28,6 +28,6 @@ typedef struct s_map
 {
 	int				**point;
 	t_width			width;
-	t_BONUS_Height		height;
+	t_BONUS_Height	height;
 }	t_map;
 #endif
