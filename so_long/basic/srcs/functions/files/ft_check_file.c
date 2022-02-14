@@ -65,8 +65,8 @@ static void	create_mapper(t_mlx *mlx)
 static void	save_map(t_mlx *mlx)
 {
 	size_t	i;
-	size_t		x;
-	size_t		y;
+	size_t	x;
+	size_t	y;
 
 	i = 0;
 	x = 0;
