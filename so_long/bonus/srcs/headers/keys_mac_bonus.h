@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_BONUS_H
-# define KEYS_BONUS_H
+#ifndef KEYS_MAC_BONUS_H
+# define KEYS_MAC_BONUS_H
 # include "../header_bonus.h"
 # define ESCAPE 53
 # define UP 13

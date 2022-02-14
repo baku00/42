@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_H
-# define FILE_H
+#ifndef FILE_BONUS_H
+# define FILE_BONUS_H
 # include "../header_bonus.h"
 
 typedef struct s_file

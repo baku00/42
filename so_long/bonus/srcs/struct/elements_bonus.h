@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ELEMENTS_H
-# define ELEMENTS_H
+#ifndef ELEMENTS_BONUS_H
+# define ELEMENTS_BONUS_H
 # include "../header_bonus.h"
 
 typedef struct s_wall

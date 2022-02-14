@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
+#ifndef WINDOW_BONUS_H
+# define WINDOW_BONUS_H
 # include "../header_bonus.h"
 
 typedef struct s_window
