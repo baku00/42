@@ -124,4 +124,4 @@ $(GNL_A)_fclean:
 
 re: fclean $(NAME) $(LIBFT_A)_fclean $(GNL_A)_fclean
 
-.PHONY: 	all clean fclean re bonus $(LIBFT_A) $(LIBFT_A)_clean $(LIBFT_A)_fclean $(GNL_A) $(GNL_A)_clean $(GNL_A)_fclean
+.PHONY: 	all clean fclean re bonus
