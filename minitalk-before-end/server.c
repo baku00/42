@@ -1,33 +1,10 @@
 #include <signal.h>
 #include "minitalk.h"
 
-// void	handler(int signum)
-// {
-//
-// }
-//
-// int main()
-// {
-// 	ft_printf("PID Server: %d\n", getpid());
-// 	signal(SIGUSR1, handler);
-// 	signal(SIGUSR2, handler);
-// 	while (1)
-// 		pause();
-// 	return (0);
-// }
-
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-
-void handler(int signum, siginfo_t *info, void *context)
+void	handler(int signum)
 {
-	printf("SI PID: %d\n", info->si_pid);
-	printf("Signo: %d\n", signum);
-	printf("context %p\n", context);
 	static t_transmission	transmission;
-	static int				count;
+	static int count;
 
 	if (!transmission.state)
 	{
@@ -56,15 +33,12 @@ void handler(int signum, siginfo_t *info, void *context)
 	}
 }
 
-int main(void)
+int main()
 {
-	printf("%d\n", getpid());
-	struct sigaction act = { 0 };
-	act.sa_flags = SA_SIGINFO;
-	act.sa_sigaction = &handler;
-	(void) act;
-	sigaction(SIGUSR1, &act, NULL);
-	while (1) {
+	ft_printf("PID Server: %d\n", getpid());
+	signal(SIGUSR1, handler);
+	signal(SIGUSR2, handler);
+	while (1)
 		pause();
-	}
+	return (0);
 }

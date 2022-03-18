@@ -17,7 +17,6 @@ $(NAME): $(PRINTF_A) $(OBJS)
 	ar rc $(NAME).a $(OBJS)
 	gcc -Wall -Werror -Wextra $(NAME).a $(PRINTF_A) -o $(NAME)
 
-
 $(PRINTF_A):
 	make -C $(PRINTF)
 

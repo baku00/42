@@ -1,11 +1,6 @@
 #include "minitalk.h"
 
-void	handler(int signum)
-{
-	(void) signum;
-}
-
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	t_transmission transmission;
 	int count = 0;
@@ -25,11 +20,9 @@ int	main(int argc, char **argv)
 				kill(transmission.pid, SIGUSR2);
 			else
 				kill(transmission.pid, SIGUSR1);
-			signal(SIGUSR1, handler);
-			while (1)
-				pause();
 			count++;
 			transmission.j++;
+			usleep(350);
 		}
 		printf("\n");
 	}
