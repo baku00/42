@@ -24,7 +24,6 @@ void	handler(int signum, siginfo_t *info, void *context)
 			kill(info->si_pid, SIGUSR1);
 			return;
 		}else{
-			// printf("%d\n", transmission.c[0]);
 			ft_putchar_fd(transmission.c[0], 1);
 			transmission.state = 0;
 		}

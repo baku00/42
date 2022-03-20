@@ -47,8 +47,13 @@ static void	send_messages(char *message, int pid)
 		transmission.j = 0;
 	if (!transmission.signals_temp || !transmission.signals_temp[transmission.j])
 	{
-		if (!transmission.message[transmission.i])
+		if (!transmission.message || !transmission.message[transmission.i])
 		{
+			if (transmission.message)
+			{
+				free(transmission.message);
+				transmission.message = NULL;
+			}
 			send_null(transmission.pid);
 		}
 		transmission.signals_temp = int_to_binary(transmission.message[transmission.i]);
