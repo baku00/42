@@ -85,11 +85,13 @@ void	handler(int signum)
 
 int	main(int argc, char **argv)
 {
-	t_transmission transmission;
+	t_transmission	transmission;
 
 	(void) argc;
 	transmission.pid = ft_atoi(argv[1]);
 	transmission.message = argv[2];
+	ft_putstr_fd("Start time: ", 1);
+	printf("%ld\n", time(0));
 	send_messages(transmission.message, transmission.pid);
 	signal(SIGUSR2, handler);
 	signal(SIGUSR1, handler);

@@ -3,6 +3,7 @@
 # include <signal.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <time.h>
 # include "./includes/ft_printf/ft_printf.h"
 typedef struct s_transmission
 {
