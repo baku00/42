@@ -1,25 +1,25 @@
 #include "minitalk.h"
 
-static char	*int_to_binary(int c)
+static char	*i_t_b(int c)
 {
-	int		i = 0;
-	int		from = 128;
-	int		move_bytes;
-	int		can_convert = 0;
-	char	*result;
+	t_int_to_binary	itb;
 
-	result = ft_calloc(9, sizeof(char));
-
-	result[8] = 0;
-	while (i < 8) {
-		move_bytes = from >> i;
-		can_convert = c >= move_bytes;
-		result[i] = can_convert + 48;
-		if (can_convert)
-			c -= move_bytes;
-		i++;
+	itb.i = 0;
+	itb.from = 128;
+	itb.can_convert = 0;
+	itb.result = ft_calloc(9, sizeof(char));
+	if (!itb.result)
+		return (0);
+	while (itb.i < 8)
+	{
+		itb.move_bytes = itb.from >> itb.i;
+		itb.can_convert = c >= itb.move_bytes;
+		itb.result[itb.i] = itb.can_convert + 48;
+		if (itb.can_convert)
+			c -= itb.move_bytes;
+		itb.i++;
 	}
-	return result;
+	return (itb.result);
 }
 
 static void	send_null(int pid)
@@ -35,39 +35,30 @@ static void	send_null(int pid)
 
 static void	send_messages(char *message, int pid)
 {
-	static t_transmission transmission;
+	static t_transmission	trans;
 
-	if (!transmission.message)
-		transmission.message = ft_strdup(message);
-	if (!transmission.pid)
-		transmission.pid = pid;
-	if (!transmission.i)
-		transmission.i = 0;
-	if (!transmission.j)
-		transmission.j = 0;
-	if (!transmission.signals_temp || !transmission.signals_temp[transmission.j])
+	if (!trans.message)
+		trans.message = ft_strdup(message);
+	if (!trans.pid)
+		trans.pid = pid;
+	if (!trans.signals_temp || !trans.signals_temp[trans.j])
 	{
-		if (!transmission.message || !transmission.message[transmission.i])
+		if (!trans.message || !trans.message[trans.i])
 		{
-			if (transmission.message)
-			{
-				free(transmission.message);
-				transmission.message = NULL;
-			}
-			send_null(transmission.pid);
+			if (trans.message)
+				(free(trans.message), trans.message = NULL);
+			send_null(trans.pid);
 		}
-		transmission.signals_temp = int_to_binary(transmission.message[transmission.i]);
-		printf("Signal temp: %s => %d => %c\n", transmission.signals_temp, transmission.message[transmission.i], transmission.message[transmission.i]);
-		transmission.i++;
-		transmission.j = 0;
+		trans.signals_temp = i_t_b(trans.message[trans.i]);
+		trans.i++;
+		trans.j = 0;
 	}
-	if (transmission.signals_temp[transmission.j])
+	if (trans.signals_temp[trans.j])
 	{
-		if (transmission.signals_temp[transmission.j] - 48)
-			kill(transmission.pid, SIGUSR2);
+		if (trans.signals_temp[trans.j] - 48)
+			(kill(trans.pid, SIGUSR2), trans.j++);
 		else
-			kill(transmission.pid, SIGUSR1);
-		transmission.j++;
+			(kill(trans.pid, SIGUSR1), trans.j++);
 	}
 }
 
@@ -77,10 +68,7 @@ void	handler(int signum)
 	if (signum == SIGUSR2)
 		send_messages(0, 0);
 	else
-	{
-		ft_putstr_fd("Fin de la transmission\n", 1);
-		exit(0);
-	}
+		(ft_putstr_fd("Fin de la transmission\n", 1), exit(0));
 }
 
 int	main(int argc, char **argv)
@@ -91,10 +79,11 @@ int	main(int argc, char **argv)
 	transmission.pid = ft_atoi(argv[1]);
 	transmission.message = argv[2];
 	ft_putstr_fd("Start time: ", 1);
-	printf("%ld\n", time(0));
 	send_messages(transmission.message, transmission.pid);
 	signal(SIGUSR2, handler);
 	signal(SIGUSR1, handler);
 	while (1)
 		pause();
 }
+
+// printf("%ld\n", time(0));

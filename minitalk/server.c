@@ -7,43 +7,40 @@
 void	handler(int signum, siginfo_t *info, void *context)
 {
 	static int				count;
-	static t_transmission	transmission;
+	static t_transmission	trans;
 
-	if (!transmission.state)
-	{
-		transmission.c[0] = 0;
-	}
+	((void) context, (void) signum);
+	trans.c[1] = 0;
+	if (!trans.state)
+		trans.c[0] = 0;
 	if (signum == SIGUSR2)
-		transmission.c[0] += 128 >> transmission.state;
-	transmission.state++;
-	if (transmission.state >= 8 && (ft_isprint(transmission.c[0]) || !transmission.c[0]))
+		trans.c[0] += 128 >> trans.state;
+	trans.state++;
+	if (trans.state >= 8 && (ft_isprint(trans.c[0]) || !trans.c[0]))
 	{
-		if (!transmission.c[0])
+		if (!trans.c[0])
 		{
-			transmission.state = 0;
+			trans.state = 0;
 			kill(info->si_pid, SIGUSR1);
-			return;
-		}else{
-			ft_putchar_fd(transmission.c[0], 1);
-			transmission.state = 0;
+			return ;
 		}
+		else
+			(ft_putchar_fd(trans.c[0], 1), trans.state = 0);
 	}
-	(void) context;
-	(void) signum;
 	kill(info->si_pid, SIGUSR2);
 	count++;
 }
 
-int main(void)
+int	main(void)
 {
-	printf("%d\n", getpid());
-	struct sigaction act = { 0 };
+	struct sigaction	act;
+
+	ft_printf("%d\n", getpid());
+	act = {0};
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = &handler;
-	(void) act;
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
-	while (1) {
+	while (1)
 		pause();
-	}
 }
