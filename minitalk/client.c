@@ -29,36 +29,84 @@ static void	send_null(int pid)
 	if (i < 8)
 		kill(pid, SIGUSR1);
 	else
-		return ;
+		exit(0);
 	i++;
 }
 
 static void	send_messages(char *message, int pid)
 {
+	printf("1\n");
 	static t_transmission	trans;
 
+	printf("2\n");
 	if (!trans.message)
+	{
+		printf("3\n");
 		trans.message = ft_strdup(message);
-	if (!trans.pid)
-		trans.pid = pid;
-	if (!trans.signals_temp || !trans.signals_temp[trans.j])
-	{
-		if (!trans.message || !trans.message[trans.i])
-		{
-			if (trans.message)
-				(free(trans.message), trans.message = NULL);
-			send_null(trans.pid);
-		}
-		trans.signals_temp = i_t_b(trans.message[trans.i]);
-		trans.i++;
-		trans.j = 0;
+		printf("4\n");
 	}
-	if (trans.signals_temp[trans.j])
+	printf("5\n");
+	if (!trans.pid)
 	{
-		if (trans.signals_temp[trans.j] - 48)
-			(kill(trans.pid, SIGUSR2), trans.j++);
-		else
-			(kill(trans.pid, SIGUSR1), trans.j++);
+		printf("6\n");
+		trans.pid = pid;
+		printf("7\n");
+	}
+	printf("8\n");
+	if (!trans.send_null)
+	{
+		printf("9\n");
+		if (!trans.signals_temp || !trans.signals_temp[trans.j])
+		{
+			printf("10\n");
+			if (trans.signals_temp && !trans.signals_temp[trans.j])
+			{
+				printf("11\n");
+				(free(trans.signals_temp), trans.j = 0);
+				printf("12\n");
+				trans.signals_temp = 0;
+				printf("13\n");
+			}
+			printf("14\n");
+			if (!trans.message[trans.i])
+			{
+				printf("15\n");
+				(free(trans.message), trans.send_null = 1);
+				printf("16\n");
+			}
+			else
+			{
+				printf("17\n");
+				(trans.signals_temp = i_t_b(trans.message[trans.i]), trans.i++);
+				printf("18\n");
+			}
+			printf("19\n");
+		}
+		printf("20\n");
+		if (trans.signals_temp)
+		{
+			printf("21\n");
+			if (trans.signals_temp[trans.j] - 48)
+			{
+				printf("22\n");
+				(kill(trans.pid, SIGUSR2), trans.j++);
+				printf("23\n");
+			}
+			else
+			{
+				printf("24\n");
+				(kill(trans.pid, SIGUSR1), trans.j++);
+				printf("25\n");
+			}
+			printf("26\n");
+		}
+		printf("27\n");
+	}
+	if (!trans.signals_temp)
+	{
+		printf("28\n");
+		send_null(trans.pid);
+		printf("29\n");
 	}
 }
 
@@ -78,7 +126,6 @@ int	main(int argc, char **argv)
 	(void) argc;
 	transmission.pid = ft_atoi(argv[1]);
 	transmission.message = argv[2];
-	ft_putstr_fd("Start time: ", 1);
 	send_messages(transmission.message, transmission.pid);
 	signal(SIGUSR2, handler);
 	signal(SIGUSR1, handler);

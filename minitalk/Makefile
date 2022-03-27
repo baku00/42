@@ -7,7 +7,7 @@ INCLUDES = ./includes
 FT_PRINTF = $(INCLUDES)/ft_printf
 LIB_FT_PRINTF_A = $(FT_PRINTF)/libftprintf.a
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 
 all: $(CLIENT_NAME) $(SERVER_NAME)
 

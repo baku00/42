@@ -33,10 +33,9 @@ void	handler(int signum, siginfo_t *info, void *context)
 
 int	main(void)
 {
-	struct sigaction	act;
+	struct sigaction	act = {0};
 
 	ft_printf("%d\n", getpid());
-	act = {0};
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = &handler;
 	sigaction(SIGUSR1, &act, NULL);
