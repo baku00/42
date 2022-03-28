@@ -28,4 +28,7 @@ typedef struct s_int_to_binary
 	int		can_convert;
 	char	*result;
 }	t_int_to_binary;
+
+void	send_message(char *message, int pid);
+
 #endif

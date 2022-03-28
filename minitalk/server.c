@@ -4,9 +4,26 @@
 #include <stdio.h>
 #include <unistd.h>
 
+static void	concat_message(t_transmission *t)
+{
+	if (!t->message)
+	{
+		t->message = ft_calloc(1, sizeof(char));
+		if (!t->message)
+			(ft_putstr_fd("Error calloc allocation\n", 1), exit(0));
+	}
+	t->message = ft_strjoin(t->message, t->c);
+}
+
+static void	show_message(t_transmission t, int pid)
+{
+	ft_printf("\033[32;01mNew message from: %d !\n\033[00m", pid);
+	ft_putstr_fd(t.message, 1);
+	ft_putchar_fd('\n', 1);
+}
+
 void	handler(int signum, siginfo_t *info, void *context)
 {
-	static int				count;
 	static t_transmission	trans;
 
 	((void) context, (void) signum);
@@ -20,22 +37,26 @@ void	handler(int signum, siginfo_t *info, void *context)
 	{
 		if (!trans.c[0])
 		{
+			show_message(trans, info->si_pid);
+			free(trans.message);
+			trans.message = 0;
 			trans.state = 0;
 			kill(info->si_pid, SIGUSR1);
 			return ;
 		}
 		else
-			(ft_putchar_fd(trans.c[0], 1), trans.state = 0);
+			(concat_message(&trans), trans.state = 0);
 	}
 	kill(info->si_pid, SIGUSR2);
-	count++;
 }
 
 int	main(void)
 {
-	struct sigaction	act = {0};
+	struct sigaction	act;
 
-	ft_printf("%d\n", getpid());
+	ft_putstr_fd("\033[32;01mYou can now send a message to pid: ", 1);
+	ft_putnbr_fd(getpid(), 1);
+	ft_putstr_fd(" !\033[00m\n", 1);
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = &handler;
 	sigaction(SIGUSR1, &act, NULL);
