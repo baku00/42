@@ -16,9 +16,11 @@ CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 all: $(CLIENT_NAME) $(SERVER_NAME)
 
 clean:
+	make clean -C $(FT_PRINTF)
 	rm -rf $(OBJS)
 
 fclean: clean
+	make fclean -C $(FT_PRINTF)
 	rm -rf $(NAMES)
 
 $(CLIENT_NAME): $(OBJS) $(LIB_FT_PRINTF_A)
