@@ -62,9 +62,9 @@ ifeq ($(shell uname), Linux)
 CREATE_MLX = cp -R mlx_linux mlx
 MLX = $(MLX_DIR)/libmlx_Linux.a
 ifdef WITH_BONUS
-	COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(NAME)_bonus.a $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+	COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(OBJS_BONUS) $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
 else
-	COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(NAME).a $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+	COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(OBJS) $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
 endif
 else
 CREATE_MLX = cp -R mlx_mac mlx
@@ -80,11 +80,9 @@ all: $(NAME)
 
 ifdef WITH_BONUS
 $(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS_BONUS)
-	ar rc $(NAME)_bonus.a $(OBJS_BONUS)
 	$(COMPILE)
 else
 $(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS)
-	ar rc $(NAME).a $(OBJS)
 	$(COMPILE)
 endif
 
@@ -100,8 +98,7 @@ clean: $(LIBFT_A)_clean $(GNL_A)_clean
 	rm -rf $(OBJS_BONUS)
 
 fclean: clean $(LIBFT_A)_fclean $(GNL_A)_fclean
-	rm -rf $(NAME) $(NAME).a
-	rm -rf $(NAME)_bonus.a
+	rm -rf $(NAME)
 	rm -rf mlx
 
 $(LIBFT_A):

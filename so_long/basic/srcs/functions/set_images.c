@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_images.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:00 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:34:02 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/03/28 02:26:09 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	set_images(t_mlx *mlx)
 	height = ITEM_HEIGHT;
 	mlx->elements.collectible.img = \
 		mlx_xpm_file_to_image(mlx->ptr, COLLECTIBLE_IMG, &width, &height);
-	printf("%p\n", mlx->elements.collectible.img);
 	mlx->elements.exit.img = \
 		mlx_xpm_file_to_image(mlx->ptr, EXIT_IMG, &width, &height);
 	mlx->elements.empty.img = \
