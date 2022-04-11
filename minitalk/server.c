@@ -57,6 +57,7 @@ int	main(void)
 	ft_putstr_fd("\033[32;01mYou can now send a message to pid: ", 1);
 	ft_putnbr_fd(getpid(), 1);
 	ft_putstr_fd(" !\033[00m\n", 1);
+	sigemptyset(&act.sa_mask);
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = &handler;
 	sigaction(SIGUSR1, &act, NULL);

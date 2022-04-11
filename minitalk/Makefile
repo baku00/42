@@ -11,7 +11,7 @@ CFILES = send_message.c
 
 OBJS = $(CFILES:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(CLIENT_NAME) $(SERVER_NAME)
 
