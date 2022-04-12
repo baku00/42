@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:50 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/12 03:08:40 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/12 03:27:07 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,16 +116,18 @@ void	ft_check_file(t_mlx *mlx, char *filename)
 	file.height = 0;
 	file.point = 0;
 	file.content_length = 0;
+	file.fd = 0;
+	file.name = NULL;
+	mlx->file = file;
 	printf("Vérification du nom de la map\n");
 	if (ft_strncmp((filename + ft_strlen(filename)) - 4, ".ber", 4))
 		ft_exit(mlx, ERROR_FILENAME, 1);
 	printf("Ouverture du fichier\n");
-	file.fd = open(filename, O_RDONLY);
-	if (file.fd <= 0)
+	mlx->file.fd = open(filename, O_RDONLY);
+	if (mlx->file.fd <= 0)
 		ft_exit(mlx, ERROR_OPEN, 1);
 	printf("Sauvegarde du nom du fichier\n");
-	file.name = ft_strdup(filename);
-	mlx->file = file;
+	mlx->file.name = ft_strdup(filename);
 	load_map(mlx);
 	create_mapper(mlx);
 	save_map(mlx);

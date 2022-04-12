@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:18 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/12 03:07:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/12 03:19:15 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,46 @@ static void	create_first_window(t_mlx *mlx)
 	mlx->window = window;
 }
 
+static void	prepare_set_images(t_mlx *mlx)
+{
+	mlx->elements.collectible.img = NULL;
+	mlx->elements.exit.img = NULL;
+	mlx->elements.player.img = NULL;
+	mlx->elements.wall.img = NULL;
+}
+
+static t_player	create_player_instance(void)
+{
+	t_player		player;
+
+	player.x = 0;
+	player.y = 0;
+	player.movement = 0;
+	player.count = 0;
+	return (player);
+}
+
 static void	create_instance(t_mlx *mlx)
 {
 	t_elements		elements;
 	t_collectible	collectible;
 	t_exit			exit;
-	t_player		player;
 	t_wall			wall;
 	t_empty			empty;
 
 	collectible.count = 0;
 	collectible.total_count = 0;
-	collectible.img = NULL;
 	exit.is_enabled = 0;
 	exit.count = 0;
-	exit.img = NULL;
 	wall.count = 0;
-	wall.img = NULL;
-	player.x = 0;
-	player.y = 0;
-	player.movement = 0;
-	player.count = 0;
-	player.img = NULL;
 	empty.img = NULL;
 	elements.collectible = collectible;
 	elements.exit = exit;
 	elements.wall = wall;
-	elements.player = player;
+	elements.player = create_player_instance();
 	elements.empty = empty;
 	mlx->elements = elements;
+	prepare_set_images(mlx);
 }
 
 int	main(int argc, char **argv)
