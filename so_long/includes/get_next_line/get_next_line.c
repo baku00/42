@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:34:33 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/12/10 18:09:55 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/12 02:21:31 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ static char	*ft_join(char *result, char buf[2])
 	return (result);
 }
 
-static void	ft_init(int *i, char buf[2])
+static int	ft_init(char buf[2])
 {
-	(void) i;
 	buf[1] = '\0';
-	i = 0;
+	return (0);
 }
 
 char	*get_next_line(int fd)
@@ -51,7 +50,7 @@ char	*get_next_line(int fd)
 	char	*result;
 
 	result = NULL;
-	ft_init(&i, buf);
+	i = ft_init(buf);
 	ret = read(fd, buf, 1);
 	while (ret)
 	{

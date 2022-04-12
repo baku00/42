@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/10/29 15:47:45 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/12 02:56:30 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	int		i;
-	int		j;
-	int		len;
+	int		i0_j1_len2[3];
 
 	if (!s1 || !s2)
 		return (0);
@@ -27,17 +25,19 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			ft_strlen((char *) s2) + 1, sizeof(char));
 	if (!str)
 		return (0);
-	i = 0;
-	while (str[i])
-		str[i++] = '\0';
-	i = 0;
-	j = 0;
-	len = ft_strlen(s1);
-	while (i < len)
-		str[j++] = s1[i++];
-	i = 0;
-	len = ft_strlen(s2);
-	while (i < len)
-		str[j++] = s2[i++];
+	i0_j1_len2[0] = 0;
+	while (str[i0_j1_len2[0]])
+		str[i0_j1_len2[0]++] = '\0';
+	i0_j1_len2[0] = 0;
+	i0_j1_len2[1] = 0;
+	i0_j1_len2[2] = ft_strlen(s1);
+	while (i0_j1_len2[0] < i0_j1_len2[2])
+		str[i0_j1_len2[1]++] = s1[i0_j1_len2[0]++];
+	i0_j1_len2[0] = 0;
+	i0_j1_len2[2] = ft_strlen(s2);
+	while (i0_j1_len2[0] < i0_j1_len2[2])
+		str[i0_j1_len2[1]++] = s2[i0_j1_len2[0]++];
+	free(s1);
+	free(s2);
 	return (str);
 }

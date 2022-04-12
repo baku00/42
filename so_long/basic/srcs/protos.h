@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protos.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:36:17 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:36:18 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/12 02:48:45 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_mlx
 	t_file			file;
 }	t_mlx;
 int		main(int argc, char **argv);
-void	ft_exit(char *message, int error);
+void	ft_exit(t_mlx *mlx, char *message, int error);
 void	ft_check_file(t_mlx *mlx, char *filename);
 void	check_char(t_mlx *mlx, int y, int x);
 void	check_limit(t_mlx *mlx);

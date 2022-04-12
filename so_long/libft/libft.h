@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 16:46:05 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/11/04 18:33:28 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/12 02:55:18 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_strncmp(const char *s1, const char *s2, int n);
 void	*ft_memchr(const void *s, int c, int n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strtrim(char const *str, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int nbr);
