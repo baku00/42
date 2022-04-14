@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_file.c                                    :+:      :+:    :+:   */
+/*   ft_check_file_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:50 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:33:51 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/15 01:06:12 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	load_map(t_mlx *mlx)
 		printf("Copie du contenu\n");
 		mlx->file.content = ft_strjoin(mlx->file.content, mlx->file.line);
 		printf("Récupération de la ligne %ld\n", mlx->file.height + 2);
-		free(mlx->file.line);
 		mlx->file.line = get_next_line(mlx->file.fd);
 		if (mlx->file.line && mlx->file.width != ft_strlen(mlx->file.line))
 			ft_exit(ERROR_FILE_WIDTH, 1);

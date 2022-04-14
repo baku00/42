@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:11 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/12 03:27:44 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/15 01:05:27 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	clean_mlx(t_mlx *mlx)
 {
 	if (mlx->window.ptr)
 		mlx_destroy_window(mlx->ptr, mlx->window.ptr);
-	(mlx_destroy_display(mlx->ptr), free(mlx->ptr));
+	free(mlx->ptr);
 }
 
 int	mlx_close(t_mlx *mlx)
