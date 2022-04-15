@@ -11,15 +11,9 @@ static void	concat_message(t_transmission *t)
 		t->message = ft_calloc(1, sizeof(char));
 		if (!t->message)
 			(ft_putstr_fd("Error calloc allocation\n", 1), exit(0));
+		ft_printf("\033[32;01mNew message from: %d !\n\033[00m", t->pid);
 	}
-	t->message = ft_strjoin(t->message, t->c);
-}
-
-static void	show_message(t_transmission t, int pid)
-{
-	ft_printf("\033[32;01mNew message from: %d !\n\033[00m", pid);
-	ft_putstr_fd(t.message, 1);
-	ft_putchar_fd('\n', 1);
+	ft_printf("%c", t->c[0]);
 }
 
 void	handler(int signum, siginfo_t *info, void *context)
@@ -33,11 +27,12 @@ void	handler(int signum, siginfo_t *info, void *context)
 	if (signum == SIGUSR2)
 		trans.c[0] += 128 >> trans.state;
 	trans.state++;
+	usleep(50);
 	if (trans.state >= 8 && (ft_isprint(trans.c[0]) || !trans.c[0]))
 	{
 		if (!trans.c[0])
 		{
-			show_message(trans, info->si_pid);
+			ft_printf("\n");
 			free(trans.message);
 			trans.message = 0;
 			trans.state = 0;

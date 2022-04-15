@@ -57,6 +57,7 @@ void	send_message(char *message, int pid)
 		trans.message = ft_strdup(message);
 	if (!trans.pid)
 		trans.pid = pid;
+	usleep(50);
 	if (!trans.send_null)
 	{
 		if (!trans.signals_temp || !trans.signals_temp[trans.j])
