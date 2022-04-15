@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 05:09:59 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/15 05:14:33 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/15 05:19:51 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 #include <stdio.h>
 #include <unistd.h>
 
-static void	concat_message(t_transmission *t)
+static void	finish(t_transmission *t)
 {
-	ft_printf("%c", t->c);
+	ft_printf("\n");
+	t->state = 0;
+	kill(t->pid, SIGUSR1);
 }
 
 void	handler(int sig, siginfo_t *info, __attribute__((unused)) void *ctx)
@@ -26,10 +28,8 @@ void	handler(int sig, siginfo_t *info, __attribute__((unused)) void *ctx)
 	static t_transmission	t;
 
 	if (!t.pid && info->si_pid)
-	{
-		ft_printf("\033[32;01mMessage from: %d !\n\033[00m", t.pid);
-		t.pid = info->si_pid;
-	}
+		(ft_printf("\033[32;01mMessage from: %d !\n\033[00m", t.pid), \
+		t.pid = info->si_pid);
 	if (t.pid == info->si_pid && info->si_pid)
 	{
 		if (!t.state)
@@ -42,12 +42,11 @@ void	handler(int sig, siginfo_t *info, __attribute__((unused)) void *ctx)
 		{
 			if (!t.c)
 			{
-				(ft_printf("\n"), t.state = 0);
-				kill(info->si_pid, SIGUSR1);
+				finish(&t);
 				return ;
 			}
 			else
-				(concat_message(&t), t.state = 0);
+				(ft_printf("%c", t.c), t.state = 0);
 		}
 		kill(info->si_pid, SIGUSR2);
 	}
