@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 05:10:32 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/15 05:11:50 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/04/15 04:16:34 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/04/15 04:34:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ typedef struct s_transmission
 	int		send_null;
 	char	*message;
 	char	*signals_temp;
+	size_t	length_loop;
+	size_t	length;
 	int		state;
 	char	c;
+	int		move_bytes;
+	int		can_convert;
 }	t_transmission;
 
 typedef struct s_int_to_binary
