@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header_bonus.h                                     :+:      :+:    :+:   */
+/*   mlx_close.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:36:26 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/19 21:59:35 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:34:11 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:34:13 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_BONUS_H
-# define HEADER_BONUS_H
-# include "./headers/ia_bonus.h"
-#endif
+#include "../../so_long_bonus.h"
+
+int	mlx_close(t_mlx *mlx)
+{
+	size_t	y;
+
+	free(mlx->file.content);
+	y = 0;
+	while (y < mlx->file.height)
+	{
+		free(mlx->file.point[y]);
+		y++;
+	}
+	free(mlx->file.point);
+	exit(0);
+	return (0);
+}

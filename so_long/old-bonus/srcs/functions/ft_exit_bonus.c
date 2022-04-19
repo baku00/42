@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header_bonus.h                                     :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:36:26 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/19 21:59:35 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:34:25 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:34:26 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_BONUS_H
-# define HEADER_BONUS_H
-# include "./headers/ia_bonus.h"
-#endif
+#include "../../so_long_bonus.h"
+
+void	ft_exit(char *message, int error)
+{
+	if (error)
+		printf("\033[31;01mErreur: \033[00m");
+	printf("%s\n", message);
+	exit(0);
+}

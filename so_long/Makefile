@@ -27,26 +27,18 @@ SRCS = $(FOLDER)/$(NAME).c \
 		$(FILES_DIR)/ft_check_char.c \
 		$(FILES_DIR)/ft_check_file.c
 
-SRCS_BONUS = $(FOLDER_BONUS)/$(NAME)_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/ft_exit_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/ft_create_map_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/set_images_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/key_hook_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/move_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/mlx_close_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/get_collectible_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/print_ath_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/win_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/lose_bonus.c \
-		$(FUNCTIONS_DIR_BONUS)/animations.c \
-		$(FILES_DIR_BONUS)/ft_check_char_bonus.c \
-		$(FILES_DIR_BONUS)/ft_check_file_bonus.c
+SRCS_BONUS = $(INITIER_DIR)/bonus_init.c
+
+ifdef WITH_BONUS
+	SRCS_BONUS += $(SRCS)
+endif
 
 ifeq ($(shell uname), Linux)
 KEYS = -D ESCAPE=65307 -D UP=119 -D LEFT=97 -D RIGHT=100 -D DOWN=115 -D PLATEFORME=1
 else
 KEYS = -D ESCAPE=53 -D UP=13 -D LEFT=0 -D RIGHT=2 -D DOWN=1
 endif
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra $(KEYS)
 
 OBJS = $(SRCS:.c=.o)
@@ -64,21 +56,29 @@ MAKE_GNL = -C $(GNL)
 GNL_A = $(GNL)/get_next_line.a
 
 ifeq ($(shell uname), Linux)
-CREATE_MLX = cp -R mlx_linux mlx
-MLX = $(MLX_DIR)/libmlx_Linux.a
-ifdef WITH_BONUS
-	COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(OBJS_BONUS) $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+	ARCH = linux
+	MLX_LIB = libmlx_Linux.a
 else
-	COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(OBJS) $(LIBFT_A) $(GNL_A) -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+	ARCH = mac
+	MLX_LIB = libmlx.a
 endif
-else
-CREATE_MLX = cp -R mlx_mac mlx
-MLX = $(MLX_DIR)/libmlx.a
+
+CREATE_MLX = cp -R mlx_$(ARCH) mlx
+MLX = $(MLX_DIR)/$(MLX_LIB)
+
+COMPILE = $(CC) $(CFLAGS) $(MLX)
 ifdef WITH_BONUS
-	COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS_BONUS) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
+	COMPILE += $(OBJS_BONUS)
 else
-	COMPILE = gcc -Wall -Werror -Wextra $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS) -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
+	COMPILE += $(OBJS)
 endif
+
+COMPILE += $(LIBFT_A) $(GNL_A)
+
+ifeq ($(shell uname), Linux)
+	COMPILE += -lmlx -Lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd -o $(NAME)
+else
+	COMPILE +=  -lmlx -Lmlx -framework OpenGL -framework Appkit -Imlx -o $(NAME)
 endif
 
 all: $(NAME)
@@ -95,7 +95,7 @@ $(MLX):
 	$(CREATE_MLX)
 	make -C ./mlx
 
-bonus:
+bonus: fclean
 	$(MAKE) WITH_BONUS=1
 
 clean: $(LIBFT_A)_clean $(GNL_A)_clean

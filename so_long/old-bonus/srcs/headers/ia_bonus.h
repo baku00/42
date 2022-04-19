@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header_bonus.h                                     :+:      :+:    :+:   */
+/*   ia.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:36:26 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/19 21:59:35 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:35:55 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:35:56 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_BONUS_H
-# define HEADER_BONUS_H
-# include "./headers/ia_bonus.h"
+#ifndef IA_BONUS_H
+# define IA_BONUS_H
+# include "../header_bonus.h"
+# define IA 'I'
+# define IA_IMG "./img/ia.xpm"
+# define IA_2_IMG "./img/ia_2.xpm"
+# define MAX_IA_LIMIT -1
+# define MIN_IA_LIMIT 1
 #endif

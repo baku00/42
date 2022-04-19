@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header_bonus.h                                     :+:      :+:    :+:   */
+/*   file.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:36:26 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/19 21:59:35 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:36:41 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:36:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_BONUS_H
-# define HEADER_BONUS_H
-# include "./headers/ia_bonus.h"
+#ifndef FILE_BONUS_H
+# define FILE_BONUS_H
+# include "../header_bonus.h"
+
+typedef struct s_file
+{
+	char	*name;
+	char	*content;
+	char	*line;
+	size_t	width;
+	size_t	height;
+	int		**point;
+	int		fd;
+	size_t	content_length;
+}	t_file;
 #endif

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elements_bonus.h                                   :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:36:38 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/19 22:00:19 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:36:45 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:36:46 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IA_BONUS_H
-# define IA_BONUS_H
+#ifndef MAP_BONUS_H
+# define MAP_BONUS_H
 # include "../header_bonus.h"
 
-typedef struct s_ia
+typedef struct s_width
 {
-	void		*img;
-	void		*img_2;
-	int			count;
-}	t_ia;
+	int			width;
+}	t_width;
+
+typedef struct s_BONUS_Height
+{
+	int			height;
+}	t_BONUS_Height;
+
+typedef struct s_map
+{
+	int				**point;
+	t_width			width;
+	t_BONUS_Height	height;
+}	t_map;
 #endif

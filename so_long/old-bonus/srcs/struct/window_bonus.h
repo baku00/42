@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header_bonus.h                                     :+:      :+:    :+:   */
+/*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:36:26 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/19 21:59:35 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:36:48 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/02/05 18:36:49 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_BONUS_H
-# define HEADER_BONUS_H
-# include "./headers/ia_bonus.h"
+#ifndef WINDOW_BONUS_H
+# define WINDOW_BONUS_H
+# include "../header_bonus.h"
+
+typedef struct s_window
+{
+	int		height;
+	int		width;
+	char	*title;
+	void	*ptr;
+}	t_window;
 #endif
