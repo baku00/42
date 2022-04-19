@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:36:26 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:36:27 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:22:38 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include "../so_long.h"
 # include "./struct/elements.h"
 # include "./struct/file.h"
-# include "./struct/map.h"
 # include "./struct/window.h"
 # include "./headers/errors.h"
 # include "./headers/messages.h"

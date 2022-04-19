@@ -6,10 +6,15 @@ FOLDER_BONUS = bonus
 SRCS_DIR_BONUS = $(FOLDER_BONUS)/srcs
 SRCS_DIR = $(FOLDER)/srcs
 FUNCTIONS_DIR = $(SRCS_DIR)/functions
+INITIER_DIR = $(SRCS_DIR)/initier
 FUNCTIONS_DIR_BONUS = $(SRCS_DIR_BONUS)/functions
 FILES_DIR = $(FUNCTIONS_DIR)/files
 FILES_DIR_BONUS = $(FUNCTIONS_DIR_BONUS)/files
 SRCS = $(FOLDER)/$(NAME).c \
+		$(INITIER_DIR)/init.c \
+		$(INITIER_DIR)/init_file.c \
+		$(INITIER_DIR)/init_window.c \
+		$(INITIER_DIR)/init_elements.c \
 		$(FUNCTIONS_DIR)/ft_exit.c \
 		$(FUNCTIONS_DIR)/ft_create_map.c \
 		$(FUNCTIONS_DIR)/set_images.c \

@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:50 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/12 03:27:07 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:44:27 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 static void	load_map(t_mlx *mlx)
 {
-	printf("Récupération de la ligne 1\n");
-	mlx->file.line = get_next_line(mlx->file.fd);
 	mlx->file.content = ft_strdup("");
 	if (!mlx->file.content)
 		ft_exit(mlx, "Une erreur de memoire est survenue", 1);
-	mlx->file.height = 0;
+	printf("Récupération de la ligne 1\n");
+	mlx->file.line = get_next_line(mlx->file.fd);
 	if (!mlx->file.line)
 		ft_exit(mlx, "Une erreur de memoire est survenue", 1);
 	mlx->file.width = ft_strlen(mlx->file.line);
@@ -47,18 +46,12 @@ static void	create_mapper(t_mlx *mlx)
 	printf("Création de la map virtuel\n");
 	mlx->file.point = ft_calloc(mlx->file.height, sizeof(int *));
 	if (!mlx->file.point)
-		return ;
+		ft_exit(mlx, "Une erreur de memoire est survenue", 1);
 	while (y < mlx->file.height)
 	{
 		mlx->file.point[y] = ft_calloc(mlx->file.width, sizeof(int));
 		if (!mlx->file.point[y])
-		{
-			while (--y > 0)
-				free(mlx->file.point[y]);
-			free(mlx->file.point[0]);
-			free(mlx->file.point);
-			return ;
-		}
+			ft_exit(mlx, "Une erreur de memoire est survenue", 1);
 		y++;
 	}
 }
@@ -108,26 +101,17 @@ static void	check_map(t_mlx *mlx)
 
 void	ft_check_file(t_mlx *mlx, char *filename)
 {
-	t_file	file;
-
-	file.content = NULL;
-	file.line = NULL;
-	file.width = 0;
-	file.height = 0;
-	file.point = 0;
-	file.content_length = 0;
-	file.fd = 0;
-	file.name = NULL;
-	mlx->file = file;
 	printf("Vérification du nom de la map\n");
 	if (ft_strncmp((filename + ft_strlen(filename)) - 4, ".ber", 4))
 		ft_exit(mlx, ERROR_FILENAME, 1);
+	mlx->file.name = ft_strdup(filename);
+	if (!mlx->file.name)
+		ft_exit(mlx, "Une erreur de memoire est survenue", 1);
 	printf("Ouverture du fichier\n");
 	mlx->file.fd = open(filename, O_RDONLY);
 	if (mlx->file.fd <= 0)
 		ft_exit(mlx, ERROR_OPEN, 1);
 	printf("Sauvegarde du nom du fichier\n");
-	mlx->file.name = ft_strdup(filename);
 	load_map(mlx);
 	create_mapper(mlx);
 	save_map(mlx);
