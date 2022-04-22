@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:35:35 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:35:37 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:50:24 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,7 @@
 # define ERROR_MAP_WALL "La map n'est pas fermée"
 # define ERROR_BAD_CHAR "Des caractères invalid ont été trouvé \
 	(Caractères valide: 01EPC)"
+# ifdef WITH_BONUS
+#  include "./errors_bonus.h"
+# endif
 #endif

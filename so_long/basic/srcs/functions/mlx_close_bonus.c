@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_close.c                                        :+:      :+:    :+:   */
+/*   mlx_close_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:11 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:33:49 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:27:39 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-#ifndef WITH_BONUS
+#ifdef WITH_BONUS
 
 static void	clean_file(t_mlx *mlx)
 {
@@ -45,9 +45,12 @@ static void	clean_image(t_mlx *mlx)
 		mlx_destroy_image(mlx->ptr, mlx->elements.wall.img);
 	if (mlx->elements.empty.img)
 		mlx_destroy_image(mlx->ptr, mlx->elements.empty.img);
+	if (mlx->elements.ia.img)
+		mlx_destroy_image(mlx->ptr, mlx->elements.ia.img);
+	if (mlx->elements.ia.img_2)
+		mlx_destroy_image(mlx->ptr, mlx->elements.ia.img_2);
 }
 
-// mlx_destroy_display(mlx->ptr);
 static void	clean_mlx(t_mlx *mlx)
 {
 	if (mlx->window.ptr)

@@ -27,11 +27,14 @@ SRCS = $(FOLDER)/$(NAME).c \
 		$(FILES_DIR)/ft_check_char.c \
 		$(FILES_DIR)/ft_check_file.c
 
-SRCS_BONUS = $(INITIER_DIR)/bonus_init.c
+SRCS_BONUS = $(INITIER_DIR)/init_elements_bonus.c \
+				$(FILES_DIR)/ft_check_char_bonus.c \
+				$(FUNCTIONS_DIR)/mlx_close_bonus.c \
+				$(FUNCTIONS_DIR)/set_images_bonus.c \
+				$(FUNCTIONS_DIR)/lose_bonus.c \
+				$(FUNCTIONS_DIR)/move_bonus.c \
 
-ifdef WITH_BONUS
-	SRCS_BONUS += $(SRCS)
-endif
+SRCS_BONUS += $(SRCS)
 
 ifeq ($(shell uname), Linux)
 KEYS = -D ESCAPE=65307 -D UP=119 -D LEFT=97 -D RIGHT=100 -D DOWN=115 -D PLATEFORME=1
@@ -40,6 +43,10 @@ KEYS = -D ESCAPE=53 -D UP=13 -D LEFT=0 -D RIGHT=2 -D DOWN=1
 endif
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra $(KEYS)
+
+ifdef WITH_BONUS
+	CFLAGS += -D WITH_BONUS=1
+endif
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
@@ -95,7 +102,7 @@ $(MLX):
 	$(CREATE_MLX)
 	make -C ./mlx
 
-bonus: fclean
+bonus: $(OBJS_BONUS)
 	$(MAKE) WITH_BONUS=1
 
 clean: $(LIBFT_A)_clean $(GNL_A)_clean

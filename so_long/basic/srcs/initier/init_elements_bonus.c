@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_elements.c                                    :+:      :+:    :+:   */
+/*   init_elements_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 20:54:51 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:18:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:18:12 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-#ifndef WITH_BONUS
+#ifdef WITH_BONUS
 
 static void	init_wall_empty_collectible(t_elements *e)
 {
@@ -56,6 +56,16 @@ static t_player	init_player(void)
 	return (_player);
 }
 
+static t_ia	init_ia(void)
+{
+	t_ia	_ia;
+
+	_ia.img = NULL;
+	_ia.img_2 = NULL;
+	_ia.count = 0;
+	return (_ia);
+}
+
 t_elements	init_elements(void)
 {
 	t_elements	elements;
@@ -63,6 +73,7 @@ t_elements	init_elements(void)
 	init_wall_empty_collectible(&elements);
 	elements.exit = init_exit();
 	elements.player = init_player();
+	elements.ia = init_ia();
 	return (elements);
 }
 #endif

@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:36:38 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:36:39 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:47:34 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ELEMENTS_H
 # define ELEMENTS_H
 # include "../header.h"
+# ifdef WITH_BONUS
+#  include "./elements_bonus.h"
+# endif
 
 typedef struct s_wall
 {
@@ -52,6 +55,20 @@ typedef struct s_player
 	int			movement;
 }	t_player;
 
+# ifdef WITH_BONUS
+
+typedef struct s_elements
+{
+	t_collectible	collectible;
+	t_exit			exit;
+	t_player		player;
+	t_wall			wall;
+	t_empty			empty;
+	t_ia			ia;
+}	t_elements;
+# endif
+# ifndef WITH_BONUS
+
 typedef struct s_elements
 {
 	t_collectible	collectible;
@@ -60,4 +77,5 @@ typedef struct s_elements
 	t_wall			wall;
 	t_empty			empty;
 }	t_elements;
+# endif
 #endif

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   elements_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 20:54:51 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:18:22 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:36:38 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/04/22 04:05:06 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#ifndef ELEMENTS_BONUS_H
+# include "../header.h"
+# define ELEMENTS_BONUS_H
 
-t_mlx	init_mlx(void)
+typedef struct s_ia
 {
-	t_mlx	_mlx;
-
-	_mlx.ptr = NULL;
-	_mlx.window = init_window();
-	_mlx.elements = init_elements();
-	_mlx.file = init_file();
-	return (_mlx);
-}
+	void		*img;
+	void		*img_2;
+	int			count;
+}	t_ia;
+#endif

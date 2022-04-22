@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   errors_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 20:54:51 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:18:22 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/02/05 18:35:35 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/04/22 03:37:43 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
-
-t_mlx	init_mlx(void)
-{
-	t_mlx	_mlx;
-
-	_mlx.ptr = NULL;
-	_mlx.window = init_window();
-	_mlx.elements = init_elements();
-	_mlx.file = init_file();
-	return (_mlx);
-}
+#ifndef ERRORS_BONUS_H
+# define ERRORS_BONUS_H
+# include "../header.h"
+# define ERROR_TO_MANY_IA "Il y a trop d'ia"
+# define ERROR_NOT_ENOUGH_IA "Il n'y a pas assez d'ia"
+#endif

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   move_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:31 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:59:13 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:58:58 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-#ifndef WITH_BONUS
+#ifdef WITH_BONUS
 
 static void	apply_move(t_mlx *mlx)
 {
@@ -47,6 +47,8 @@ int	move(t_mlx *mlx, int y, int x)
 			mlx->elements.player.current_x);
 	else if (c == EXIT && mlx->elements.exit.is_enabled)
 		win(mlx);
+	else if (c == IA)
+		lose(mlx);
 	can_move = (c == COLLECTIBLE || c == EXIT || c == EMPTY);
 	if (can_move)
 		apply_move(mlx);

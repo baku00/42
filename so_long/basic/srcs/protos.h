@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:36:17 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/19 21:43:46 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:56:53 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void		get_collectible(t_mlx *mlx, int y, int x);
 int			move(t_mlx *mlx, int y, int x);
 void		win(t_mlx *mlx);
 void		print_ath(t_mlx *mlx);
+void		lose(t_mlx *mlx);
 #endif

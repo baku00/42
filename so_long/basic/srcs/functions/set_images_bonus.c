@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_images.c                                       :+:      :+:    :+:   */
+/*   set_images_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:00 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:51:22 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:55:34 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-#ifndef WITH_BONUS
+#ifdef WITH_BONUS
 
 static void	put_images(t_mlx *mlx)
 {
@@ -25,6 +25,7 @@ static void	put_images(t_mlx *mlx)
 		x = -1;
 		while (++x < mlx->file.width - 1)
 		{
+			printf("%c", mlx->file.point[y][x]);
 			img = mlx->elements.empty.img;
 			if (mlx->file.point[y][x] == COLLECTIBLE)
 				img = mlx->elements.collectible.img;
@@ -32,9 +33,12 @@ static void	put_images(t_mlx *mlx)
 				img = mlx->elements.player.img;
 			else if (mlx->file.point[y][x] == WALL)
 				img = mlx->elements.wall.img;
+			else if (mlx->file.point[y][x] == IA)
+				img = mlx->elements.ia.img;
 			mlx_put_image_to_window(mlx->ptr, mlx->window.ptr, \
 				img, x * ITEM_WIDTH, y * ITEM_HEIGHT);
 		}
+		printf("\n");
 	}
 }
 
@@ -55,6 +59,10 @@ void	set_images(t_mlx *mlx)
 		mlx_xpm_file_to_image(mlx->ptr, PLAYER_IMG, &width, &height);
 	mlx->elements.wall.img = \
 		mlx_xpm_file_to_image(mlx->ptr, WALL_IMG, &width, &height);
+	mlx->elements.ia.img = \
+		mlx_xpm_file_to_image(mlx->ptr, IA_IMG, &width, &height);
+	mlx->elements.ia.img_2 = \
+		mlx_xpm_file_to_image(mlx->ptr, IA_2_IMG, &width, &height);
 	printf("Placement\n");
 	put_images(mlx);
 }
