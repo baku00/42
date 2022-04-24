@@ -1,44 +1,31 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/15 04:08:13 by dgloriod          #+#    #+#              #
-#    Updated: 2022/04/15 04:14:26 by dgloriod         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-CFLAGS = -Wall -Werror -Wextra
-CC = gcc $(CFLAGS)
-INCLUDES = ./includes
-FT_PRINTF = $(INCLUDES)/ft_printf
-LIB_FT_PRINTF_A = $(FT_PRINTF)/libftprintf.a
-NAME =
 CLIENT_NAME = client
 SERVER_NAME = server
+NAMES = $(CLIENT_NAME) $(SERVER_NAME)
 
-.c.o:
-	$(CC) -c $< -o $@ -I$(FT_PRINTF)
+INCLUDES = ./includes
 
-$(NAME): all
+FT_PRINTF = $(INCLUDES)/ft_printf
+LIB_FT_PRINTF_A = $(FT_PRINTF)/libftprintf.a
+
+OBJS = $(CFILES:.c=.o)
+
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(CLIENT_NAME) $(SERVER_NAME)
 
 clean:
 	make clean -C $(FT_PRINTF)
-	rm -rf $(CLIENT_NAME).o $(SERVER_NAME).o
+	rm -rf $(OBJS)
 
 fclean: clean
 	make fclean -C $(FT_PRINTF)
-	rm -rf $(CLIENT_NAME) $(SERVER_NAME)
+	rm -rf $(NAMES)
 
-$(CLIENT_NAME): $(LIB_FT_PRINTF_A) $(CLIENT_NAME).o
-	$(CC) $(CFLAGS) $(CLIENT_NAME).o -o $(CLIENT_NAME) $(LIB_FT_PRINTF_A)
+$(CLIENT_NAME): $(OBJS) $(LIB_FT_PRINTF_A)
+	$(CC) $(CFLAGS) $(CLIENT_NAME).c $(OBJS) $(LIB_FT_PRINTF_A) -o $(CLIENT_NAME)
 
-$(SERVER_NAME): $(LIB_FT_PRINTF_A) $(SERVER_NAME).o
-	$(CC) $(CFLAGS) $(SERVER_NAME).c -o $(SERVER_NAME) $(LIB_FT_PRINTF_A)
+$(SERVER_NAME): $(LIB_FT_PRINTF_A)
+	$(CC) $(CFLAGS) $(SERVER_NAME).c $(LIB_FT_PRINTF_A) -o $(SERVER_NAME)
 
 $(LIB_FT_PRINTF_A):
 	@$(MAKE) -C $(FT_PRINTF)

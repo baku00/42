@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 04:16:28 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/15 04:56:44 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/04/15 05:10:04 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/04/24 20:27:56 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,58 @@
 
 static void	send_null(t_transmission *t)
 {
-	kill(t->pid, SIGUSR1);
-}
+	static int	i;
 
-static void	send_char(t_transmission *t)
-{
-	if (!t->c && !t->j)
-		t->c = t->message[t->i];
-	if (t->j < 8)
+	if (i < 8)
+		kill(t->pid, SIGUSR1);
+	else
 	{
-		t->move_bytes = 128 >> t->j++;
-		t->can_convert = t->c >= t->move_bytes;
-		if (t->can_convert)
-		{
-			t->c -= t->move_bytes;
-			kill(t->pid, SIGUSR2);
-		}
-		else
-			kill(t->pid, SIGUSR1);
-	}
-	if (t->j == 8)
-	{
-		t->c = 0;
+		t->pid = 0;
+		free(t->message);
+		t->message = NULL;
+		t->i = 0;
 		t->j = 0;
-		t->i++;
+		exit(0);
 	}
+	i++;
 }
 
-static void	send_msg(char *message, pid_t pid)
+void	send_message(char *message, int pid)
 {
-	static t_transmission	t;
+	static t_transmission	trans;
 
-	usleep(35);
-	if (!t.message)
+	if (!trans.message)
 	{
-		t.message = message;
-		t.i = 0;
+		trans.message = ft_strdup(message);
+		trans.i = 0;
 	}
-	if (!t.pid)
+	if (!trans.pid)
 	{
-		t.pid = pid;
-		t.j = 0;
+		trans.pid = pid;
+		trans.j = 0;
 	}
-	if (t.message[t.i])
+	usleep(50);
+	if (trans.message[trans.i])
 	{
-		send_char(&t);
+		if (trans.message[trans.i] >> trans.j & 1)
+			kill(trans.pid, SIGUSR2);
+		else
+			kill(trans.pid, SIGUSR1);
+		if (trans.j == 7)
+			trans.i++;
+		trans.j = (trans.j + 1) % 8;
 	}
 	else
-		send_null(&t);
+		send_null(&trans);
 }
 
 void	handler(int signum)
 {
 	(void) signum;
 	if (signum == SIGUSR2)
-		send_msg(0, 0);
+		send_message(0, 0);
 	else
-		(ft_printf("Fin de la transmission\n"), exit(0));
+		(ft_putstr_fd("Fin de la transmission\n", 1), exit(0));
 }
 
 int	main(int argc, char **argv)
@@ -84,7 +79,7 @@ int	main(int argc, char **argv)
 	}
 	transmission.pid = ft_atoi(argv[1]);
 	transmission.message = argv[2];
-	send_msg(transmission.message, transmission.pid);
+	send_message(transmission.message, transmission.pid);
 	signal(SIGUSR2, handler);
 	signal(SIGUSR1, handler);
 	while (1)
