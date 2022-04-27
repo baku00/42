@@ -6,9 +6,43 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 05:10:04 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/24 20:58:22 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/04/27 04:21:05 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+
+						128	64	32	16	8	4	2	1
+0 => 48 =>				0	0	1	1	0	0	0	0
+
+48 >> 0 => 48 =>		0	0	1	1	0	0	0	0
+48 >> 1 = 24 =>			0	0	0	1	1	0	0	0
+48 >> 2 = 12 =>			0	0	0	0	1	1	0	0
+48 >> 3 = 6 =>			0	0	0	0	0	1	1	0
+48 >> 4 = 3 =>			1	1	0	0	0	0	1	1
+48 >> 5 = 1 =>			0	0	0	0	0	0	0	1
+48 >> 6 = 0 =>			0	0	0	0	0	0	0	0
+48 >> 7 = 0 =>			0	0	0	0	0	0	0	0
+
+1 => 49 => 				0	0	1	1	0	0	0	1
+
+49 >> 0 = 49 =>			0	0	1	1	0	0	0	1
+49 >> 1 = 24 =>			0	0	0	1	1	0	0	0
+49 >> 2 = 12 =>			0	0	0	0	1	1	0	0
+49 >> 3 = 6 =>			0	0	0	0	0	1	1	0
+49 >> 4 = 3 =>			1	1	0	0	0	0	1	1
+49 >> 5 = 1 =>			0	0	0	0	0	0	0	1
+49 >> 6 = 0 =>			0	0	0	0	0	0	0	0
+49 >> 7 = 0 =>			0	0	0	0	0	0	0	0
+
+49 >> 0 & 1 => 0b1		0	0	0	0	0	0	0	?1
+49 >> 1 & 1 => 0b100	0	0	0	0	0	?0	0	0
+49 >> 2 & 1 => 0b100	0	0	0	0	0	?1	0	0
+
+100 =>					0	1	1	0	0	1	0	0
+50 =>					0	0	1	1	0	0	1	0
+10 =>					0	0	0	0	1	0	1	0
+*/
 
 #include "minitalk.h"
 
@@ -34,13 +68,10 @@ void	send_message(char *message, int pid)
 {
 	static t_transmission	trans;
 
-	if (!trans.message)
+	if (!trans.pid)
 	{
 		trans.message = ft_strdup(message);
 		trans.i = 0;
-	}
-	if (!trans.pid)
-	{
 		trans.pid = pid;
 		trans.j = 0;
 	}
@@ -68,6 +99,13 @@ void	handler(int signum)
 		(ft_putstr_fd("Fin de la transmission\n", 1), exit(0));
 }
 
+// (void) argc;
+// (void) argv;
+//
+// char c = '1';
+// for (int i = 0; i < 8; i++)
+// printf("C: %d => %d => %d => %d\n", c, i, c >> i, c >> i & 100); => voir table au dessus
+// return (0);
 int	main(int argc, char **argv)
 {
 	t_transmission	transmission;
