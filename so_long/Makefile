@@ -14,18 +14,20 @@ SRCS = $(FOLDER)/$(NAME).c \
 		$(INITIER_DIR)/init.c \
 		$(INITIER_DIR)/init_file.c \
 		$(INITIER_DIR)/init_window.c \
-		$(INITIER_DIR)/init_elements.c \
 		$(FUNCTIONS_DIR)/ft_exit.c \
 		$(FUNCTIONS_DIR)/ft_create_map.c \
-		$(FUNCTIONS_DIR)/set_images.c \
 		$(FUNCTIONS_DIR)/key_hook.c \
-		$(FUNCTIONS_DIR)/move.c \
-		$(FUNCTIONS_DIR)/mlx_close.c \
 		$(FUNCTIONS_DIR)/get_collectible.c \
-		$(FUNCTIONS_DIR)/print_ath.c \
 		$(FUNCTIONS_DIR)/win.c \
-		$(FILES_DIR)/ft_check_char.c \
 		$(FILES_DIR)/ft_check_file.c
+
+SRCS_WITHOUT_BONUS = $(INITIER_DIR)/init_elements.c \
+						$(FILES_DIR)/ft_check_char.c \
+						$(FUNCTIONS_DIR)/mlx_close.c \
+						$(FUNCTIONS_DIR)/move.c \
+						$(FUNCTIONS_DIR)/print_ath.c \
+						$(FUNCTIONS_DIR)/set_images.c
+
 
 SRCS_BONUS = $(INITIER_DIR)/init_elements_bonus.c \
 				$(FILES_DIR)/ft_check_char_bonus.c \
@@ -33,8 +35,10 @@ SRCS_BONUS = $(INITIER_DIR)/init_elements_bonus.c \
 				$(FUNCTIONS_DIR)/set_images_bonus.c \
 				$(FUNCTIONS_DIR)/lose_bonus.c \
 				$(FUNCTIONS_DIR)/move_bonus.c \
+				$(FUNCTIONS_DIR)/print_ath_bonus.c \
 
 SRCS_BONUS += $(SRCS)
+SRCS_WITHOUT_BONUS += $(SRCS)
 
 ifeq ($(shell uname), Linux)
 KEYS = -D ESCAPE=65307 -D UP=119 -D LEFT=97 -D RIGHT=100 -D DOWN=115 -D PLATEFORME=1
@@ -48,7 +52,7 @@ ifdef WITH_BONUS
 	CFLAGS += -D WITH_BONUS=1
 endif
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS_WITHOUT_BONUS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 MLX_DIR = ./mlx
@@ -91,7 +95,7 @@ endif
 all: $(NAME)
 
 ifdef WITH_BONUS
-$(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS_BONUS)
+$(NAME): fclean $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS_BONUS)
 	$(COMPILE)
 else
 $(NAME): $(MLX) $(LIBFT_A) $(GNL_A) $(OBJS)
@@ -103,7 +107,7 @@ $(MLX):
 	make -C ./mlx
 
 bonus: $(OBJS_BONUS)
-	$(MAKE) WITH_BONUS=1
+	make WITH_BONUS="1"
 
 clean: $(LIBFT_A)_clean $(GNL_A)_clean
 	rm -rf $(OBJS)
