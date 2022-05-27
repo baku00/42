@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WITH_BONUS
+#ifdef WITH_BONUS
 #include "../../so_long.h"
 
 static void	print(t_mlx *mlx, char *movement, \
