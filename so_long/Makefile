@@ -117,6 +117,11 @@ fclean: clean $(LIBFT_A)_fclean $(GNL_A)_fclean
 	rm -rf $(NAME)
 	rm -rf mlx
 
+norme:
+	norminette basic
+	norminette includes
+	norminette libft
+
 $(LIBFT_A):
 	make $(MAKE_LIBFT)
 
@@ -137,4 +142,4 @@ $(GNL_A)_fclean:
 
 re: fclean $(NAME) $(LIBFT_A)_fclean $(GNL_A)_fclean
 
-.PHONY: 	all clean fclean re bonus
+.PHONY: 	all clean fclean re bonus norme

@@ -6,12 +6,12 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:44 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/27 05:04:47 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:34:58 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef WITH_BONUS
 #include "../../so_long.h"
+#ifdef WITH_BONUS
 
 static void	print(t_mlx *mlx, char *movement, \
 	char *collected, char *remaning)
