@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:36:17 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/27 21:19:29 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 01:55:30 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		clean_file(t_mlx *mlx);
 void		clean_image(t_mlx *mlx);
 void		clean_mlx(t_mlx *mlx);
 void		set_images(t_mlx *mlx);
+// void		apply_move(t_mlx *mlx);
 int			key_hook(int keycode, t_mlx *mlx);
 int			mlx_close(t_mlx *mlx);
 void		get_collectible(t_mlx *mlx, int y, int x);
@@ -46,4 +47,5 @@ void		lose(t_mlx *mlx);
 void		init_wall_empty_collectible(t_elements *e);
 t_exit		init_exit(void);
 t_player	init_player(void);
+// int			can_move(t_mlx *mlx, int y, int x);
 #endif
