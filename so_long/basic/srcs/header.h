@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:36:26 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:47:18 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:38:41 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@
 # include "./headers/empty.h"
 # include "./headers/wall.h"
 # ifdef WITH_BONUS
-#  include "./headers/ia_bonus.h"
+#  include "../../bonus/srcs/header_bonus.h"
 # endif
 #endif

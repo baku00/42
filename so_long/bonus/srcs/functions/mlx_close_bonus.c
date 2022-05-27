@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_close.c                                        :+:      :+:    :+:   */
+/*   mlx_close_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:11 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:34:13 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:20:28 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long_bonus.h"
+#include "../../../basic/so_long.h"
+#ifdef WITH_BONUS
+
+static void	clean_image_bonus(t_mlx *mlx)
+{
+	if (mlx->elements.ia.img)
+		mlx_destroy_image(mlx->ptr, mlx->elements.ia.img);
+	if (mlx->elements.ia.img_2)
+		mlx_destroy_image(mlx->ptr, mlx->elements.ia.img_2);
+	clean_image(mlx);
+}
 
 int	mlx_close(t_mlx *mlx)
 {
-	size_t	y;
-
-	free(mlx->file.content);
-	y = 0;
-	while (y < mlx->file.height)
+	printf("Nettoyage du fichier\n");
+	clean_file(mlx);
+	printf("Fichier nettoye\n");
+	if (mlx->ptr)
 	{
-		free(mlx->file.point[y]);
-		y++;
+		printf("Nettoyage des images\n");
+		clean_image_bonus(mlx);
+		printf("Images nettoyees\n");
+		printf("Nettoyage de la mlx\n");
+		clean_mlx(mlx);
+		printf("MLX nettoyee\n");
 	}
-	free(mlx->file.point);
 	exit(0);
 	return (0);
 }
+#endif

@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:50 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/19 21:44:27 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 20:34:55 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ static void	save_map(t_mlx *mlx)
 			continue ;
 		}
 		mlx->file.point[y][x] = mlx->file.content[i];
-		check_char(mlx, y, x);
+		if (!valid_char(mlx, y, x))
+			ft_exit(mlx, ERROR_MAP_WALL, 1);
 		x++;
 		i++;
 	}

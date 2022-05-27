@@ -6,14 +6,13 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 20:54:51 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:18:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:49:28 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-#ifndef WITH_BONUS
 
-static void	init_wall_empty_collectible(t_elements *e)
+void	init_wall_empty_collectible(t_elements *e)
 {
 	t_wall			_wall;
 	t_empty			_empty;
@@ -30,7 +29,7 @@ static void	init_wall_empty_collectible(t_elements *e)
 	e->collectible = _collectible;
 }
 
-static t_exit	init_exit(void)
+t_exit	init_exit(void)
 {
 	t_exit	_exit;
 
@@ -42,7 +41,7 @@ static t_exit	init_exit(void)
 	return (_exit);
 }
 
-static t_player	init_player(void)
+t_player	init_player(void)
 {
 	t_player	_player;
 
@@ -55,6 +54,8 @@ static t_player	init_player(void)
 	_player.movement = 0;
 	return (_player);
 }
+
+#ifndef WITH_BONUS
 
 t_elements	init_elements(void)
 {

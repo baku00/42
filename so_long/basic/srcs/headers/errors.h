@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:35:35 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:50:24 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:04:03 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@
 # define ERROR_BAD_CHAR "Des caractères invalid ont été trouvé \
 	(Caractères valide: 01EPC)"
 # ifdef WITH_BONUS
-#  include "./errors_bonus.h"
+#  include "../../../bonus/srcs/headers/errors_bonus.h"
 # endif
 #endif

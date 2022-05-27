@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ath.c                                        :+:      :+:    :+:   */
+/*   print_ath_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:44 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:34:45 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:49:33 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long_bonus.h"
+#include "../../../basic/so_long.h"
+#ifdef WITH_BONUS
 
 static void	print(t_mlx *mlx, char *movement, \
 	char *collected, char *remaning)
@@ -24,6 +25,7 @@ static void	print(t_mlx *mlx, char *movement, \
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 3, 30, 0xffffff, \
 		"Piece restante: ");
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 140, 30, 0xffffff, remaning);
+	printf("\e[1;1H\e[2J");
 	printf("----------------------\n");
 	printf("Nombre de movements:\t%s\n", movement);
 	printf("Pièce récupéré:\t\t%s\n", collected);
@@ -53,3 +55,4 @@ void	print_ath(t_mlx *mlx)
 	free(collectible_collected);
 	free(collectible_remaning);
 }
+#endif

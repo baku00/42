@@ -3,13 +3,18 @@ NAME = so_long
 FOLDER = basic
 FOLDER_BONUS = bonus
 
-SRCS_DIR_BONUS = $(FOLDER_BONUS)/srcs
 SRCS_DIR = $(FOLDER)/srcs
+SRCS_DIR_BONUS = $(FOLDER_BONUS)/srcs
+
 FUNCTIONS_DIR = $(SRCS_DIR)/functions
-INITIER_DIR = $(SRCS_DIR)/initier
 FUNCTIONS_DIR_BONUS = $(SRCS_DIR_BONUS)/functions
+
+INITIER_DIR = $(SRCS_DIR)/initier
+INITIER_DIR_BONUS = $(SRCS_DIR_BONUS)/initier
+
 FILES_DIR = $(FUNCTIONS_DIR)/files
 FILES_DIR_BONUS = $(FUNCTIONS_DIR_BONUS)/files
+
 SRCS = $(FOLDER)/$(NAME).c \
 		$(INITIER_DIR)/init.c \
 		$(INITIER_DIR)/init_file.c \
@@ -19,23 +24,23 @@ SRCS = $(FOLDER)/$(NAME).c \
 		$(FUNCTIONS_DIR)/key_hook.c \
 		$(FUNCTIONS_DIR)/get_collectible.c \
 		$(FUNCTIONS_DIR)/win.c \
-		$(FILES_DIR)/ft_check_file.c
+		$(FILES_DIR)/ft_check_file.c \
+		$(INITIER_DIR)/init_elements.c \
+		$(FILES_DIR)/ft_check_char.c \
+		$(FUNCTIONS_DIR)/mlx_close.c
 
-SRCS_WITHOUT_BONUS = $(INITIER_DIR)/init_elements.c \
-						$(FILES_DIR)/ft_check_char.c \
-						$(FUNCTIONS_DIR)/mlx_close.c \
-						$(FUNCTIONS_DIR)/move.c \
+SRCS_WITHOUT_BONUS = $(FUNCTIONS_DIR)/move.c \
 						$(FUNCTIONS_DIR)/print_ath.c \
 						$(FUNCTIONS_DIR)/set_images.c
 
 
-SRCS_BONUS = $(INITIER_DIR)/init_elements_bonus.c \
-				$(FILES_DIR)/ft_check_char_bonus.c \
-				$(FUNCTIONS_DIR)/mlx_close_bonus.c \
-				$(FUNCTIONS_DIR)/set_images_bonus.c \
-				$(FUNCTIONS_DIR)/lose_bonus.c \
-				$(FUNCTIONS_DIR)/move_bonus.c \
-				$(FUNCTIONS_DIR)/print_ath_bonus.c \
+SRCS_BONUS = $(INITIER_DIR_BONUS)/init_elements_bonus.c \
+				$(FILES_DIR_BONUS)/ft_check_char_bonus.c \
+				$(FUNCTIONS_DIR_BONUS)/mlx_close_bonus.c \
+				$(FUNCTIONS_DIR_BONUS)/set_images_bonus.c \
+				$(FUNCTIONS_DIR_BONUS)/lose_bonus.c \
+				$(FUNCTIONS_DIR_BONUS)/move_bonus.c \
+				$(FUNCTIONS_DIR_BONUS)/print_ath_bonus.c \
 
 SRCS_BONUS += $(SRCS)
 SRCS_WITHOUT_BONUS += $(SRCS)
@@ -119,6 +124,7 @@ fclean: clean $(LIBFT_A)_fclean $(GNL_A)_fclean
 
 norme:
 	norminette basic
+	norminette bonus
 	norminette includes
 	norminette libft
 

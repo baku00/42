@@ -6,14 +6,13 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:11 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:33:49 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:39:47 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-#ifndef WITH_BONUS
 
-static void	clean_file(t_mlx *mlx)
+void	clean_file(t_mlx *mlx)
 {
 	size_t	y;
 
@@ -33,7 +32,7 @@ static void	clean_file(t_mlx *mlx)
 	}
 }
 
-static void	clean_image(t_mlx *mlx)
+void	clean_image(t_mlx *mlx)
 {
 	if (mlx->elements.collectible.img)
 		mlx_destroy_image(mlx->ptr, mlx->elements.collectible.img);
@@ -47,13 +46,16 @@ static void	clean_image(t_mlx *mlx)
 		mlx_destroy_image(mlx->ptr, mlx->elements.empty.img);
 }
 
-// mlx_destroy_display(mlx->ptr);
-static void	clean_mlx(t_mlx *mlx)
+// if (mlx->ptr)
+// 	mlx_destroy_display(mlx->ptr);
+void	clean_mlx(t_mlx *mlx)
 {
 	if (mlx->window.ptr)
 		mlx_destroy_window(mlx->ptr, mlx->window.ptr);
 	free(mlx->ptr);
 }
+
+#ifndef WITH_BONUS
 
 int	mlx_close(t_mlx *mlx)
 {

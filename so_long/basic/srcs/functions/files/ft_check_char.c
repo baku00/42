@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:46 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:26:09 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:10:11 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 #ifndef WITH_BONUS
 
-void	check_char(t_mlx *mlx, int y, int x)
+bool	valid_char(t_mlx *mlx, int y, int x)
+{
+	return (check_char(mlx, y, x));
+}
+
+#endif
+
+bool	check_char(t_mlx *mlx, int y, int x)
 {
 	char	c;
 
@@ -38,8 +45,7 @@ void	check_char(t_mlx *mlx, int y, int x)
 		mlx->elements.player.y = y;
 		mlx->elements.player.count++;
 	}
-	else if (c != '0' && c != '1' && c != 'E' && c != 'P' && c != 'C')
-		ft_exit(mlx, ERROR_BAD_CHAR, 1);
+	return (!(c != '0' && c != '1' && c != 'E' && c != 'P' && c != 'C'));
 }
 
 void	check_limit(t_mlx *mlx)
@@ -65,4 +71,3 @@ void	check_limit(t_mlx *mlx)
 	else if (mlx->elements.exit.count < MIN_EXIT_LIMIT)
 		ft_exit(mlx, ERROR_NOT_ENOUGH_EXIT, 1);
 }
-#endif

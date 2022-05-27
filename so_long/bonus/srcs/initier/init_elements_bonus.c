@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lose_bonus.c                                       :+:      :+:    :+:   */
+/*   init_elements_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:34:20 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/04/22 03:57:26 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/04/19 20:54:51 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/05/27 17:17:15 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../basic/so_long.h"
 #ifdef WITH_BONUS
 
-void	lose(t_mlx *mlx)
+t_ia	init_ia(void)
 {
-	printf("Perdu !\n");
-	mlx_close(mlx);
+	t_ia	_ia;
+
+	_ia.img = NULL;
+	_ia.img_2 = NULL;
+	_ia.count = 0;
+	return (_ia);
+}
+
+t_elements	init_elements(void)
+{
+	t_elements	elements;
+
+	init_wall_empty_collectible(&elements);
+	elements.exit = init_exit();
+	elements.player = init_player();
+	elements.ia = init_ia();
+	return (elements);
 }
 #endif
