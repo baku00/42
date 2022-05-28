@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <malloc/malloc.h>
 
 static int	ft_get_words(char const *str, char c)
 {
