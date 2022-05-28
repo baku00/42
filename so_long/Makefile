@@ -28,10 +28,11 @@ SRCS = $(FOLDER)/$(NAME).c \
 		$(INITIER_DIR)/init_elements.c \
 		$(FILES_DIR)/ft_check_char.c \
 		$(FUNCTIONS_DIR)/mlx_close.c \
-		$(FUNCTIONS_DIR)/move.c
+		$(FUNCTIONS_DIR)/move.c \
+		$(FUNCTIONS_DIR)/print_ath.c
 
-SRCS_WITHOUT_BONUS = $(FUNCTIONS_DIR)/print_ath.c \
-						$(FUNCTIONS_DIR)/set_images.c
+
+SRCS_WITHOUT_BONUS =  $(FUNCTIONS_DIR)/set_images.c
 
 
 SRCS_BONUS = $(INITIER_DIR_BONUS)/init_elements_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:46 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/28 02:41:07 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:53:31 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	valid_char(t_mlx *mlx, int y, int x)
 
 void	check_limit(t_mlx *mlx)
 {
-	return check_limit_basic(mlx);
+	return (check_limit_basic(mlx));
 }
 
 #endif
@@ -50,7 +50,8 @@ bool	check_char(t_mlx *mlx, int y, int x)
 		mlx->elements.player.y = y;
 		mlx->elements.player.count++;
 	}
-	return (!(c != EMPTY && c != WALL && c != EXIT && c != PLAYER && c != COLLECTIBLE));
+	return (!(c != EMPTY && c != WALL && c != EXIT \
+		&& c != PLAYER && c != COLLECTIBLE));
 }
 
 void	check_limit_basic(t_mlx *mlx)

@@ -6,14 +6,14 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:44 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/27 16:49:33 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:56:01 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../basic/so_long.h"
 #ifdef WITH_BONUS
 
-static void	print(t_mlx *mlx, char *movement, \
+static void	print_ath_bonus(t_mlx *mlx, char *movement, \
 	char *collected, char *remaning)
 {
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 3, 10, 0xffffff, \
@@ -25,11 +25,7 @@ static void	print(t_mlx *mlx, char *movement, \
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 3, 30, 0xffffff, \
 		"Piece restante: ");
 	mlx_string_put(mlx->ptr, mlx->window.ptr, 140, 30, 0xffffff, remaning);
-	printf("\e[1;1H\e[2J");
-	printf("----------------------\n");
-	printf("Nombre de movements:\t%s\n", movement);
-	printf("Pièce récupéré:\t\t%s\n", collected);
-	printf("Pièce restante:\t\t%s\n", remaning);
+	print_ath_basic(mlx);
 }
 
 void	print_ath(t_mlx *mlx)
@@ -50,7 +46,8 @@ void	print_ath(t_mlx *mlx)
 			mlx->elements.wall.img, \
 			i * ITEM_WIDTH, \
 			0 * ITEM_HEIGHT);
-	print(mlx, movements, collectible_collected, collectible_remaning);
+	print_ath_bonus(mlx, movements, collectible_collected, \
+		collectible_remaning);
 	free(movements);
 	free(collectible_collected);
 	free(collectible_remaning);

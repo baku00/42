@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:31 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/28 02:23:05 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:53:46 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	move_bonus(t_mlx *mlx, int y, int x)
 	return (move(mlx, y, x) && c != IA);
 }
 
-int can_move(t_mlx *mlx, int y, int x)
+int	can_move(t_mlx *mlx, int y, int x)
 {
 	return (move_bonus(mlx, y, x));
 }

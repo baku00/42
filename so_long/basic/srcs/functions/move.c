@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:31 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/28 02:09:24 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:52:19 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	move(t_mlx *mlx, int y, int x)
 
 #ifndef WITH_BONUS
 
-int can_move(t_mlx *mlx, int y, int x)
+int	can_move(t_mlx *mlx, int y, int x)
 {
 	return (move(mlx, y, x));
 }
