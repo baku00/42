@@ -27,10 +27,10 @@ SRCS = $(FOLDER)/$(NAME).c \
 		$(FILES_DIR)/ft_check_file.c \
 		$(INITIER_DIR)/init_elements.c \
 		$(FILES_DIR)/ft_check_char.c \
-		$(FUNCTIONS_DIR)/mlx_close.c
+		$(FUNCTIONS_DIR)/mlx_close.c \
+		$(FUNCTIONS_DIR)/move.c
 
-SRCS_WITHOUT_BONUS = $(FUNCTIONS_DIR)/move.c \
-						$(FUNCTIONS_DIR)/print_ath.c \
+SRCS_WITHOUT_BONUS = $(FUNCTIONS_DIR)/print_ath.c \
 						$(FUNCTIONS_DIR)/set_images.c
 
 
@@ -127,6 +127,18 @@ norme:
 	norminette bonus
 	norminette includes
 	norminette libft
+
+invalid:
+	$(MAKE) check_validity | grep "Erreur:"
+check_validity:
+	./so_long ./maps/invalid/all_chars.ber
+	./so_long ./maps/invalid/empty.ber
+	./so_long ./maps/invalid/invalid_width.ber
+	./so_long ./maps/invalid/not_enough_player.ber
+	./so_long ./maps/invalid/only_border.ber
+	./so_long ./maps/invalid/only_player.ber
+	./so_long ./maps/invalid/only_wall.ber
+	./so_long ./maps/invalid/to_many_player.ber
 
 $(LIBFT_A):
 	make $(MAKE_LIBFT)

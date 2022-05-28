@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:46 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/27 21:40:07 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:40:19 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static bool	check_char_bonus(t_mlx *mlx, int y, int x)
 	char	c;
 
 	c = mlx->file.point[y][x];
-	if (c == 'I')
+	if (c == IA)
 		mlx->elements.ia.count++;
-	return (!check_char(mlx, y, x) && c != 'I');
+	return (!check_char(mlx, y, x) && c != IA);
 }
 
 bool	valid_char(t_mlx *mlx, int y, int x)
@@ -35,6 +35,11 @@ void	check_limit_bonus(t_mlx *mlx)
 		ft_exit(mlx, ERROR_TO_MANY_IA, 1);
 	else if (mlx->elements.ia.count < MIN_IA_LIMIT)
 		ft_exit(mlx, ERROR_NOT_ENOUGH_IA, 1);
-	check_limit(mlx);
+	check_limit_basic(mlx);
+}
+
+void	check_limit(t_mlx *mlx)
+{
+	return (check_limit_bonus(mlx));
 }
 #endif

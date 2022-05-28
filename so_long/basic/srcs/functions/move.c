@@ -6,14 +6,13 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:31 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/28 01:53:27 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:09:24 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-#ifndef WITH_BONUS
 
-static void	apply_move(t_mlx *mlx)
+void	apply_move(t_mlx *mlx)
 {
 	mlx_put_image_to_window(mlx->ptr, mlx->window.ptr, \
 		mlx->elements.empty.img, \
@@ -36,7 +35,6 @@ static void	apply_move(t_mlx *mlx)
 int	move(t_mlx *mlx, int y, int x)
 {
 	char	c;
-	int		can_move;
 
 	mlx->elements.player.current_y = mlx->elements.player.y + y;
 	mlx->elements.player.current_x = mlx->elements.player.x + x;
@@ -47,9 +45,13 @@ int	move(t_mlx *mlx, int y, int x)
 			mlx->elements.player.current_x);
 	else if (c == EXIT && mlx->elements.exit.is_enabled)
 		win(mlx);
-	can_move = (c == COLLECTIBLE || c == EXIT || c == EMPTY);
-	if (can_move)
-		apply_move(mlx);
-	return (can_move);
+	return (c == COLLECTIBLE || c == EXIT || c == EMPTY);
+}
+
+#ifndef WITH_BONUS
+
+int can_move(t_mlx *mlx, int y, int x)
+{
+	return (move(mlx, y, x));
 }
 #endif

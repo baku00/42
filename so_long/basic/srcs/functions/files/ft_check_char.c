@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:46 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/27 21:10:11 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:41:07 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ bool	valid_char(t_mlx *mlx, int y, int x)
 	return (check_char(mlx, y, x));
 }
 
+void	check_limit(t_mlx *mlx)
+{
+	return check_limit_basic(mlx);
+}
+
 #endif
 
 bool	check_char(t_mlx *mlx, int y, int x)
@@ -26,29 +31,29 @@ bool	check_char(t_mlx *mlx, int y, int x)
 	char	c;
 
 	c = mlx->file.point[y][x];
-	if (c == 'C')
+	if (c == COLLECTIBLE)
 	{
 		mlx->elements.collectible.count++;
 		mlx->elements.collectible.total_count++;
 	}
-	else if (c == 'E')
+	else if (c == EXIT)
 	{
 		mlx->elements.exit.x = x;
 		mlx->elements.exit.y = y;
 		mlx->elements.exit.count++;
 	}
-	else if (c == '1')
+	else if (c == WALL)
 		mlx->elements.wall.count++;
-	else if (c == 'P')
+	else if (c == PLAYER)
 	{
 		mlx->elements.player.x = x;
 		mlx->elements.player.y = y;
 		mlx->elements.player.count++;
 	}
-	return (!(c != '0' && c != '1' && c != 'E' && c != 'P' && c != 'C'));
+	return (!(c != EMPTY && c != WALL && c != EXIT && c != PLAYER && c != COLLECTIBLE));
 }
 
-void	check_limit(t_mlx *mlx)
+void	check_limit_basic(t_mlx *mlx)
 {
 	if (mlx->elements.wall.count > MAX_WALL_LIMIT && \
 		MAX_WALL_LIMIT != -1)

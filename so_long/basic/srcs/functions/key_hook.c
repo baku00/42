@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:56 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/28 01:53:13 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:10:39 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
+	int	move;
+
+	move = 0;
 	if (keycode == ESCAPE)
 		mlx_close(mlx);
 	else if (keycode == UP)
-		mlx->elements.player.movement += move(mlx, -1, 0);
+		move = can_move(mlx, -1, 0);
 	else if (keycode == DOWN)
-		mlx->elements.player.movement += move(mlx, 1, 0);
+		move = can_move(mlx, 1, 0);
 	else if (keycode == LEFT)
-		mlx->elements.player.movement += move(mlx, 0, -1);
+		move = can_move(mlx, 0, -1);
 	else if (keycode == RIGHT)
-		mlx->elements.player.movement += move(mlx, 0, 1);
+		move = can_move(mlx, 0, 1);
+	if (move)
+	{
+		mlx->elements.player.movement += move;
+		apply_move(mlx);
+	}
 	if (keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT)
 		print_ath(mlx);
 	return (0);
