@@ -34,57 +34,33 @@ CFILES = ft_atoi.c \
 					ft_strtrim.c \
 					ft_substr.c \
 					ft_tolower.c \
-					ft_toupper.c
+					ft_toupper.c \
+					ft_lstnew.c \
+					ft_lstadd_front.c \
+					ft_lstadd_back.c \
+					ft_lstsize.c \
+					ft_lstlast.c \
+					ft_lstdelone.c \
+					ft_lstclear.c \
+					ft_lstiter.c \
+					ft_lstmap.c
 
-OFILES = ft_atoi.o \
-					ft_bzero.o \
-					ft_calloc.o \
-					ft_isalnum.o \
-					ft_isalpha.o \
-					ft_isascii.o \
-					ft_isdigit.o \
-					ft_isprint.o \
-					ft_itoa.o \
-					ft_memchr.o \
-					ft_memcmp.o \
-					ft_memcpy.o \
-					ft_memmove.o \
-					ft_memset.o \
-					ft_putchar_fd.o \
-					ft_putendl_fd.o \
-					ft_putnbr_fd.o \
-					ft_putstr_fd.o \
-					ft_split.o \
-					ft_strchr.o \
-					ft_strdup.o \
-					ft_striteri.o \
-					ft_strjoin.o \
-					ft_strlcat.o \
-					ft_strlcpy.o \
-					ft_strlen.o \
-					ft_strmapi.o \
-					ft_strncmp.o \
-					ft_strnstr.o \
-					ft_strrchr.o \
-					ft_strtrim.o \
-					ft_substr.o \
-					ft_tolower.o \
-					ft_toupper.o
-H_LIB = libft.h
 OBJS = $(SRCS:.c=.o)
-SRCS = $(CFILES) $(H_LIB)
+SRCS = $(CFILES)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OFILES)
+	ar rc $(NAME) $(OBJS)
 
 clean:
-	rm -rf $(OFILES)
+	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
 
+bonus: all
+
 re: fclean all
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY: all clean fclean re bonus
