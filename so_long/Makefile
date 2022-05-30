@@ -140,6 +140,8 @@ check_validity:
 	./so_long ./maps/invalid/only_player.ber
 	./so_long ./maps/invalid/only_wall.ber
 	./so_long ./maps/invalid/to_many_player.ber
+	./so_long ./maps/invalid/player_out.ber
+	./so_long ./maps/invalid/ia_in_basic.ber
 
 $(LIBFT_A):
 	make $(MAKE_LIBFT)
