@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:11 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/27 21:39:47 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/31 19:24:48 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ void	clean_mlx(t_mlx *mlx)
 
 int	mlx_close(t_mlx *mlx)
 {
-	printf("Nettoyage du fichier\n");
+	ft_putstr_fd("Nettoyage du fichier\n", 1);
 	clean_file(mlx);
-	printf("Fichier nettoye\n");
+	ft_putstr_fd("Fichier nettoye\n", 1);
 	if (mlx->ptr)
 	{
-		printf("Nettoyage des images\n");
+		ft_putstr_fd("Nettoyage des images\n", 1);
 		clean_image(mlx);
-		printf("Images nettoyees\n");
-		printf("Nettoyage de la mlx\n");
+		ft_putstr_fd("Images nettoyees\n", 1);
+		ft_putstr_fd("Nettoyage de la mlx\n", 1);
 		clean_mlx(mlx);
-		printf("MLX nettoyee\n");
+		ft_putstr_fd("MLX nettoyee\n", 1);
 	}
 	exit(0);
 	return (0);

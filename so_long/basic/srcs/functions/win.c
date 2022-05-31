@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:20 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/02/05 18:34:21 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/31 19:26:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	win(t_mlx *mlx)
 {
-	printf("Gagné !\n");
+	ft_putstr_fd("Gagné !\n", 1);
 	mlx_close(mlx);
 }

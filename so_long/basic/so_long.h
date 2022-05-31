@@ -6,14 +6,13 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/27 20:49:37 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/31 19:22:52 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include <fcntl.h>
-# include <stdio.h>
 # include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
