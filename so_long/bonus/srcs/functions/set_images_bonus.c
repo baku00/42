@@ -6,12 +6,21 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:00 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/31 04:15:56 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/05/31 04:22:37 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../basic/so_long.h"
 #ifdef WITH_BONUS
+
+static void	register_image(t_mlx *mlx, void *img, int x, int y)
+{
+	if (img)
+		mlx_put_image_to_window(mlx->ptr, mlx->window.ptr, \
+			img, x * ITEM_WIDTH, y * ITEM_HEIGHT);
+	else
+		ft_exit(mlx, "Erreur lors du placement d'une image", 1);
+}
 
 static void	put_images(t_mlx *mlx)
 {
@@ -34,13 +43,8 @@ static void	put_images(t_mlx *mlx)
 				img = mlx->elements.wall.img;
 			else if (mlx->file.point[y][x] == IA)
 				img = mlx->elements.ia.img;
-			if (img)
-				mlx_put_image_to_window(mlx->ptr, mlx->window.ptr, \
-					img, x * ITEM_WIDTH, y * ITEM_HEIGHT);
-			else
-				ft_exit(mlx, "Erreur lors du placement d'une image", 1);
+			register_image(mlx, img, x, y);
 		}
-		printf("\n");
 	}
 }
 
