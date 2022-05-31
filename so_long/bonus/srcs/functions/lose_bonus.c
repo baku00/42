@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:20 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/27 16:49:40 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/01 01:22:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	lose(t_mlx *mlx)
 {
-	printf("Perdu !\n");
+	ft_putstr_fd("Perdu !\n", 1);
 	mlx_close(mlx);
 }
 #endif

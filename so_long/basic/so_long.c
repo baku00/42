@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:18 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/31 18:58:36 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/01 01:05:51 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	main(int argc, char **argv)
 	mlx = init_mlx();
 	if (argc != 2)
 		ft_exit(&mlx, ERROR_SYNTAXE, 1);
-	printf("Analyse du fichier\n");
+	ft_putstr_fd("Analyse du fichier\n", 1);
 	ft_check_file(&mlx, argv[1]);
-	printf("Création de la map\n");
+	ft_putstr_fd("Création de la map\n", 1);
 	ft_create_map(&mlx);
-	printf("Placement des images\n");
+	ft_putstr_fd("Placement des images\n", 1);
 	set_images(&mlx);
 	mlx_key_hook(mlx.window.ptr, key_hook, &mlx);
 	mlx_hook(mlx.window.ptr, 17, 1L << 17, mlx_close, &mlx);
-	printf("\n\n\nDébut du jeu\n");
+	ft_putstr_fd("\n\n\nDébut du jeu\n", 1);
 	print_ath(&mlx);
 	mlx_loop(mlx.ptr);
 	return (0);

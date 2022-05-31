@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:33:50 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/31 19:23:53 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/01 01:12:23 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ static void	load_map(t_mlx *mlx)
 	{
 		ft_putstr_fd("Copie du contenu\n", 1);
 		mlx->file.content = ft_strjoin(mlx->file.content, mlx->file.line);
-		ft_putstr_fd("Récupération de la ligne %ld\n", mlx->file.height + 2, 1);
+		ft_putstr_fd("Récupération de la ligne ", 1);
+		ft_putnbr_fd(mlx->file.height + 2, 1);
+		ft_putstr_fd("\n", 1);
 		mlx->file.line = get_next_line(mlx->file.fd);
 		if (mlx->file.line && mlx->file.width != ft_strlen(mlx->file.line))
 			ft_exit(mlx, ERROR_FILE_WIDTH, 1);

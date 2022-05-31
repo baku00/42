@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:34:00 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/31 04:22:37 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/01 01:23:08 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	set_images(t_mlx *mlx)
 		mlx_xpm_file_to_image(mlx->ptr, IA_IMG, &width, &height);
 	mlx->elements.ia.img_2 = \
 		mlx_xpm_file_to_image(mlx->ptr, IA_2_IMG, &width, &height);
-	printf("Placement\n");
+	ft_putstr_fd("Placement\n", 1);
 	put_images(mlx);
 }
 #endif
