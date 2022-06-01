@@ -6,13 +6,13 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/30 18:52:01 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 01:32:16 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
-#include "argument.h"
-#include "main.h"
+# include "argument.h"
+# include "main.h"
 #endif

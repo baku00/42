@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/30 18:44:22 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 01:32:06 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	*convert_to_numbers(t_argument argument)
 
 	numbers = ft_calloc(sizeof(int), argument.counter);
 	if (!numbers)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (i < argument.counter)
 	{
@@ -28,7 +28,7 @@ int	*convert_to_numbers(t_argument argument)
 		while (argument.args[i][j])
 		{
 			if (!ft_isdigit(argument.args[i][j]))
-				return NULL;
+				return (NULL);
 			j++;
 		}
 		numbers[i] = ft_atoi(argument.args[i]);

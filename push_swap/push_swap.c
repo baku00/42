@@ -6,105 +6,106 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/31 02:45:43 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 01:46:12 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_element	empty_b(int *a, int *b, int counter)
-{
-	int	i;
-	t_element	element;
-	t_element	tmp;
-	element.a = a;
-	element.b = b;
-	i = 0;
-	while (i < counter)
-	{
-		ft_printf("B[%d]: %d\n\n", i, b[i]);
-		tmp = pa(element.b, element.a, counter);
-		element.a = tmp.b;
-		element.b = tmp.a;
-		// if (1 == 1)
-		{
-			int x = 0;
-			while (x < counter)
-			ft_printf("%d\n", element.b[x++]);
-			ft_printf("\n");
-			x = 0;
-			while (x < counter)
-			ft_printf("%d\n", element.a[x++]);
-			ft_printf("\n");
-		}
-		i++;
-		ft_printf("pa\n");
-	}
-	return element;
-}
+// static void show(int *l, char c, int counter, char *end)
+// {
+// 	int	i;
+//
+// 	i = 0;
+// 	printf("%c: ", c);
+// 	while (i < counter)
+// 	{
+// 		printf("%d ", l[i]);
+// 		i++;
+// 	}
+// 	printf("%s", end);
+// }
 
-t_element	push_last_bit_one(int *a, int *b, int size, int bit_max, int counter)
+// t_lists	push_last_bit_one(int *a, int *b, int size, int bit_max, int a_counter, int b_counter)
+t_lists	push_last_bit_one(t_lists lst, int size, int bit_max)
 {
+	t_lists	lists;
 	int		i;
 	int		nbr;
-	t_element	element;
-	(void) counter;
 
+	lists.a = lst.a;
+	lists.b = lst.b;
+	lists.a_counter = lst.a_counter;
+	lists.b_counter = lst.b_counter;
 	i = 0;
-	element.a = a;
-	element.b = b;
 	while (i < size)
 	{
-		nbr = (element.a[i] - 1);
-		if (nbr >= 0)
+		nbr = lists.a[0] - 1;
+		if (((nbr >> bit_max) & 1) == 0)
 		{
-			if (((nbr >> bit_max) & 1) == 0)
-			{
-				element = pb(element.a, element.b, counter);
-			}
-			else
-			{
-				element.a = ra(element.a, counter).a;
-			}
+			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
+			lists.a_counter--;
+			lists.b_counter++;
+			printf("pb\n");
 		}
-		ft_printf("CHECK\n");
+		else
+		{
+			lists.a = r(lists.a, lists.a_counter);
+			printf("ra\n");
+		}
 		i++;
 	}
-	return element;
+	return (lists);
 }
 
-t_element	sort_big_stack(int *a, int counter)
+static t_lists	empty_b(int *a, int *b, int a_counter, int b_counter)
 {
-	int		*b;
+	t_lists	lists;
+	t_lists	reverse;
+
+	lists.a = a;
+	lists.b = b;
+	lists.a_counter = a_counter;
+	lists.b_counter = b_counter;
+	while (lists.b_counter > 1)
+	{
+		lists.a_counter++;
+		lists.b_counter--;
+		reverse = p(lists.b, lists.a, lists.b_counter, lists.a_counter);
+		lists.a = reverse.b;
+		lists.b = reverse.a;
+		printf("pa\n");
+	}
+	return lists;
+}
+
+// static void	sort_big_stack(int *a, int *b, int counter, int a_counter, int b_counter)
+static void	sort_big_stack(t_lists lst, int counter)
+{
 	int		size;
 	int		max_num;
 	int		bit_max;
-	t_element	element;
+	t_lists	lists;
 
-	b = ft_calloc(sizeof(int), counter + 1);
 	size = counter;
 	max_num = size - 1;
 	bit_max = 0;
-	(void) bit_max;
-	(void) max_num;
-	element.a = a;
-	element.b = b;
-	// sort_list(a);
-	// while (max_num >> bit_max != 0)
+	lists.a = lst.a;
+	lists.b = lst.b;
+	lists.a_counter = lst.a_counter;
+	lists.b_counter = lst.b_counter;
+	while (max_num >> bit_max != 0)
 	{
-		element = push_last_bit_one(element.a, element.b, size, bit_max, counter);
-		element = empty_b(element.a, element.b, counter);
-		// break;
+		lists = push_last_bit_one(lists, size, bit_max);
+		lists = empty_b(lists.a, lists.b, lists.a_counter, lists.b_counter);
 		bit_max++;
 	}
-	return element;
 }
 
 int	main(int argc, char **argv)
 {
-	t_push_swap	push_swap;
 	t_argument	argument;
-	int			*index;
+	t_lists		lists;
 
 	if (!check_number_arguments(argc))
 		return (0);
@@ -115,30 +116,10 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (0);
 	}
-	index = get_index(argument.numbers, argument.counter);
-	// int i = 0;
-	// while (i < argument.counter)
-	// {
-	// 	ft_printf("Index[%d]: %d\n", i, index[i]);
-	// 	i++;
-	// }
-	// int i = 0;
-	// while (i < argument.counter) {
-	// 	ft_printf("%d\n", index[i++]);
-	// }
-	// ft_printf("\n");
-	// push_swap.a = ft_save(argument.numbers, argument.counter, index);
-	// while (push_swap.a) {
-	// 	ft_printf("%d | %d\n", push_swap.a->nbr, push_swap.a->index);
-	// 	push_swap.a = push_swap.a->next;
-	// }
-	push_swap.a = sort_big_stack(index, argument.counter).a;
-	(void) push_swap;
-	// i = 0;
-	// while (i < argument.counter)
-	// {
-	// 	ft_printf("%d\n", push_swap.a[i]);
-	// 	i++;
-	// }
+	lists.a = get_index(argument.numbers, argument.counter);
+	lists.b = ft_calloc(sizeof(int), argument.counter);
+	lists.b_counter = 1;
+	lists.a_counter = argument.counter;
+	sort_big_stack(lists, argument.counter);
 	return (0);
 }
