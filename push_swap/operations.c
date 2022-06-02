@@ -6,11 +6,21 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 01:41:40 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 02:35:10 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	*sa(int *a)
+{
+	int	tmp;
+
+	tmp = a[0];
+	a[0] = a[1];
+	a[1] = tmp;
+	return (a);
+}
 
 int	*r(int *l, int counter)
 {

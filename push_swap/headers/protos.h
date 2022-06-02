@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 01:42:55 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 04:03:34 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ int			*convert_to_numbers(t_argument argument);
 int			*get_index(int *numbers, int counter);
 int			*r(int *l, int counter);
 int			*rr(int *l, int counter);
+int			*sa(int *a);
 t_lists		p(int *l1, int *l2, int counter1, int counter2);
+void		sort_small_stack(t_lists lists);
 #endif

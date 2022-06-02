@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 01:46:12 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 04:04:57 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@
 // 	printf("%s", end);
 // }
 
-// t_lists	push_last_bit_one(int *a, int *b, int size, int bit_max, int a_counter, int b_counter)
 t_lists	push_last_bit_one(t_lists lst, int size, int bit_max)
 {
 	t_lists	lists;
 	int		i;
-	int		nbr;
 
 	lists.a = lst.a;
 	lists.b = lst.b;
@@ -40,8 +38,7 @@ t_lists	push_last_bit_one(t_lists lst, int size, int bit_max)
 	i = 0;
 	while (i < size)
 	{
-		nbr = lists.a[0] - 1;
-		if (((nbr >> bit_max) & 1) == 0)
+		if ((((lists.a[0] - 1) >> bit_max) & 1) == 0)
 		{
 			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
 			lists.a_counter--;
@@ -76,10 +73,9 @@ static t_lists	empty_b(int *a, int *b, int a_counter, int b_counter)
 		lists.b = reverse.a;
 		printf("pa\n");
 	}
-	return lists;
+	return (lists);
 }
 
-// static void	sort_big_stack(int *a, int *b, int counter, int a_counter, int b_counter)
 static void	sort_big_stack(t_lists lst, int counter)
 {
 	int		size;
@@ -120,6 +116,9 @@ int	main(int argc, char **argv)
 	lists.b = ft_calloc(sizeof(int), argument.counter);
 	lists.b_counter = 1;
 	lists.a_counter = argument.counter;
-	sort_big_stack(lists, argument.counter);
+	if (argument.counter <= 5)
+		sort_small_stack(lists);
+	else
+		sort_big_stack(lists, argument.counter);
 	return (0);
 }
