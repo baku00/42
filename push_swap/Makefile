@@ -8,6 +8,7 @@ CHECKERS=checkers
 PARSERS=parsers
 CONVERTERS=converters
 NUMBERS=numbers
+SORTERS=sorters
 
 FT_PRINTF = $(INCLUDES)/ft_printf
 LIB_FT_PRINTF_A = $(FT_PRINTF)/libftprintf.a
@@ -17,7 +18,8 @@ SRCS = $(NAME).c \
 		$(PARSERS)/arguments.c \
 		$(CONVERTERS)/convert_to_numbers.c \
 		$(NUMBERS)/set_index.c \
-		sorters/sort.c \
+		$(SORTERS)/sort.c \
+		$(SORTERS)/sort_utils.c \
 		operations.c
 
 OBJS = $(SRCS:.c=.o)

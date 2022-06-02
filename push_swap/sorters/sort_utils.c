@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   protos.h                                           :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 04:10:36 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 04:11:08 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOS_H
-# define PROTOS_H
-# include "../push_swap.h"
+#include "../push_swap.h"
 
-int			main(int argc, char **argv);
-void		*ft_calloc(size_t count, size_t size);
-bool		check_number_arguments(int argc);
-t_argument	parse_arguments(int argc, char **argv);
-int			*convert_to_numbers(t_argument argument);
-int			*get_index(int *numbers, int counter);
-int			*r(int *l, int counter);
-int			*rr(int *l, int counter);
-int			*sa(int *a);
-t_lists		p(int *l1, int *l2, int counter1, int counter2);
-void		sort_small_stack(t_lists lists);
-int			find_min(int *stack, int counter);
-#endif
+int	find_min(int *stack, int counter)
+{
+	int	i;
+	int	min;
+
+	i = 0;
+	min = stack[0];
+	while (i < counter)
+	{
+		if (min > stack[i] && stack[i] > 0)
+			min = stack[i];
+		i++;
+	}
+	return (min);
+}

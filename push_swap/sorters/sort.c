@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 04:05:37 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 04:24:54 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,61 +41,45 @@ static t_lists	sort_three(int *a, int a_counter)
 	return (lists);
 }
 
-static int	find_min(int *stack, int counter)
+static t_lists	make_five(t_lists lists, int i, int min, int min_on_start)
 {
-	int	i;
-	int	min;
-
-	i = 0;
-	min = stack[0];
-	while (i < counter)
+	if (min_on_start)
+		min = find_min(lists.a, lists.a_counter);
+	while ((!min_on_start && i < 2) || (min_on_start && !i))
 	{
-		if (min > stack[i] && stack[i] > 0)
-			min = stack[i];
-		i++;
+		if (!min_on_start)
+			min = find_min(lists.a, lists.a_counter);
+		if (lists.a[0] == min)
+		{
+			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
+			ft_printf("pb\n");
+			lists.a_counter--;
+			lists.b_counter++;
+			i++;
+		}
+		else if (lists.a[1] == min)
+		{
+			(ft_printf("sa\n"), lists.a = sa(lists.a));
+			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
+			ft_printf("pb\n");
+			i++;
+		}
+		else
+			(ft_printf("ra\n"), lists.a = r(lists.a, lists.a_counter));
 	}
-	return (min);
+	return (lists);
 }
 
 static t_lists	sort_four(int *a, int *b, int a_counter, int b_counter)
 {
-	int		bingo;
-	int		min;
 	t_lists	lists;
 	t_lists	reverse;
 
-	bingo = 0;
 	lists.a = a;
 	lists.b = b;
 	lists.a_counter = a_counter;
 	lists.b_counter = b_counter;
-	min = find_min(lists.a, lists.a_counter);
-	while (!bingo)
-	{
-		if (lists.a[0] == min)
-		{
-			ft_printf("pb\n");
-			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
-			lists.a_counter--;
-			lists.b_counter++;
-			bingo++;
-		}
-		else if (lists.a[1] == min)
-		{
-			lists.a = sa(lists.a);
-			ft_printf("sa\n");
-			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
-			ft_printf("pb\n");
-			lists.a_counter--;
-			lists.b_counter++;
-			bingo++;
-		}
-		else
-		{
-			lists.a = r(lists.a, lists.a_counter);
-			ft_printf("ra\n");
-		}
-	}
+	make_five(lists, 0, 0, 1);
 	sort_three(lists.a, lists.a_counter);
 	lists.a_counter++;
 	lists.b_counter--;
@@ -110,39 +94,12 @@ static void	sort_five(int *a, int *b, int a_counter, int b_counter)
 {
 	t_lists	lists;
 	t_lists	reverse;
-	int		bingo;
-	int		min;
 
-	bingo = 0;
 	lists.a = a;
 	lists.b = b;
 	lists.a_counter = a_counter;
 	lists.b_counter = b_counter;
-	while (bingo < 2)
-	{
-		min = find_min(lists.a, lists.a_counter);
-		if (a[0] == min)
-		{
-			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
-			ft_printf("pb\n");
-			lists.a_counter--;
-			lists.b_counter++;
-			bingo++;
-		}
-		else if (a[1] == min)
-		{
-			lists.a = sa(a);
-			ft_printf("sa\n");
-			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
-			ft_printf("pb\n");
-			bingo++;
-		}
-		else
-		{
-			lists.a = r(lists.a, lists.a_counter);
-			ft_printf("ra\n");
-		}
-	}
+	make_five(lists, 0, 0, 0);
 	sort_three(lists.a, lists.a_counter);
 	lists.a_counter++;
 	lists.b_counter--;
