@@ -112,7 +112,7 @@ $(MLX):
 	$(CREATE_MLX)
 	make -C ./mlx
 
-bonus: $(OBJS_BONUS)
+bonus: $(MLX) $(OBJS_BONUS)
 	make WITH_BONUS="1"
 
 clean: $(LIBFT_A)_clean $(GNL_A)_clean
@@ -130,7 +130,7 @@ norme:
 	norminette libft
 
 invalid:
-	$(MAKE) check_validity | grep "Erreur:"
+	$(MAKE) check_validity | grep "Error"
 check_validity:
 	./so_long ./maps/invalid/all_chars.ber
 	./so_long ./maps/invalid/empty.ber
@@ -142,6 +142,9 @@ check_validity:
 	./so_long ./maps/invalid/to_many_player.ber
 	./so_long ./maps/invalid/player_out.ber
 	./so_long ./maps/invalid/ia_in_basic.ber
+	./so_long ./maps/invalid/squar.ber
+	./so_long ./maps/invalid/invalid_extension.bet
+	./so_long ./maps/invalid/empty_extension
 
 $(LIBFT_A):
 	make $(MAKE_LIBFT)
