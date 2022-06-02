@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/30 17:59:49 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 15:58:51 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ static char	*array_to_string(char **argv)
 	int		i;
 
 	string = ft_calloc(sizeof(char), 1);
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		string = ft_strjoin(string, argv[i]);
+		string = ft_strjoin(string, " ");
 		i++;
 	}
 	return (string);
@@ -54,7 +55,7 @@ t_argument	parse_arguments(int argc, char **argv)
 {
 	t_argument	argument;
 
-	if (argc)
+	if (argc == 2)
 		argument.arg = argv[1];
 	else
 		argument.arg = array_to_string(argv);

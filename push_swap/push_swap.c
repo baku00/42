@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 05:41:41 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 15:43:48 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 // 	int	i;
 //
 // 	i = 0;
-// 	printf("%c: ", c);
+// 	ft_printf("%c: ", c);
 // 	while (i < counter)
 // 	{
-// 		printf("%d ", l[i]);
+// 		ft_printf("%d ", l[i]);
 // 		i++;
 // 	}
-// 	printf("%s", end);
+// 	ft_printf("%s", end);
 // }
 
 t_lists	push_last_bit_one(t_lists lst, int size, int bit_max)
@@ -43,12 +43,12 @@ t_lists	push_last_bit_one(t_lists lst, int size, int bit_max)
 			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
 			lists.a_counter--;
 			lists.b_counter++;
-			printf("pb\n");
+			ft_printf("pb\n");
 		}
 		else
 		{
 			lists.a = r(lists.a, lists.a_counter);
-			printf("ra\n");
+			ft_printf("ra\n");
 		}
 		i++;
 	}
@@ -71,7 +71,7 @@ static t_lists	empty_b(int *a, int *b, int a_counter, int b_counter)
 		reverse = p(lists.b, lists.a, lists.b_counter, lists.a_counter);
 		lists.a = reverse.b;
 		lists.b = reverse.a;
-		printf("pa\n");
+		ft_printf("pa\n");
 	}
 	return (lists);
 }

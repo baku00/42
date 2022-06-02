@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 05:41:52 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 15:43:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,6 @@ typedef struct s_index
 	int	index;
 	int	state;
 }	t_index;
-
-// static bool	exist(int *numbers, int n, int counter)
-// {
-// 	int	i;
-//
-// 	i = 0;
-// 	while (i < counter)
-// 	{
-// 		printf("N: %d => %d\n", numbers[i], n);
-// 		if (numbers[i] == n)
-// 			return true;
-// 		i++;
-// 	}
-// 	return false;
-// }
 
 int	*get_index(int *numbers, int counter)
 {
