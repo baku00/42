@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 16:01:11 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:05:37 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,12 @@ static t_lists	sort_four(int *a, int *b, int a_counter, int b_counter)
 {
 	t_lists	lists;
 	t_lists	reverse;
-	int		min;
 
 	lists.a = a;
 	lists.b = b;
 	lists.a_counter = a_counter;
 	lists.b_counter = b_counter;
-	min = find_min(lists.a, lists.a_counter);
-	make_five(lists, 0, 0, 1);
+	make_five(lists, 0, 0, find_min(lists.a, lists.a_counter));
 	sort_three(lists.a, lists.a_counter);
 	lists.a_counter++;
 	lists.b_counter--;
