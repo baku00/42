@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 04:24:54 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 05:33:31 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static t_lists	make_five(t_lists lists, int i, int min, int min_on_start)
 			(ft_printf("sa\n"), lists.a = sa(lists.a));
 			lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
 			ft_printf("pb\n");
+			lists.a_counter--;
+			lists.b_counter++;
 			i++;
 		}
 		else
@@ -104,15 +106,15 @@ static void	sort_five(int *a, int *b, int a_counter, int b_counter)
 	lists.a_counter++;
 	lists.b_counter--;
 	reverse = p(lists.b, lists.a, lists.b_counter, lists.a_counter);
-	ft_printf("pa\n");
 	lists.a = reverse.b;
 	lists.b = reverse.a;
+	printf("pa\n");
 	lists.a_counter++;
 	lists.b_counter--;
 	reverse = p(lists.b, lists.a, lists.b_counter, lists.a_counter);
-	ft_printf("pa\n");
 	lists.a = reverse.b;
 	lists.b = reverse.a;
+	printf("pa\n");
 }
 
 void	sort_small_stack(t_lists lists)

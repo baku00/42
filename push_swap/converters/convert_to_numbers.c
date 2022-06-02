@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 01:32:06 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 04:50:28 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	*convert_to_numbers(t_argument argument)
 		j = 0;
 		while (argument.args[i][j])
 		{
-			if (!ft_isdigit(argument.args[i][j]))
+			if (!ft_isdigit(argument.args[i][j]) && argument.args[i][j] != '-')
 				return (NULL);
 			j++;
 		}
