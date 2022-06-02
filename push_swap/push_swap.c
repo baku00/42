@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 15:43:48 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:18:19 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,12 @@ static void	sort_big_stack(t_lists lst, int counter)
 	}
 }
 
+static int	error(void)
+{
+	ft_printf("Error\n");
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_argument	argument;
@@ -108,11 +114,10 @@ int	main(int argc, char **argv)
 	argument = parse_arguments(argc, argv);
 	argument.numbers = convert_to_numbers(argument);
 	if (!argument.numbers)
-	{
-		ft_printf("Error\n");
-		return (0);
-	}
+		return (error());
 	lists.a = get_index(argument.numbers, argument.counter);
+	if (!lists.a)
+		return (error());
 	lists.b = ft_calloc(sizeof(int), argument.counter);
 	lists.b_counter = 1;
 	lists.a_counter = argument.counter;
