@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 16:15:06 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:27:36 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	*get_index(int *numbers, int counter)
 		index.n = 2147483647;
 		while (index.j < counter)
 		{
-			if (index.n > numbers[index.j] && !index.sets[index.j])
+			if (index.n >= numbers[index.j] && !index.sets[index.j])
 			{
 				index.n = numbers[index.j];
 				if (exists(numbers, counter))
