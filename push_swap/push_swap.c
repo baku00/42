@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 16:18:19 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:53:31 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ int	main(int argc, char **argv)
 	lists.b = ft_calloc(sizeof(int), argument.counter);
 	lists.b_counter = 1;
 	lists.a_counter = argument.counter;
+	if (is_sorted(lists.a, lists.a_counter))
+		return (0);
 	if (argument.counter <= 5)
 		sort_small_stack(lists);
 	else

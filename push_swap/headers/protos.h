@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 04:10:36 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:45:44 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int			*sa(int *a);
 t_lists		p(int *l1, int *l2, int counter1, int counter2);
 void		sort_small_stack(t_lists lists);
 int			find_min(int *stack, int counter);
+bool		is_sorted(int *numbers, int counter);
 #endif
