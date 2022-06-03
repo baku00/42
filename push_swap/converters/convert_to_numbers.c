@@ -6,13 +6,13 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/03 03:19:31 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/06/03 03:38:54 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static bool	more_int(char *n)
+static bool	m_int(char *n)
 {
 	int		i;
 	char	*limit;
@@ -34,7 +34,7 @@ static bool	more_int(char *n)
 	return (false);
 }
 
-static bool	less_int(char *n)
+static bool	l_int(char *n)
 {
 	int		i;
 	char	*limit;
@@ -78,7 +78,7 @@ int	*convert_to_numbers(t_argument argument)
 			else if (ft_isdigit(argument.args[i][j]) && j <= 1)
 				got_digit = 1;
 		}
-		if (!got_digit || more_int(argument.args[i]) || less_int(argument.args[i]))
+		if (!got_digit || m_int(argument.args[i]) || l_int(argument.args[i]))
 			return (NULL);
 		numbers[i] = ft_atoi(argument.args[i]);
 	}
