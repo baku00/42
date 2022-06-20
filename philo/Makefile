@@ -1,5 +1,5 @@
 # Program name
-NAME	=FILE_NAME
+NAME	=philo
 
 # Compilation config
 CC		=gcc
