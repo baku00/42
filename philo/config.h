@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:17:22 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/21 01:57:46 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/06/21 01:54:53 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/06/21 01:59:29 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <main.h>
+#ifndef CONFIG_H
+# define CONFIG_H
 
-int	main(int argc, char **argv)
-{
+# define MIN_ARGUMENTS_NUMBER 3
+# define MAX_ARGUMENTS_NUMBER 4
 
-	return (0);
-}
+#endif
