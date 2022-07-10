@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:21:00 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/07/10 16:14:44 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/10/19 20:13:22 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/10/20 14:30:23 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
+#include <unistd.h>
 
-# include "srcs/libft/libft.h"
-# include "headers/includes.h"
-
-typedef struct s_philo_config
+void	ft_putnbr_fd(int nb, int fd)
 {
-    int number;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int number_of_eat;
-}   t_philo_config;
+	char	nbr[12];
+	int		i;
 
-typedef struct s_philo
-{
-    pthread_t   thread;
-}   t_philo;
-
-int	main(int argc, char **argv);
-
-#endif
+	i = 0;
+	if (nb == 0)
+		write(fd, "0", 1);
+	if (nb == -2147483648)
+	{
+		nbr[i] = '8';
+		nb = nb / 10;
+		i++;
+	}
+	if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb *= -1;
+	}
+	while (nb != 0)
+	{
+		nbr[i] = nb % 10 + '0';
+		nb = nb / 10;
+		i++;
+	}
+	while (--i >= 0)
+		write(fd, &nbr[i], 1);
+}

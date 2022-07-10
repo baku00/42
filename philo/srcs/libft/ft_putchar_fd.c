@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libraries.h                                        :+:      :+:    :+:   */
+/*   42header.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:27:52 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/07/10 15:40:51 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/10/15 17:48:15 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRARIES_H
-# define LIBRARIES_H
+#include "libft.h"
+#include <unistd.h>
 
-# include <main.h>
-# include <unistd.h>
-# include <pthread.h>
-
-#endif
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

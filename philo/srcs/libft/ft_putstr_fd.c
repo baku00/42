@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:21:00 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/07/10 16:14:44 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
+/*   Updated: 2021/10/21 17:59:08 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "srcs/libft/libft.h"
-# include "headers/includes.h"
-
-typedef struct s_philo_config
+void	ft_putstr_fd(char *s, int fd)
 {
-    int number;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int number_of_eat;
-}   t_philo_config;
+	int	i;
 
-typedef struct s_philo
-{
-    pthread_t   thread;
-}   t_philo;
-
-int	main(int argc, char **argv);
-
-#endif
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+		ft_putchar_fd(s[i++], fd);
+}

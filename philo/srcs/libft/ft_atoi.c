@@ -1,35 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:21:00 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/07/10 16:14:44 by dgloriod         ###   ########.fr       */
+/*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/07/10 16:21:39 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "srcs/libft/libft.h"
-# include "headers/includes.h"
-
-typedef struct s_philo_config
+static int	ft_strlen(const char *str)
 {
-    int number;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int number_of_eat;
-}   t_philo_config;
+	int	i;
 
-typedef struct s_philo
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+static int	ft_isdigit(int c)
 {
-    pthread_t   thread;
-}   t_philo;
+	return (c >= '0' && c <= '9');
+}
 
-int	main(int argc, char **argv);
+int	ft_atoi(const char *str)
+{
+	long long	nbr;
+	int			i;
 
-#endif
+	nbr = 0;
+	i = 0;
+	while (ft_isdigit(str[i]))
+	{
+		nbr *= 10;
+		nbr += (int) str[i] - '0';
+		i++;
+	}
+	if (i != ft_strlen(str))
+		return (0);
+	return (nbr);
+}
