@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 01:17:22 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/07/10 16:22:30 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/07/10 19:16:44 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	}
 	philo_config.time_to_die = ft_atoi(argv[2]);
 	if (!philo_config.time_to_die)
-		return (0);
+		return (0);	
 	philo_config.time_to_eat = ft_atoi(argv[3]);
 	philo_config.time_to_sleep = ft_atoi(argv[4]);
 	i = -1;
