@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/03 03:00:32 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/10/30 20:19:02 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 typedef struct s_index
 {
-	int	i;
-	int	j;
-	int	n;
-	int	*sets;
-	int	index;
-	int	*exists;
-	int	state;
-}	t_index;
+	int i;
+	int j;
+	int n;
+	int *sets;
+	int index;
+	int *exists;
+	int state;
+} t_index;
 
-static bool	exists(int *numbers, int counter)
+static bool exists(int *numbers, int counter)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
 	while (i < counter)
@@ -43,9 +43,9 @@ static bool	exists(int *numbers, int counter)
 	return (false);
 }
 
-int	*get_index(int *numbers, int counter)
+int *get_index(int *numbers, int counter)
 {
-	t_index	index;
+	t_index index;
 
 	index.i = -1;
 	index.state = 1;
@@ -66,8 +66,8 @@ int	*get_index(int *numbers, int counter)
 			}
 			index.j++;
 		}
-		index.sets[index.index] = index.state;
-		index.state++;
+		index.sets[index.index] = index.state++;
 	}
+	free(index.exists);
 	return (index.sets);
 }

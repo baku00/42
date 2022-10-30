@@ -20,6 +20,7 @@ SRCS = $(NAME).c \
 		$(NUMBERS)/set_index.c \
 		$(SORTERS)/sort.c \
 		$(SORTERS)/sort_utils.c \
+		free.c \
 		operations.c
 
 OBJS = $(SRCS:.c=.o)
@@ -34,7 +35,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB_FT_PRINTF_A) norme
+$(NAME): $(OBJS) $(LIB_FT_PRINTF_A)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB_FT_PRINTF_A) -o $(NAME)
 	$(CMDS)
 

@@ -56,7 +56,7 @@ t_argument	parse_arguments(int argc, char **argv)
 	t_argument	argument;
 
 	if (argc == 2)
-		argument.arg = argv[1];
+		argument.arg = ft_strdup(argv[1]);
 	else
 		argument.arg = array_to_string(argv);
 	argument.args = ft_split(argument.arg, ' ');
