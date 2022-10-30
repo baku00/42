@@ -24,10 +24,22 @@ SRCS = $(NAME).c \
 
 OBJS = $(SRCS:.c=.o)
 
+CHECKER = checker
+
+ifeq ($(shell uname), Linux)
+	CMDS = cp $(CHECKER)_linux $(CHECKER)
+else
+	CMDS = cp $(CHECKER)_Mac $(CHECKER)
+endif
+
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB_FT_PRINTF_A)
+$(NAME): $(OBJS) $(LIB_FT_PRINTF_A) norme
 	$(CC) $(CFLAGS) $(OBJS) $(LIB_FT_PRINTF_A) -o $(NAME)
+	$(CMDS)
+
+test:
+	bash ./tests/42.sh
 
 clean:
 	make clean -C $(FT_PRINTF)
@@ -36,6 +48,7 @@ clean:
 fclean: clean
 	make fclean -C $(FT_PRINTF)
 	rm -rf $(NAME)
+	rm -rf $(CHECKER)
 
 $(LIB_FT_PRINTF_A):
 	$(MAKE) -C $(FT_PRINTF)

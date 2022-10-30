@@ -13,6 +13,13 @@
 #ifndef ARGUMENT_H
 # define ARGUMENT_H
 
+/*
+	char *arg		les éléments en chaîne de caractères		"6 5 4"
+	char **args		les éléments en tableau de caractères		["6", "5", "4"]
+	int counter		le nombre total d'éléments					3
+	int *numbers	les éléments en tableau d'entier			[6, 5, 4]
+*/
+
 typedef struct argument
 {
 	char	*arg;
