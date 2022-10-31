@@ -1,0 +1,71 @@
+checkers/
+    arguments.c/
+        bool check_number_arguments(int argc)
+
+converters/
+    convert_to_numbers.c/
+        static bool	m_int(char *n);
+        static bool	l_int(char *n);
+        int	*convert_to_numbers(t_argument argument);
+
+headers/
+    protos.h/
+        #ifndef PROTOS_H
+        # define PROTOS_H
+        # include "../push_swap.h"
+
+        int			main(int argc, char **argv);
+        void		*ft_calloc(size_t count, size_t size);
+        bool		check_number_arguments(int argc);
+        t_argument	parse_arguments(int argc, char **argv);
+        int			*convert_to_numbers(t_argument argument);
+        int			*get_index(int *numbers, int counter);
+        int			*r(int *l, int counter);
+        int			*rr(int *l, int counter);
+        int			*sa(int *a);
+        t_lists		p(int *l1, int *l2, int counter1, int counter2);
+        void		sort_small_stack(t_lists lists);
+        int			find_min(int *stack, int counter);
+        bool		is_sorted(int *numbers, int counter);
+        void		freeall(t_argument argument, t_lists lists);
+        #endif
+
+includes/
+    ft_printf/
+        includes/
+        srcs/
+            funcs/
+                ft_intlen.c
+                ft_itob.c
+
+sorters/
+    sort_utils.c/
+        int	find_min(int *stack, int counter);
+        bool	is_sorted(int *numbers, int counter);
+    sort.c/
+        static t_lists	sort_three(int *a, int a_counter);
+        static t_lists	make_five(t_lists lists, int i, int min, int min_on_start);
+        static t_lists	sort_four(int *a, int *b, int a_counter, int b_counter);
+        static t_lists	sort_five(int *a, int *b, int a_counter, int b_counter);
+        void	sort_small_stack(t_lists lists);
+
+tests/
+    *.sh
+
+types/
+    argument.h/
+        struct t_argument;
+    lists.h/
+        struct t_lists;
+    types.h/
+        # include "argument.h"
+        # include "lists.h"
+
+free.c/
+    void	freeall(t_argument argument, t_lists lists)
+
+operations.c/
+    int	*sa(int *a)
+    int	*r(int *l, int counter)
+    int	*rr(int *l, int counter)
+    t_lists	p(int *l1, int *l2, int counter1, int counter2)

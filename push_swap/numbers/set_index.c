@@ -14,19 +14,19 @@
 
 typedef struct s_index
 {
-	int i;
-	int j;
-	int n;
-	int *sets;
-	int index;
-	int *exists;
-	int state;
-} t_index;
+	int	i;
+	int	j;
+	int	n;
+	int	*sets;
+	int	index;
+	int	*exists;
+	int	state;
+}	t_index;
 
-static bool exists(int *numbers, int counter)
+static bool	exists(int *numbers, int counter)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < counter)
@@ -43,9 +43,9 @@ static bool exists(int *numbers, int counter)
 	return (false);
 }
 
-int *get_index(int *numbers, int counter)
+int	*get_index(int *numbers, int counter)
 {
-	t_index index;
+	t_index	index;
 
 	index.i = -1;
 	index.state = 1;

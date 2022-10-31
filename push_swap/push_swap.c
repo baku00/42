@@ -26,10 +26,10 @@
 // 	ft_printf("%s", end);
 // }
 
-t_lists push_last_bit_one(t_lists lst, int size, int bit_max)
+t_lists	push_last_bit_one(t_lists lst, int size, int bit_max)
 {
-	t_lists lists;
-	int i;
+	t_lists	lists;
+	int		i;
 
 	lists.a = lst.a;
 	lists.b = lst.b;
@@ -55,10 +55,10 @@ t_lists push_last_bit_one(t_lists lst, int size, int bit_max)
 	return (lists);
 }
 
-static t_lists empty_b(int *a, int *b, int a_counter, int b_counter)
+static t_lists	empty_b(int *a, int *b, int a_counter, int b_counter)
 {
-	t_lists lists;
-	t_lists reverse;
+	t_lists	lists;
+	t_lists	reverse;
 
 	lists.a = a;
 	lists.b = b;
@@ -76,12 +76,12 @@ static t_lists empty_b(int *a, int *b, int a_counter, int b_counter)
 	return (lists);
 }
 
-static void sort_big_stack(t_lists lst, int counter)
+static void	sort_big_stack(t_lists lst, int counter)
 {
-	int size;
-	int max_num;
-	int bit_max;
-	t_lists lists;
+	int		size;
+	int		max_num;
+	int		bit_max;
+	t_lists	lists;
 
 	size = counter;
 	max_num = size - 1;
@@ -98,16 +98,16 @@ static void sort_big_stack(t_lists lst, int counter)
 	}
 }
 
-static int error(void)
+static int	error(void)
 {
 	ft_printf("Error\n");
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_argument argument;
-	t_lists lists;
+	t_argument	argument;
+	t_lists		lists;
 
 	if (!check_number_arguments(argc))
 		return (0);

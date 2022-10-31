@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef LISTS_H
-#define LISTS_H
+# define LISTS_H
 
 /*
 	int *a			la liste a
@@ -21,9 +21,9 @@
 */
 typedef struct s_lists
 {
-	int *a;
-	int a_counter;
-	int *b;
-	int b_counter;
-} t_lists;
+	int	*a;
+	int	a_counter;
+	int	*b;
+	int	b_counter;
+}	t_lists;
 #endif

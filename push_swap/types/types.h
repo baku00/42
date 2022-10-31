@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #ifndef TYPES_H
-#define TYPES_H
+# define TYPES_H
 
-#include "argument.h"
-#include "lists.h"
+# include "argument.h"
+# include "lists.h"
 #endif

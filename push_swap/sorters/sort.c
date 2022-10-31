@@ -12,9 +12,9 @@
 
 #include "../push_swap.h"
 
-static t_lists sort_three(int *a, int a_counter)
+static t_lists	sort_three(int *a, int a_counter)
 {
-	t_lists lists;
+	t_lists	lists;
 
 	if (a[0] > a[1] && a[2] && a[2] > a[0])
 		(ft_printf("sa\n"), a = sa(a));
@@ -41,7 +41,7 @@ static t_lists sort_three(int *a, int a_counter)
 	return (lists);
 }
 
-static t_lists make_five(t_lists lists, int i, int min, int min_on_start)
+static t_lists	make_five(t_lists lists, int i, int min, int min_on_start)
 {
 	while ((!min_on_start && i < 2) || (min_on_start && !i))
 	{
@@ -125,10 +125,10 @@ static t_lists make_five(t_lists lists, int i, int min, int min_on_start)
 	return (lists);
 }*/
 
-static t_lists sort_four(int *a, int *b, int a_counter, int b_counter)
+static t_lists	sort_four(int *a, int *b, int a_counter, int b_counter)
 {
-	t_lists lists;
-	t_lists reverse;
+	t_lists	lists;
+	t_lists	reverse;
 
 	lists.a = a;
 	lists.b = b;
@@ -159,10 +159,10 @@ static t_lists sort_four(int *a, int *b, int a_counter, int b_counter)
 // 	ft_printf("%s", end);
 // }
 
-static t_lists sort_five(int *a, int *b, int a_counter, int b_counter)
+static t_lists	sort_five(int *a, int *b, int a_counter, int b_counter)
 {
-	t_lists lists;
-	t_lists reverse;
+	t_lists	lists;
+	t_lists	reverse;
 
 	lists.a = a;
 	lists.b = b;
@@ -185,7 +185,7 @@ static t_lists sort_five(int *a, int *b, int a_counter, int b_counter)
 	return (lists);
 }
 
-void sort_small_stack(t_lists lists)
+void	sort_small_stack(t_lists lists)
 {
 	if (lists.a_counter == 2)
 	{
