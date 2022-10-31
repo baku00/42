@@ -6,16 +6,19 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 15:58:51 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/10/30 23:20:04 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static char	*array_to_string(char **argv)
+/**
+ * Converti une liste en une chaine de caractère
+ */
+static char *array_to_string(char **argv)
 {
-	char	*string;
-	int		i;
+	char *string;
+	int i;
 
 	string = ft_calloc(sizeof(char), 1);
 	i = 1;
@@ -28,11 +31,14 @@ static char	*array_to_string(char **argv)
 	return (string);
 }
 
-static int	char_counter(char const *str, int c)
+/**
+ * Compte combien de fois un caractère apparaît dans une chaîne
+ */
+static int char_counter(char const *str, int c)
 {
-	int	i;
-	int	counter;
-	int	is_set;
+	int i;
+	int counter;
+	int is_set;
 
 	i = 0;
 	counter = 0;
@@ -51,9 +57,13 @@ static int	char_counter(char const *str, int c)
 	return (counter);
 }
 
-t_argument	parse_arguments(int argc, char **argv)
+/**
+ * Permet de convertir et d'obtenir différentes informations
+ * sur une liste d'élément passer en paramètre
+ */
+t_argument parse_arguments(int argc, char **argv)
 {
-	t_argument	argument;
+	t_argument argument;
 
 	if (argc == 2)
 		argument.arg = ft_strdup(argv[1]);

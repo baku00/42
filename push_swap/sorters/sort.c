@@ -6,15 +6,15 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/10/30 22:55:35 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:08:17 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_lists	sort_three(int *a, int a_counter)
+static t_lists sort_three(int *a, int a_counter)
 {
-	t_lists	lists;
+	t_lists lists;
 
 	if (a[0] > a[1] && a[2] && a[2] > a[0])
 		(ft_printf("sa\n"), a = sa(a));
@@ -41,7 +41,7 @@ static t_lists	sort_three(int *a, int a_counter)
 	return (lists);
 }
 
-static t_lists	make_five(t_lists lists, int i, int min, int min_on_start)
+static t_lists make_five(t_lists lists, int i, int min, int min_on_start)
 {
 	while ((!min_on_start && i < 2) || (min_on_start && !i))
 	{
@@ -70,10 +70,65 @@ static t_lists	make_five(t_lists lists, int i, int min, int min_on_start)
 	return (lists);
 }
 
-static t_lists	sort_four(int *a, int *b, int a_counter, int b_counter)
+/*static t_lists sort_four(int *a, int *b, int a_counter, int b_counter)
 {
-	t_lists	lists;
-	t_lists	reverse;
+	t_lists lists;
+
+	lists.a = a;
+	lists.b = b;
+	lists.a_counter = a_counter;
+	lists.b_counter = b_counter;
+	lists.b_counter++;
+	lists.a_counter--;
+	lists = p(lists.a, lists.b, lists.a_counter, lists.b_counter);
+	ft_printf("pb\n");
+	lists = sort_three(lists.a, lists.a_counter);
+	if (lists.b[0] == 1)
+	{
+		lists.a_counter++;
+		lists.b_counter--;
+		lists = p(lists.b, lists.a, lists.b_counter, lists.a_counter);
+		ft_printf("pb\n");
+	}
+	else if (lists.b[0] == 2)
+	{
+		lists.a = r(lists.a, lists.a_counter);
+		ft_printf("ra\n");
+		lists.a_counter++;
+		lists.b_counter--;
+		lists = p(lists.b, lists.a, lists.b_counter, lists.a_counter);
+		ft_printf("pa\n");
+		lists.a = rr(lists.a, lists.a_counter);
+		ft_printf("rra\n");
+	}
+	else if (lists.b[0] == 3)
+	{
+		lists.a = rr(lists.a, lists.a_counter);
+		ft_printf("rra\n");
+		lists.a_counter++;
+		lists.b_counter--;
+		lists = p(lists.b, lists.a, lists.b_counter, lists.a_counter);
+		ft_printf("pa\n");
+		lists.a = r(lists.a, lists.a_counter);
+		lists.a = r(lists.a, lists.a_counter);
+		ft_printf("ra\nra\n");
+	}
+	else if (lists.b[0] == 4)
+	{
+		lists.a_counter++;
+		lists.b_counter--;
+		lists = p(lists.b, lists.a, lists.b_counter, lists.a_counter);
+		ft_printf("pa\n");
+		lists.a = r(lists.a, lists.a_counter);
+		ft_printf("ra\n");
+	}
+	return (lists);
+}*/
+
+static t_lists sort_four(int *a, int *b, int a_counter, int b_counter)
+{
+	t_lists lists;
+	t_lists reverse;
 
 	lists.a = a;
 	lists.b = b;
@@ -90,16 +145,30 @@ static t_lists	sort_four(int *a, int *b, int a_counter, int b_counter)
 	return (lists);
 }
 
-static void	sort_five(int *a, int *b, int a_counter, int b_counter)
+// static void show(int *l, char c, int counter, char *end)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	ft_printf("%c: ", c);
+// 	while (i < counter)
+// 	{
+// 		ft_printf("%d ", l[i]);
+// 		i++;
+// 	}
+// 	ft_printf("%s", end);
+// }
+
+static t_lists sort_five(int *a, int *b, int a_counter, int b_counter)
 {
-	t_lists	lists;
-	t_lists	reverse;
+	t_lists lists;
+	t_lists reverse;
 
 	lists.a = a;
 	lists.b = b;
 	lists.a_counter = a_counter;
 	lists.b_counter = b_counter;
-	make_five(lists, 0, 0, 0);
+	lists = make_five(lists, 0, 0, 0);
 	sort_three(lists.a, lists.a_counter);
 	lists.a_counter++;
 	lists.b_counter--;
@@ -113,9 +182,10 @@ static void	sort_five(int *a, int *b, int a_counter, int b_counter)
 	lists.a = reverse.b;
 	lists.b = reverse.a;
 	ft_printf("pa\n");
+	return (lists);
 }
 
-void	sort_small_stack(t_lists lists)
+void sort_small_stack(t_lists lists)
 {
 	if (lists.a_counter == 2)
 	{

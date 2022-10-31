@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/10/30 22:55:57 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:07:58 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,14 @@ int main(int argc, char **argv)
 		return (error());
 	lists.a = get_index(argument.numbers, argument.counter);
 	if (!lists.a)
-		return (error());
+		return (0);
 	lists.b = ft_calloc(sizeof(int), argument.counter);
+	if (!lists.b)
+		return (0);
 	lists.b_counter = 1;
 	lists.a_counter = argument.counter;
 	if (is_sorted(lists.a, lists.a_counter))
 		return (0);
-	printf("HELLO\n");
 	if (argument.counter <= 5)
 		sort_small_stack(lists);
 	else
