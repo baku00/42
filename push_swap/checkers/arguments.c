@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/30 16:52:23 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/10/31 22:41:05 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 bool	check_number_arguments(int argc)
 {
-	return (argc >= 2);
+	return (argc >= 3);
 }

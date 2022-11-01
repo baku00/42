@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/10/31 17:07:58 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/01 01:30:38 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,10 @@ int	main(int argc, char **argv)
 	lists.b_counter = 1;
 	lists.a_counter = argument.counter;
 	if (is_sorted(lists.a, lists.a_counter))
-		return (0);
+		return (freeall(argument, lists, 1));
 	if (argument.counter <= 5)
 		sort_small_stack(lists);
 	else
 		sort_big_stack(lists, argument.counter);
-	freeall(argument, lists);
-	return (0);
+	return (freeall(argument, lists, 1));
 }

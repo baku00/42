@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/03 03:38:54 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/01 01:38:08 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ static bool	l_int(char *n)
 	return (false);
 }
 
+static int	*error(t_argument argument, int *numbers)
+{
+	t_lists	lists;
+
+	free(numbers);
+	freeall(argument, lists, 0);
+	return (NULL);
+}
+
 int	*convert_to_numbers(t_argument argument)
 {
 	int	*numbers;
@@ -74,12 +83,12 @@ int	*convert_to_numbers(t_argument argument)
 		while (argument.args[i][++j])
 		{
 			if (!ft_isdigit(argument.args[i][j]) && argument.args[i][j] != '-')
-				return (NULL);
+				return (error(argument, numbers));
 			else if (ft_isdigit(argument.args[i][j]) && j <= 1)
 				got_digit = 1;
 		}
 		if (!got_digit || m_int(argument.args[i]) || l_int(argument.args[i]))
-			return (NULL);
+			return (error(argument, numbers));
 		numbers[i] = ft_atoi(argument.args[i]);
 	}
 	return (numbers);
