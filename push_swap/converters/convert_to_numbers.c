@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/01 01:38:08 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:55:16 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	*error(t_argument argument, int *numbers)
 	t_lists	lists;
 
 	lists.a_counter = 0;
-	free(numbers);
+	argument.numbers = numbers;
 	freeall(argument, lists, 0);
 	return (NULL);
 }
