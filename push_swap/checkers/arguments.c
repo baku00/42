@@ -14,5 +14,5 @@
 
 bool	check_number_arguments(int argc)
 {
-	return (argc >= 3);
+	return (argc >= 2);
 }

@@ -15,7 +15,6 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdio.h>
-# include <malloc.h>
 # include "includes/ft_printf/ft_printf.h"
 # include "types/types.h"
 # include "headers/protos.h"

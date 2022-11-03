@@ -60,6 +60,7 @@ static int	*error(t_argument argument, int *numbers)
 {
 	t_lists	lists;
 
+	lists.a_counter = 0;
 	free(numbers);
 	freeall(argument, lists, 0);
 	return (NULL);
