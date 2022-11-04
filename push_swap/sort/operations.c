@@ -5,24 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/02 05:29:27 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/04 16:23:47 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/04 16:41:26 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "sort.h"
 
-int	*sa(int *a)
+int	*s(int *list, char c, int display)
 {
-	int	tmp;
+	int	temp;
 
-	tmp = a[0];
-	a[0] = a[1];
-	a[1] = tmp;
-	return (a);
+	temp = list[0];
+	list[0] = list[1];
+	list[1] = temp;
+	if (display)
+		ft_printf("s%c\n", c);
+	return (list);
 }
 
-int	*r(int *l, int counter)
+int	*r(int *l, int counter, char c, int display)
 {
 	int	n;
 	int	i;
@@ -36,10 +38,12 @@ int	*r(int *l, int counter)
 		i++;
 	}
 	l[i] = n;
+	if (display)
+		ft_printf("r%c\n", c);
 	return (l);
 }
 
-int	*rr(int *l, int counter)
+int	*rr(int *l, int counter, char c, int display)
 {
 	int	n;
 	int	i;
@@ -53,12 +57,14 @@ int	*rr(int *l, int counter)
 		i--;
 	}
 	l[i] = n;
+	if (display)
+		ft_printf("r%c\n", c);
 	return (l);
 }
 
-t_lists	p(int *l1, int *l2, int counter1, int counter2)
+t_sort	p(int *l1, int *l2, int counter1, int counter2)
 {
-	t_lists	lists;
+	t_sort	lists;
 	int		n;
 
 	n = l1[0];

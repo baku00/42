@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   array_to_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/10/21 14:53:54 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/04 04:56:53 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/04 15:44:49 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_array.h"
 
-char	*ft_strrchr(const char *s, int c)
+typedef struct s_to_string
 {
 	int		i;
-	char	*str;
+	char	*result;
+}	t_to_string;
 
-	str = (char *) s;
-	i = ft_strlen(s) - 1;
-	if (c == 0)
-		return (str + ft_strlen(str));
-	while (i >= 0 && str[i])
+char	*to_string(char **argv)
+{
+	t_to_string	to_string;
+
+	to_string.i = -1;
+	to_string.result = ft_calloc(sizeof(char), 1);
+	if (!to_string.result)
+		return (NULL);
+	while (argv[++to_string.i])
 	{
-		if ((char) str[i] == (char) c)
-			return (&str[i]);
-		i--;
+		to_string.result = ft_strjoin(to_string.result, " ");
+		to_string.result = ft_strjoin(to_string);
 	}
-	if (s[i] == c)
-		return (&str[i]);
-	return (0);
 }

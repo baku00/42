@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arguments.c                                        :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/10/31 22:41:05 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/04 04:56:53 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/04 05:21:50 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "ft_array.h"
 
-bool	check_number_arguments(int argc)
+void	free_array(char **argv, int i)
 {
-	return (argc >= 2);
+	while (--i >= 0)
+		free(argv[i]);
+	free(argv);
 }

@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   arguments.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 20:10:53 by user              #+#    #+#             */
-/*   Updated: 2022/11/03 12:54:49 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/04 03:38:41 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/04 16:12:36 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef ARGUMENTS_H
+# define ARGUMENTS_H
+# include "../main.h"
 
-int	freeall(t_argument argument, t_lists lists, int free_list)
+typedef struct s_arguments
 {
-	int	i;
+	int	length;
+	int	*numbers;
+	int	error;
+}	t_arguments;
 
-	free(argument.numbers);
-	free(argument.arg);
-	i = -1;
-	while (++i < argument.counter)
-		free(argument.args[i]);
-	free(argument.args);
-	if (free_list)
-	{
-		free(lists.a);
-		free(lists.b);
-	}
-	return (0);
-}
+t_arguments	check_argument(int argc, char **argv);
+
+#endif

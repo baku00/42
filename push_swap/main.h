@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argument.h                                         :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/05/30 18:46:40 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/04 03:38:40 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/04 16:18:33 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARGUMENT_H
-# define ARGUMENT_H
+#ifndef MAIN_H
+# define MAIN_H
+# include "includes/ft_printf/ft_printf.h"
+# include "protos.h"
+# include "arguments/arguments.h"
+# include "array/ft_array.h"
+# include "sort/sort.h"
 
-/*
-	char *arg		les éléments en chaîne de caractères		"6 5 4"
-	char **args		les éléments en tableau de caractères		["6", "5", "4"]
-	int counter		le nombre total d'éléments					3
-	int *numbers	les éléments en tableau d'entier			[6, 5, 4]
-*/
-
-typedef struct argument
-{
-	char	*arg;
-	char	**args;
-	int		counter;
-	int		*numbers;
-}	t_argument;
 #endif

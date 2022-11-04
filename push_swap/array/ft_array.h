@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_array.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/10/30 23:01:53 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/04 04:57:02 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/04 16:04:30 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include <stdlib.h>
-# include <stdbool.h>
-# include <stdio.h>
-# include "includes/ft_printf/ft_printf.h"
-# include "types/types.h"
-# include "headers/protos.h"
+#ifndef FT_ARRAY_H
+# define FT_ARRAY_H
+# include "../main.h"
+
+char	**ft_array_dup(char **array);
+int		*ft_int_array_dup(int *array, int length);
+char	*array_to_string(char **array);
+int		ft_array_length(char **argv);
+void	free_array(char **argv, int i);
+
 #endif

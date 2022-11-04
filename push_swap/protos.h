@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lists.h                                            :+:      :+:    :+:   */
+/*   protos.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/10/30 23:17:14 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/04 03:39:36 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/04 03:47:53 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LISTS_H
-# define LISTS_H
+#ifndef PROTOS_H
+# define PROTOS_H
 
-/*
-	int *a			la liste a
-	int a_counter	le nombre d'éléments présent dans liste a
-	int *b			la liste b
-	int b_counter	le nombre d'éléments présent dans liste b
-*/
-typedef struct s_lists
-{
-	int	*a;
-	int	a_counter;
-	int	*b;
-	int	b_counter;
-}	t_lists;
+int main(int argc, char **argv);
 #endif
