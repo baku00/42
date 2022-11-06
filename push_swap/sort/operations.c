@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 16:23:47 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/04 16:41:26 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:00:32 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@ int	*r(int *l, int counter, char c, int display)
 	int	n;
 	int	i;
 
+	if (!counter)
+		return (l);
 	n = l[0];
-	i = 0;
-	while (i < counter - 1)
-	{
-		if (l[i + 1])
-			l[i] = l[i + 1];
-		i++;
-	}
+	i = -1;
+	while (++i < counter - 1)
+		l[i] = l[i + 1];
 	l[i] = n;
 	if (display)
 		ft_printf("r%c\n", c);
@@ -48,33 +46,57 @@ int	*rr(int *l, int counter, char c, int display)
 	int	n;
 	int	i;
 
-	n = l[counter - 1];
-	i = counter - 1;
-	while (i > 0)
-	{
-		if (l[i - 1])
-			l[i] = l[i - 1];
-		i--;
-	}
-	l[i] = n;
+	if (!counter)
+		return (l);
+	n = l[counter];
+	i = counter + 1;
+	while (--i > 0)
+		l[i] = l[i - 1];
+	l[0] = n;
 	if (display)
-		ft_printf("r%c\n", c);
+		ft_printf("rr%c\n", c);
 	return (l);
 }
 
-t_sort	p(int *l1, int *l2, int counter1, int counter2)
+t_sort	pb(t_sort sort)
+{
+	t_sort	lists;
+	int		n;
+	int		show;
+
+	n = sort.a[0];
+	sort.a = r(sort.a, sort.a_counter, ' ', 0);
+	sort.a_counter -= 1;
+	sort.a[sort.a_counter] = 0;
+	sort.b[sort.b_counter] = n;
+	sort.b = rr(sort.b, sort.b_counter, ' ', 0);
+	sort.b_counter += 1;
+	lists.a = sort.a;
+	lists.b = sort.b;
+	lists.a_counter = sort.a_counter;
+	lists.b_counter = sort.b_counter;
+	lists.max_length = sort.max_length;
+	ft_printf("pb\n");
+	return (lists);
+}
+
+t_sort	pa(t_sort sort)
 {
 	t_sort	lists;
 	int		n;
 
-	n = l1[0];
-	l1 = r(l1, counter1);
-	l1[counter1 - 1] = 0;
-	l2[counter2 - 1] = n;
-	l2 = rr(l2, counter2);
-	lists.a = l1;
-	lists.b = l2;
-	lists.a_counter = counter1;
-	lists.b_counter = counter2;
+	n = sort.b[0];
+	sort.b = r(sort.b, sort.b_counter, ' ', 0);
+	sort.b_counter -= 1;
+	sort.b[sort.b_counter] = 0;
+	sort.a[sort.a_counter] = n;
+	sort.a = rr(sort.a, sort.a_counter, ' ', 0);
+	sort.a_counter += 1;
+	lists.b = sort.b;
+	lists.a = sort.a;
+	lists.b_counter = sort.b_counter;
+	lists.a_counter = sort.a_counter;
+	lists.max_length = sort.max_length;
+	ft_printf("pa\n");
 	return (lists);
 }

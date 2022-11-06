@@ -2,10 +2,12 @@ NAME = push_swap
 
 SRCS = main.c \
 	arguments/arguments.c \
+	arguments/arguments_utils.c \
 	array/ft_array_dup.c \
 	array/ft_array_length.c \
 	array/ft_free_array.c \
 	sort/sort_small.c \
+	sort/sort_big.c \
 	sort/operations.c
 FT_PRINTF_A = includes/ft_printf/libftprintf.a
 

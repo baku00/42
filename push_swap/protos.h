@@ -6,12 +6,12 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 03:39:36 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/04 03:47:53 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:59:34 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROTOS_H
 # define PROTOS_H
 
-int main(int argc, char **argv);
+int	main(int argc, char **argv);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 03:38:43 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/04 17:06:06 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:59:02 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,25 @@ static char	**remove_file_name(int argc, char **argv)
 	return (remove.args);
 }
 
+static int	next(t_arguments arguments, t_sort sort)
+{
+	sort.a = ft_int_array_dup(arguments.numbers, arguments.length);
+	sort.a_counter = arguments.length;
+	free(arguments.numbers);
+	if (!sort.a)
+		return (0);
+	sort.b = ft_calloc(sizeof(int), arguments.length);
+	sort.b_counter = 0;
+	sort.max_length = arguments.length;
+	if (arguments.length <= 5)
+		sort_small(sort);
+	else
+		sort_big(sort);
+	free(sort.a);
+	free(sort.b);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	char		**args;
@@ -51,17 +70,5 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (0);
 	}
-	sort.a = ft_int_array_dup(arguments.numbers, arguments.length);
-	sort.a_counter = arguments.length;
-	free(arguments.numbers);
-	if (!sort.a)
-		return (0);
-	sort.b = ft_calloc(sizeof(int), arguments.length);
-	sort.b_counter = arguments.length;
-	sort.max_length = arguments.length;
-	if (arguments.length <= 5)
-		sort_small(sort);
-	free(sort.a);
-	free(sort.b);
-	return (0);
+	return (next(arguments, sort));
 }

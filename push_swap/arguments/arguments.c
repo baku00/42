@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 03:38:42 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/04 16:12:46 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:48:15 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ static int	valid_number(int argc)
 {
 	return (argc >= 1);
 }
-
-typedef struct s_format
-{
-	char	**args;
-	char	*itoa;
-	int		atoi;
-	int		length;
-	int		strlen;
-	int		*numbers;
-	int		i;
-	int		error;
-}	t_format;
 
 static t_format	check_format(int argc, char **argv)
 {
@@ -50,26 +38,28 @@ static t_format	check_format(int argc, char **argv)
 		format.error = 1;
 		return (format);
 	}
-	format.i = -1;
-	format.error = 0;
-	while (!format.error && ++format.i < format.length)
-	{
-		format.atoi = ft_atoi(format.args[format.i]);
-		format.itoa = ft_itoa(format.atoi);
-		format.strlen = ft_strlen(format.args[format.i]);
-		if (ft_strncmp(format.args[format.i], format.itoa, format.strlen))
-			format.error = 1;
-		else
-			format.numbers[format.i] = format.atoi;
-		free(format.itoa);
-	}
-	free_array(format.args, format.length);
-	if (format.error)
-	{
-		free(format.numbers);
-		return (format);
-	}
+	format = check_format_utils(format);
 	return (format);
+}
+
+static int	*get_index(int *numbers, int length)
+{
+	t_index	index;
+
+	index.index = ft_calloc(sizeof(int), length);
+	if (!index.index)
+		return (NULL);
+	index.registered = ft_calloc(sizeof(int), length);
+	if (!index.registered)
+		return (NULL);
+	index = get_index_utils(index, numbers, length);
+	free(index.registered);
+	if (index.error)
+	{
+		free(index.index);
+		return (NULL);
+	}
+	return (index.index);
 }
 
 t_arguments	check_argument(int argc, char **argv)
@@ -86,8 +76,10 @@ t_arguments	check_argument(int argc, char **argv)
 		arguments.error = 1;
 	if (arguments.error)
 		return (arguments);
-	arguments.numbers = ft_int_array_dup(format.numbers, format.length);
+	arguments.numbers = get_index(format.numbers, format.length);
 	arguments.length = format.length;
+	if (!arguments.numbers)
+		arguments.error = 1;
 	free(format.numbers);
 	return (arguments);
 }
