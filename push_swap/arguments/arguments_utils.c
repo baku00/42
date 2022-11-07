@@ -6,11 +6,32 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:15:53 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/06 16:47:43 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/08 00:31:21 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arguments.h"
+
+static int	valid_arg(t_format format)
+{
+	char	*str;
+
+	str = ft_calloc(sizeof(char), 2);
+	if (!str)
+		return (-1);
+	str[0] = '+';
+	str = ft_strjoin(str, format.itoa);
+	if (!str)
+		return (-1);
+	if (ft_strncmp(format.args[format.i], format.itoa, format.strlen) && \
+		ft_strncmp(format.args[format.i], str, format.strlen))
+	{
+		free(str);
+		return (0);
+	}
+	free(str);
+	return (1);
+}
 
 t_format	check_format_utils(t_format format)
 {
@@ -21,7 +42,7 @@ t_format	check_format_utils(t_format format)
 		format.atoi = ft_atoi(format.args[format.i]);
 		format.itoa = ft_itoa(format.atoi);
 		format.strlen = ft_strlen(format.args[format.i]);
-		if (ft_strncmp(format.args[format.i], format.itoa, format.strlen))
+		if (valid_arg(format) < 1)
 			format.error = 1;
 		else
 			format.numbers[format.i] = format.atoi;
