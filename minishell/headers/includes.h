@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:21:00 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/21 01:32:42 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/06/21 01:26:35 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/06/21 01:33:58 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef INCLUDES_H
+# define INCLUDES_H
 
-# include "headers/includes.h"
-
-int	main(int argc, char **argv);
+# include <stdio.h>
+# include <stdlib.h>
+# include <main.h>
+# include "./libraries.h"
+# include "../libft/libft.h"
 
 #endif

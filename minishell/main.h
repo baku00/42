@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:26:35 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/21 01:33:58 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/06/21 01:21:00 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/06/21 01:32:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#ifndef MAIN_H
+# define MAIN_H
 
-# include <main.h>
-# include "./libraries.h"
+# include "headers/includes.h"
+
+typedef struct s_main
+{
+	char	**cmds;
+	char	*cmd;
+	char	**path;
+	char	*full_path;
+	int		exit;
+}	t_main;
+
+int	main(int argc, char **argv);
 
 #endif

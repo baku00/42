@@ -1,10 +1,11 @@
 # Program name
-NAME	=FILE_NAME
+NAME	=minishell
 
 # Compilation config
 CC		=gcc
 INCLUDES=.
 CFLAGS	=-Wall -Werror -Wextra -I$(INCLUDES)
+LIBFT	=libft
 
 # File sources
 SRCS	=main.c
@@ -14,8 +15,11 @@ OBJS	=$(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -I$(LIBFT) -o $(NAME)
+
+$(LIBFT):
+	make -C ./libft
 
 test:
 	./${NAME}
