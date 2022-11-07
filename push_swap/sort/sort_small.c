@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 04:08:55 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/07 00:59:26 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/07 02:02:13 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,29 @@ static t_sort	sort_three(int *a, int a_counter)
 	return (sort);
 }
 
-static int	find_min(int *stack, int counter)
+typedef struct s_min
 {
 	int	i;
 	int	min;
+	int	index;
+}	t_min;
 
-	i = 0;
-	min = stack[0];
-	while (i < counter)
+static t_min	find_min(int *stack, int counter)
+{
+	t_min	find;
+
+	find.i = 0;
+	find.min = stack[0];
+	while (find.i < counter)
 	{
-		if (min > stack[i] && stack[i] > 0)
-			min = stack[i];
-		i++;
+		if (find.min > stack[find.i] && stack[find.i] > 0)
+		{
+			find.min = stack[find.i];
+			find.index = find.i;
+		}
+		find.i++;
 	}
-	return (min);
+	return (find);
 }
 
 static t_sort	sort_four(t_sort sort)
@@ -58,7 +67,7 @@ static t_sort	sort_four(t_sort sort)
 	int		min;
 
 	bingo = 0;
-	min = find_min(sort.a, sort.a_counter);
+	min = find_min(sort.a, sort.a_counter).min;
 	while (!bingo)
 	{
 		if (sort.a[0] == min)
@@ -80,26 +89,32 @@ static t_sort	sort_four(t_sort sort)
 	return (sort);
 }
 
+typedef struct s_five
+{
+	int	bingo;
+	int	min;
+}	t_five;
+
 static void	sort_five(t_sort sort)
 {
-	t_sort	reverse;
-	int		bingo;
-	int		min;
+	t_five	five;
 
-	bingo = 0;
-	while (bingo < 2)
+	five.bingo = 0;
+	if (find_min(sort.a, sort.a_counter).index == sort.a_counter - 1)
+		sort.a = rr(sort.a, sort.a_counter, 'a', 1);
+	while (five.bingo < 2)
 	{
-		min = find_min(sort.a, sort.a_counter);
-		if (a[0] == min)
+		five.min = find_min(sort.a, sort.a_counter).min;
+		if (sort.a[0] == five.min)
 		{
 			sort = pb(sort);
-			bingo++;
+			five.bingo++;
 		}
-		else if (a[1] == min)
+		else if (sort.a[1] == five.min)
 		{
 			sort.a = s(sort.a, 'a', 1);
 			sort = pb(sort);
-			bingo++;
+			five.bingo++;
 		}
 		else
 			sort.a = r(sort.a, sort.a_counter, 'a', 1);
@@ -116,7 +131,7 @@ void	sort_small(t_sort sort)
 	else if (sort.a_counter == 3)
 		sort_three(sort.a, sort.a_counter);
 	else if (sort.a_counter == 4)
-		sort_four(sort.a, sort.b, sort.a_counter, sort.b_counter);
+		sort_four(sort);
 	else if (sort.a_counter == 5)
-		sort_five(sort.a, sort.b, sort.a_counter, sort.b_counter);
+		sort_five(sort);
 }

@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 03:38:41 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/06 16:47:11 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:09:02 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_arguments
 	int	length;
 	int	*numbers;
 	int	error;
+	int	show_error;
 }	t_arguments;
 
 typedef struct s_format

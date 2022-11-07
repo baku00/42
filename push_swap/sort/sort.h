@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 16:16:17 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/06 16:15:09 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:18:48 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		*r(int *l, int counter, char c, int display);
 int		*rr(int *l, int counter, char c, int display);
 t_sort	pb(t_sort sort);
 t_sort	pa(t_sort sort);
+int		is_sorted(t_sort sort);
 
 #endif

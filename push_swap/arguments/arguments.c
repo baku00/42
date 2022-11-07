@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 03:38:42 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/06 16:48:15 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:08:15 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,12 @@ t_arguments	check_argument(int argc, char **argv)
 	t_format	format;
 
 	arguments.error = 0;
+	arguments.show_error = 1;
 	if (!valid_number(argc))
+	{
 		arguments.error = 1;
+		arguments.show_error = 0;
+	}
 	if (!arguments.error)
 		format = check_format(argc, argv);
 	if (format.error)

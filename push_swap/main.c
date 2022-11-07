@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 03:38:43 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/06 15:59:02 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/07 02:03:40 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@ static int	next(t_arguments arguments, t_sort sort)
 	sort.b = ft_calloc(sizeof(int), arguments.length);
 	sort.b_counter = 0;
 	sort.max_length = arguments.length;
-	if (arguments.length <= 5)
-		sort_small(sort);
-	else
-		sort_big(sort);
+	if (!is_sorted(sort))
+	{
+		if (arguments.length <= 5)
+			sort_small(sort);
+		else
+			sort_big(sort);
+	}
 	free(sort.a);
 	free(sort.b);
 	return (0);
@@ -67,7 +70,8 @@ int	main(int argc, char **argv)
 	free(args);
 	if (arguments.error)
 	{
-		ft_printf("Error\n");
+		if (arguments.show_error)
+			ft_printf("Error\n");
 		return (0);
 	}
 	return (next(arguments, sort));

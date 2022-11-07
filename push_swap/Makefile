@@ -8,6 +8,7 @@ SRCS = main.c \
 	array/ft_free_array.c \
 	sort/sort_small.c \
 	sort/sort_big.c \
+	sort/is_sorted.c \
 	sort/operations.c
 FT_PRINTF_A = includes/ft_printf/libftprintf.a
 
