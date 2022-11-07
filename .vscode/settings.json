@@ -1,3 +1,4 @@
 {
-    "norminette.fileregex": "^*\\.[ch]$"
+    "norminette.fileregex": "^*\\.[ch]$",
+    "nuxt.isNuxtApp": false
 }

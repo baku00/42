@@ -23,3 +23,6 @@ minitalk:
 
 philo:
 	git checkout philosophers
+
+minishell:
+	git checkout minishell
