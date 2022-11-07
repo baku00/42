@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   42header.c                                         :+:      :+:    :+:   */
+/*   philos.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/10/15 14:39:32 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/07 21:51:58 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/07 22:45:32 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PHILOS_H
+# define PHILOS_H
+# include "philos.h"
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-}
+t_philo	*init_philos(int argc, char **argv);
+void	*routine(t_philo *philo);
+#endif

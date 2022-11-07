@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:53:19 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/21 02:02:49 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/07 21:19:07 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/07 21:31:55 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <main.h>
+#include "libft.h"
 
-int	check_arguments_type(int argc, char **argv)
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = -1;
-	while (++i < argc)
-	{
-	}
-}
-
-int	check_arguments_number(int argc)
-{
-	return (argc >= MIN_ARGUMENTS_NUMBER && argc <= MAX_ARGUMENTS_NUMBER);
-}
-
-int	check_arguments(int argc, char **argv)
-{
-	if (!check_arguments_number(argc))
-		return (false);
+	while (str[++i])
+		;
+	return (i);
 }

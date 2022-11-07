@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   arguments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/15 14:37:22 by dgloriod          #+#    #+#             */
-/*   Updated: 2021/10/21 17:59:08 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/06/21 01:53:19 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/07 21:50:52 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "arguments.h"
 
-void	ft_putstr_fd(char *s, int fd)
+static int	valid_arguments(int argc, char **argv)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-		ft_putchar_fd(s[i++], fd);
+	while (++i < argc)
+		if (ft_atoi(argv[i]) <= 0)
+			return (0);
+	return (1);
+}
+
+static int	valid_counter(int argc)
+{
+	return (argc >= MIN_ARGUMENTS_NUMBER && argc <= MAX_ARGUMENTS_NUMBER);
+}
+
+int	check_arguments(int argc, char **argv)
+{
+	return (valid_arguments(argc, argv) && valid_counter(argc - 1));
 }

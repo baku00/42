@@ -9,15 +9,14 @@ CFLAGS	=-Wall -Werror -Wextra -I$(INCLUDES)
 # SRCS DIRS
 SRCS_DIR	=srcs
 LIBFT_DIR	=$(SRCS_DIR)/libft
+ARGUMENTS_DIR	=$(SRCS_DIR)/arguments
 
 # File sources
 SRCS	=main.c \
+			$(ARGUMENTS_DIR)/arguments.c \
 			$(LIBFT_DIR)/ft_atoi.c \
-			$(LIBFT_DIR)/ft_calloc.c \
-			$(LIBFT_DIR)/ft_putchar_fd.c \
-			$(LIBFT_DIR)/ft_putendl_fd.c \
-			$(LIBFT_DIR)/ft_putnbr_fd.c \
-			$(LIBFT_DIR)/ft_putstr_fd.c \
+			$(LIBFT_DIR)/ft_isdigit.c \
+			$(LIBFT_DIR)/ft_strlen.c
 
 # File objects
 OBJS	=$(SRCS:.c=.o)
