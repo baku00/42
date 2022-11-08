@@ -23,9 +23,13 @@ clean:
 	rm -rf $(OBJS)
 	make clean -C includes/ft_printf
 
-make fclean: clean
+fclean: clean
 	rm -rf $(NAME)
 	make fclean -C includes/ft_printf
 
+re:	fclean all
+
 $(FT_PRINTF_A):
 	make -C includes/ft_printf
+
+.PHONY: all clean fclean re
