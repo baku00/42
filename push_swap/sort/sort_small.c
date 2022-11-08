@@ -101,7 +101,7 @@ static void	sort_five(t_sort sort)
 
 	five.bingo = 0;
 	if (find_min(sort.a, sort.a_counter).index == sort.a_counter - 1)
-		sort.a = rr(sort.a, sort.a_counter, 'a', 1);
+		sort.a = rr(sort.a, sort.a_counter - 1, 'a', 1);
 	while (five.bingo < 2)
 	{
 		five.min = find_min(sort.a, sort.a_counter).min;

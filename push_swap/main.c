@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 	if (arguments.error)
 	{
 		if (arguments.show_error)
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 		return (0);
 	}
 	return (next(arguments, sort));
