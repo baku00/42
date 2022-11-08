@@ -100,7 +100,7 @@ t_arguments	check_argument(int argc, char **argv)
 		arguments.error = 1;
 	if (arguments.error || get_double(format))
 	{
-		(free(format.numbers), arguments.error = 1);
+		arguments.error = 1;
 		return (arguments);
 	}
 	arguments.numbers = get_index(format.numbers, format.length);
