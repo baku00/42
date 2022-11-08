@@ -76,7 +76,10 @@ static int	get_double(t_format format)
 			if (i == j)
 				continue ;
 			if (format.numbers[i] == format.numbers[j])
+			{
+				free(format.numbers);
 				return (1);
+			}
 		}
 	}
 	return (0);
@@ -98,7 +101,7 @@ t_arguments	check_argument(int argc, char **argv)
 		format = check_format(argc, argv);
 	if (format.error)
 		arguments.error = 1;
-	if (arguments.error || get_double(format))
+	if (arguments.error || (!format.error && get_double(format)))
 	{
 		arguments.error = 1;
 		return (arguments);
