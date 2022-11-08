@@ -40,6 +40,11 @@ static int	next(t_arguments arguments, t_sort sort)
 	if (!sort.a)
 		return (0);
 	sort.b = ft_calloc(sizeof(int), arguments.length);
+	if (!sort.b)
+	{
+		free(sort.a);
+		return (0);
+	}
 	sort.b_counter = 0;
 	sort.max_length = arguments.length;
 	if (!is_sorted(sort))

@@ -62,6 +62,26 @@ static int	*get_index(int *numbers, int length)
 	return (index.index);
 }
 
+static int	get_double(t_format format)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < format.length)
+	{
+		j = -1;
+		while (++j < format.length)
+		{
+			if (i == j)
+				continue ;
+			if (format.numbers[i] == format.numbers[j])
+				return (1);
+		}
+	}
+	return (0);
+}
+
 t_arguments	check_argument(int argc, char **argv)
 {
 	t_arguments	arguments;
@@ -78,8 +98,11 @@ t_arguments	check_argument(int argc, char **argv)
 		format = check_format(argc, argv);
 	if (format.error)
 		arguments.error = 1;
-	if (arguments.error)
+	if (arguments.error || get_double(format))
+	{
+		(free(format.numbers), arguments.error = 1);
 		return (arguments);
+	}
 	arguments.numbers = get_index(format.numbers, format.length);
 	arguments.length = format.length;
 	if (!arguments.numbers)
