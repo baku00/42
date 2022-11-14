@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread.c                                           :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 22:44:35 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/07 22:46:23 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/14 21:13:05 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/14 21:13:06 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philos.h"
+#include "libft.h"
 
-void	*routine(t_philo *philo)
+int	ft_isspace(int c)
 {
-	printf("Thread\n");
-	return (NULL);
+	return (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ');
 }

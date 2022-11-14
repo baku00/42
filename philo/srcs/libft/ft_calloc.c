@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:54:53 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/07 21:50:17 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/14 21:12:59 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/14 21:13:00 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#include "libft.h"
 
-# define MIN_ARGUMENTS_NUMBER 5
-# define MAX_ARGUMENTS_NUMBER 6
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*calloc;
+	size_t	total;
+	int		i;
 
-#endif
+	i = 0;
+	total = count * size;
+	calloc = malloc(total);
+	if (!calloc)
+		return (0);
+	while (total--)
+		calloc[i++] = '\0';
+	return ((void *) calloc);
+}

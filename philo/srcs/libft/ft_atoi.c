@@ -5,18 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 21:19:07 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/07 21:31:50 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/14 21:12:56 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/14 21:12:56 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_isspace(int c)
-{
-	return (c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ');
-}
 
 int	ft_atoi(const char *str)
 {

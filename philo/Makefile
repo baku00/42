@@ -1,33 +1,34 @@
-# Program name
-NAME	=philo
+NAME = philo
 
-# Compilation config
-CC		=gcc
-INCLUDES=.
-CFLAGS	=-Wall -Werror -Wextra -I$(INCLUDES)
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
-# SRCS DIRS
-SRCS_DIR	=srcs
-LIBFT_DIR	=$(SRCS_DIR)/libft
-ARGUMENTS_DIR	=$(SRCS_DIR)/arguments
+SRCS_DIR = srcs
+LIBFT_DIR = $(SRCS_DIR)/libft
+PHILOS_DIR = philos
 
-# File sources
-SRCS	=main.c \
-			$(ARGUMENTS_DIR)/arguments.c \
-			$(LIBFT_DIR)/ft_atoi.c \
-			$(LIBFT_DIR)/ft_isdigit.c \
-			$(LIBFT_DIR)/ft_strlen.c
+SRCS = main.c \
+		$(LIBFT_DIR)/ft_atoi.c \
+		$(LIBFT_DIR)/ft_calloc.c \
+		$(LIBFT_DIR)/ft_isdigit.c \
+		$(LIBFT_DIR)/ft_isspace.c \
+		$(LIBFT_DIR)/ft_strlen.c \
+		$(PHILOS_DIR)/philos.c \
+		$(PHILOS_DIR)/routine.c \
+		$(PHILOS_DIR)/time.c \
+		$(PHILOS_DIR)/time_converter.c \
+		$(PHILOS_DIR)/supervisor.c \
+		$(PHILOS_DIR)/remove.c \
+		$(PHILOS_DIR)/make.c \
+		$(PHILOS_DIR)/can.c \
+		$(PHILOS_DIR)/print.c
 
-# File objects
-OBJS	=$(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
-test:
-	./${NAME}
+	$(CC) $(CFLAGS) -pthread $(OBJS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)
@@ -37,4 +38,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re

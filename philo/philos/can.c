@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arguments.c                                        :+:      :+:    :+:   */
+/*   can.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:53:19 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/07 21:50:52 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/14 21:12:23 by dgloriod          #+#    #+#             */
+/*   Updated: 2022/11/14 21:12:24 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arguments.h"
+#include "philos.h"
 
-static int	valid_arguments(int argc, char **argv)
+int	can_take_a_fork(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
-	while (++i < argc)
-		if (ft_atoi(argv[i]) <= 0)
-			return (0);
-	return (1);
+	return (pthread_mutex_lock(&philo->fork));
 }
 
-static int	valid_counter(int argc)
+int	can_eat(t_philo *philo)
 {
-	return (argc >= MIN_ARGUMENTS_NUMBER && argc <= MAX_ARGUMENTS_NUMBER);
-}
-
-int	check_arguments(int argc, char **argv)
-{
-	return (valid_arguments(argc, argv) && valid_counter(argc - 1));
+	return (philo->number_of_eat < philo->config.number_of_eat);
 }
