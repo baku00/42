@@ -16,11 +16,9 @@ void	make_eat(t_philo *philo)
 {
 	t_philo	*next;
 
-	if (!philo || !(&philo->fork))
+	if (!philo)
 		return ;
 	next = philo->next;
-	if (!(&next->fork))
-		return ;
 	if (can_take_a_fork(philo) == 0 && can_eat(philo) && !have_to_stop(philo))
 	{
 		print_has_taken_a_fork(philo);
