@@ -38,6 +38,6 @@ void	print_think(t_philo *philo)
 
 void	print_dead(t_philo *philo)
 {
-	printf("%ld %d is dead\n", \
+	printf("%ld %d died\n", \
 	get_current_time(philo->table->start_time), philo->n);
 }
