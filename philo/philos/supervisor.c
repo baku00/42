@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   supervisor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:12:41 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/14 21:12:42 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:57:44 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,5 @@ void	supervisor(t_philo *philos)
 		printf("%ld %d died\n", time, philos->n);
 	else if (philos->table->have_to_stop == REACH_MEAL)
 		printf("%ld %d has reach number of meal\n", time, philos->n);
-	while (philos->table->has_finish < philos->config.number_of_philos)
-		;
 	remove_all(philos);
 }

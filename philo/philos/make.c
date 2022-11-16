@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:12:26 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/14 21:12:26 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:29:31 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	make_eat(t_philo *philo)
 
 void	make_sleep(t_philo *philo)
 {
-	if (!philo && !have_to_stop(philo))
+	if (!philo || have_to_stop(philo))
 		return ;
 	print_sleep(philo);
 	milliseconde_sleep(philo->config.time_to_sleep);
@@ -50,7 +50,7 @@ void	make_sleep(t_philo *philo)
 
 void	make_think(t_philo *philo)
 {
-	if (!philo && !have_to_stop(philo))
+	if (!philo || have_to_stop(philo))
 		return ;
 	print_think(philo);
 	philo->state = WAIT_FOR_EAT_STATE;
@@ -58,8 +58,8 @@ void	make_think(t_philo *philo)
 
 void	make_start(t_philo *philo)
 {
-	if (!philo && !have_to_stop(philo))
+	if (!philo || have_to_stop(philo))
 		return ;
-	milliseconde_sleep(2);
+	milliseconde_sleep(philo->config.time_to_eat / 2);
 	philo->state = WAIT_FOR_EAT_STATE;
 }
