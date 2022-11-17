@@ -6,7 +6,7 @@
 /*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:12:49 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/17 02:39:25 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/17 10:43:42 by dgloriod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	milliseconde_sleep(long int milliseconde)
 	while (timer_ms < milliseconde)
 	{
 		timer_ms = get_time_pass(start_time, get_actual_time());
-		usleep(milliseconde / 10);
+		usleep(milliseconde);
 	}
 }
 
