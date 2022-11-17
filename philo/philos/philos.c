@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:12:28 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/16 16:17:41 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/17 02:14:47 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int i, t_table *table)
 	philo->config = config;
 	philo->last_eat = get_actual_time();
 	philo->table = table;
-	philo->table->have_to_stop = 0;
-	philo->table->has_finish = 0;
 	philo->number_of_eat = -1;
 	philo->fork_state = FORK_UNLOCK;
 	if (philo->n % 2)
@@ -99,8 +97,12 @@ void	init_philos(int argc, char **argv)
 		printf("Argument invalide\n");
 		return ;
 	}
+	table = create_table();
 	philo = create_philos(NULL, config, 0, &table);
 	philo = save_last(philo);
+	philo->table->start_time = get_actual_time();
+	while (philo->n != 1)
+		philo = philo->next;
 	create_thread(philo);
 	supervisor(philo);
 }

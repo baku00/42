@@ -21,7 +21,8 @@ SRCS = main.c \
 		$(PHILOS_DIR)/remove.c \
 		$(PHILOS_DIR)/make.c \
 		$(PHILOS_DIR)/can.c \
-		$(PHILOS_DIR)/print.c
+		$(PHILOS_DIR)/print.c \
+		$(PHILOS_DIR)/table.c
 
 OBJS = $(SRCS:.c=.o)
 

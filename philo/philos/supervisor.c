@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 21:12:41 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/16 16:57:44 by my_name_         ###   ########.fr       */
+/*   Created: 2022/11/17 01:41:29 by my_name_          #+#    #+#             */
+/*   Updated: 2022/11/17 02:11:37 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,24 @@ int	have_to_stop(t_philo *philo)
 	return (philo->table->have_to_stop);
 }
 
-void	supervisor(t_philo *philos)
+void	supervisor(t_philo *philo)
 {
-	long int	time;
-
-	time = 0;
-	philos->table->start_time = get_actual_time();
-	while (philos && philos->next && !philos->table->have_to_stop)
+	while (philo->n != 1)
+		philo = philo->next;
+	while (1)
 	{
-		if (!have_to_stop(philos))
-			philos = philos->next;
-		else
-			philos->table->philo = philos;
+		if (have_to_stop(philo))
+		{
+			philo_die(philo);
+			break ;
+		}
+		else if (philo->table->have_to_stop == REACH_MEAL)
+		{
+			printf("Each philo eat [%d] time(s)\n",
+				philo->config.number_of_eat);
+			break ;
+		}
+		philo = philo->next;
 	}
-	time = get_current_time(philos->table->start_time);
-	if (philos->table->have_to_stop == DEAD)
-		printf("%ld %d died\n", time, philos->n);
-	else if (philos->table->have_to_stop == REACH_MEAL)
-		printf("%ld %d has reach number of meal\n", time, philos->n);
-	remove_all(philos);
+	remove_all(philo);
 }

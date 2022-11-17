@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   table.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 01:28:35 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/17 02:10:28 by my_name_         ###   ########.fr       */
+/*   Created: 2022/11/17 02:12:33 by my_name_          #+#    #+#             */
+/*   Updated: 2022/11/17 02:14:59 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philos.h"
 
-void	*routine(void *p)
+t_table	create_table(void)
 {
-	t_philo	*philo;
+	t_table	table;
 
-	philo = (t_philo *) p;
-	if (philo->state == WAIT_FOR_START)
-		milliseconde_sleep(philo->config.time_to_eat / 2);
-	while (1)
-	{
-		if (!have_to_stop(philo))
-		{
-			philo_eat(philo);
-			philo_sleep(philo);
-			philo_think(philo);
-		}
-		else
-			break ;
-	}
-	return (NULL);
+	table.have_to_stop = 0;
+	table.has_finish = 0;
+	table.start_time = 0;
+	table.time_to_die = 0;
+	return (table);
 }

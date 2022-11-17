@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philos.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:12:31 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/14 21:12:31 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/17 02:14:40 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_table
 	int			have_to_stop;
 	long int	start_time;
 	int			has_finish;
+	long int	time_to_die;
 	void		*philo;
 }	t_table;
 
@@ -63,15 +64,17 @@ void		supervisor(t_philo *philos);
 long int	get_current_time(long int start_time);
 int			have_to_stop(t_philo *philo);
 void		remove_all(t_philo *philo);
-void		make_eat(t_philo *philo);
-void		make_sleep(t_philo *philo);
-void		make_think(t_philo *philo);
+void		philo_eat(t_philo *philo);
+void		philo_sleep(t_philo *philo);
+void		philo_think(t_philo *philo);
+void		philo_die(t_philo *philo);
 void		make_start(t_philo *philo);
-int			can_take_a_fork(t_philo *philo);
+int			can_take_a_fork(t_philo *philo, pthread_mutex_t *fork);
 int			can_eat(t_philo *philo);
 void		print_has_taken_a_fork(t_philo *philo);
 void		print_eat(t_philo *philo);
 void		print_sleep(t_philo *philo);
 void		print_think(t_philo *philo);
 void		print_dead(t_philo *philo);
+t_table		create_table(void);
 #endif

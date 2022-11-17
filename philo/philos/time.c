@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:12:49 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/11/14 21:12:51 by dgloriod         ###   ########.fr       */
+/*   Updated: 2022/11/17 01:23:39 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	milliseconde_sleep(long int milliseconde)
 	while (timer_ms < milliseconde)
 	{
 		timer_ms = get_time_pass(start_time, get_actual_time());
-		usleep(milliseconde / 1000);
+		usleep(milliseconde / 10);
 	}
 }
 
