@@ -1,6 +1,4 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/user/42'
-make: Leaving directory '/home/user/42'
- 
-make: *** No targets specified and no makefile found.  Stop.
+make.exe --dry-run --keep-going --print-directory
+'make.exe' n'est pas reconnu en tant que commande interne
+ou externe, un programme ex�cutable ou un fichier de commandes.
 
