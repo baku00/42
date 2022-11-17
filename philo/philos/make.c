@@ -12,6 +12,19 @@
 
 #include "philos.h"
 
+static void	update_meal(t_philo *philo)
+{
+	if (philo->config.number_of_eat >= 1)
+	{
+		philo->number_of_eat += 1;
+		if (philo->number_of_eat >= philo->config.number_of_eat)
+		{
+			philo->table->have_to_stop = REACH_MEAL;
+			philo->table->philo_stop = philo->n;
+		}
+	}
+}
+
 void	make_eat(t_philo *philo)
 {
 	t_philo	*next;
@@ -29,8 +42,7 @@ void	make_eat(t_philo *philo)
 			milliseconde_sleep(philo->config.time_to_eat);
 			pthread_mutex_unlock(&philo->fork);
 			pthread_mutex_unlock(&next->fork);
-			if (philo->config.number_of_eat >= 1)
-				philo->number_of_eat += 1;
+			update_meal(philo);
 			philo->last_eat = get_actual_time();
 			philo->state = SLEEPING_STATE;
 		}

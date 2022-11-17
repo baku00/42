@@ -25,10 +25,14 @@ static int	reach_number_of_eat(t_philo *philo)
 
 int	have_to_stop(t_philo *philo)
 {
+	if (philo->table->have_to_stop)
+		return (philo->table->have_to_stop);
 	if (!have_the_time(philo))
 		philo->table->have_to_stop = DEAD;
 	else if (reach_number_of_eat(philo))
 		philo->table->have_to_stop = REACH_MEAL;
+	if (philo->table->have_to_stop && !philo->table->philo_stop)
+		philo->table->philo_stop = philo->n;
 	return (philo->table->have_to_stop);
 }
 
@@ -43,13 +47,12 @@ void	supervisor(t_philo *philos)
 	{
 		if (!have_to_stop(philos))
 			philos = philos->next;
-		else
-			philos->table->philo = philos;
 	}
 	time = get_current_time(philos->table->start_time);
 	if (philos->table->have_to_stop == DEAD)
-		printf("%ld %d died\n", time, philos->n);
+		printf("%ld %d died\n", time, philos->table->philo_stop);
 	else if (philos->table->have_to_stop == REACH_MEAL)
-		printf("%ld %d has reach number of meal\n", time, philos->n);
+		printf("%ld %d has reach number of meal\n", time, \
+		philos->table->philo_stop);
 	remove_all(philos);
 }
