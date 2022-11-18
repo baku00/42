@@ -6,6 +6,7 @@ CC		=gcc
 INCLUDES=.
 CFLAGS	=-Wall -Werror -Wextra -I$(INCLUDES)
 LIBFT	=libft
+LIBFT_A =$(LIBFT)/libft.a
 
 # File sources
 SRCS	=main.c
@@ -15,10 +16,10 @@ OBJS	=$(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -I$(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT_A)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -o $(NAME)
 
-$(LIBFT):
+$(LIBFT_A):
 	make -C ./libft
 
 test:
@@ -26,9 +27,11 @@ test:
 
 clean:
 	rm -rf $(OBJS)
+	make clean -C ./libft
 
 fclean: clean
 	rm -rf $(NAME)
+	make fclean -C ./libft
 
 re: fclean all
 

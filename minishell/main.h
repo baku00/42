@@ -24,6 +24,18 @@ typedef struct s_main
 	int		exit;
 }	t_main;
 
+typedef struct s_cmd_arguments
+{
+	char	*args;
+	void	*next;
+}	t_cmd_arguments;
+
+typedef struct s_command
+{
+	char			*cmd;
+	t_cmd_arguments	*args;
+}	t_command;
+
 int	main(int argc, char **argv);
 
 #endif
