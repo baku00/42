@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgloriod <dgloriod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 01:17:22 by dgloriod          #+#    #+#             */
-/*   Updated: 2022/06/21 01:33:31 by dgloriod         ###   ########.fr       */
+/*   Created: 2022/11/18 03:00:20 by my_name_          #+#    #+#             */
+/*   Updated: 2022/11/18 03:00:20 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	(void) argc;
-	(void) argv;
-	write(1, "Hello World!\n", 13);
+	char	*cmd;
+
+	while(1)
+	{
+		cmd = readline("Your command: ");
+		printf("%s\n", cmd);
+	}
 	return (0);
 }
