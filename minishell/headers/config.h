@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 20:41:47 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/20 22:11:09 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:00:30 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,7 @@
 # define UNDEFINED_SPLITTER 0
 # define APOSTROPHE 1
 # define GUILLEMET 2
+# ifdef OS
+#  define SPACE 32
+# endif
 #endif

@@ -6,11 +6,11 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 20:11:28 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/20 22:02:37 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/20 23:12:44 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.c"
+#include "init.h"
 
 t_export	init_export()
 {

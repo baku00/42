@@ -17,8 +17,10 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+# ifndef OS
+#  include <readline/readline.h>
+#  include <readline/history.h>
+# endif
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>

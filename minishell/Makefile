@@ -8,6 +8,10 @@ CFLAGS	=-Wall -Werror -Wextra -I$(INCLUDES)
 LIBFT	=libft
 LIBFT_A =$(LIBFT)/libft.a
 
+ifeq ($(shell uname), Linux)
+	CFLAGS += -D OS=Linux
+endif
+
 # DIRS
 INIT_DIR	= init
 INPUT_DIR	= input
