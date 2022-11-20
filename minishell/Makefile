@@ -8,8 +8,15 @@ CFLAGS	=-Wall -Werror -Wextra -I$(INCLUDES)
 LIBFT	=libft
 LIBFT_A =$(LIBFT)/libft.a
 
+# DIRS
+INIT_DIR	= init
+INPUT_DIR	= input
+
 # File sources
-SRCS	=main.c
+SRCS	=main.c \
+			$(INIT_DIR)/init_structs.c \
+			$(INIT_DIR)/init_structs_more.c \
+			$(INPUT_DIR)/getcmd.c
 
 # File objects
 OBJS	=$(SRCS:.c=.o)

@@ -13,28 +13,7 @@
 #ifndef MAIN_H
 # define MAIN_H
 
-# include "headers/includes.h"
-
-typedef struct s_main
-{
-	char	**cmds;
-	char	*cmd;
-	char	**path;
-	char	*full_path;
-	int		exit;
-}	t_main;
-
-typedef struct s_cmd_arguments
-{
-	char	*args;
-	void	*next;
-}	t_cmd_arguments;
-
-typedef struct s_command
-{
-	char			*cmd;
-	t_cmd_arguments	*args;
-}	t_command;
+# include "headers/headers.h"
 
 int	main(int argc, char **argv);
 

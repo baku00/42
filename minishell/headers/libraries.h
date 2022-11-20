@@ -13,7 +13,13 @@
 #ifndef LIBRARIES_H
 # define LIBRARIES_H
 
-# include <main.h>
+# include "headers.h"
 # include <unistd.h>
-
+# include <stdio.h>
+# include <stdlib.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 #endif

@@ -11,51 +11,31 @@
 /* ************************************************************************** */
 
 #include <main.h>
-# define APOSTROPHE 39
-# define GUILLEMET 34
-# define PIPE '|'
 
-int	find_next(char *args, int i, char c)
+static t_minishell	init_minishell()
 {
-	int	next;
+	t_minishell	minishell;
 
-	next = i;
-	while (args[next] != c)
-		next++;
-	return (next);
-}
-
-void	parser(char *argv)
-{
-	int		i;
-	int		start;
-	int		next;
-	int		substr;
-	char	c;
-	(void) start;
-	(void) next;
-	
-
-	i = -1;
-	start = 0;
-	while (argv[++i])
-	{
-		if (argv[i] == GUILLEMET || argv[i] == APOSTROPHE)
-		{
-			c = argv[i];
-			i += 1;
-			next = find_next(argv, i, c);
-			substr = next - i;
-			printf("Substr(%s, %d, %d): (%s)\n\n", argv, i, substr, ft_substr(argv, i, substr));
-			i = next;
-		}
-	}
+	minishell.export = init_export();
+	minishell.env = init_env();
+	minishell.path = init_path();
+	minishell.history = init_history();
+	minishell.history.cmd = init_cmd();
+	minishell.cmd = NULL;
+	minishell.have_to_exit = 0;
+	return (minishell);
 }
 
 int	main(int argc, char **argv)
 {
 	(void) argc;
-	(void) argv;
-	parser("'1\"1'   \"Hello ''\"  '22'  '33'    ");
+	t_minishell	minishell;
+
+	minishell = init_minishell();
+	minishell.cmd = ft_strdup(getcmd(argv[1]));
+	printf("(%s)\n", minishell.cmd);
+	// while (!minishell.have_to_exit)
+	// {
+	// }
 	return (0);
 }
