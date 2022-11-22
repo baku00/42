@@ -11,18 +11,21 @@
 /* ************************************************************************** */
 
 #include <main.h>
+# include <stdlib.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
-static char	*readline(const char *prompt)
-{
-	char	str[200];
-	char	*s;
+// static char	*readline(const char *prompt)
+// {
+// 	char	str[200];
+// 	char	*s;
 
-	printf("%s", prompt);
-	scanf("%200[0-9a-zA-Z \"\'|<>]", str);
-	s = ft_strdup(str);
-	str[0] = 0;
-	return (s);
-}
+// 	printf("%s", prompt);
+// 	scanf("%200[0-9a-zA-Z \"\'|<>]", str);
+// 	s = ft_strdup(str);
+// 	str[0] = '\0';
+// 	return (s);
+// }
 
 static t_minishell	init_minishell()
 {
@@ -47,16 +50,7 @@ int	main(int argc, char **argv)
 	minishell = init_minishell();
 	cmd = init_cmd();
 	minishell.history.cmd = &cmd;
-	while (!minishell.have_to_exit)
-	{
-		minishell.cmd = readline(": ");
-		printf("(%s)\n", minishell.cmd);
-		if (!ft_strncmp(minishell.cmd, "exit", ft_strlen(minishell.cmd) + 1))
-			minishell.have_to_exit = 1;
-		// #ifdef OS
-		// 	free(minishell.cmd);
-		// #endif
-		// minishell.cmd = NULL;
-	}
+	exec_cd(&minishell, "./");
+	exec_pwd(&minishell);
 	return (0);
 }

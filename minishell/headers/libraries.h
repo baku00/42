@@ -17,11 +17,10 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# ifndef OS
-#  include <readline/readline.h>
-#  include <readline/history.h>
-# endif
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <dirent.h>
 #endif

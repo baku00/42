@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:56:59 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/20 23:50:43 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/22 23:57:16 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_path
 	char	*current;
 	void	*parent;
 	void	*child;
+	void	*last;
 }	t_path;
 
 typedef struct s_result
@@ -73,5 +74,11 @@ typedef struct s_minishell
 	char		*cmd;
 	int			have_to_exit;
 }	t_minishell;
+
+typedef struct s_cd
+{
+	char	*path;
+	void	*next;
+}	t_cd;
 
 #endif

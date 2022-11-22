@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   cd.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 20:41:47 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/22 21:27:52 by my_name_         ###   ########.fr       */
+/*   Created: 2022/11/22 21:20:14 by my_name_          #+#    #+#             */
+/*   Updated: 2022/11/22 23:31:54 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
-# define UNDEFINED_TYPE 0
-# define INTEGER_TYPE 1
-# define STRING_TYPE 2
-# define UNDEFINED_SPLITTER 0
-# define APOSTROPHE 1
-# define GUILLEMET 2
-# define HOME_CHAR '~'
-# define ROOT_CHAR '~'
-# ifdef OS
-#  define SPACE 32
-# endif
+#ifndef CD_H
+# define CD_H
+# include "../builtins.h"
+void	exec_cd(t_minishell *minishell, char *path);
 #endif
