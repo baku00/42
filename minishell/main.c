@@ -42,15 +42,18 @@ static t_minishell	init_minishell()
 
 int	main(int argc, char **argv)
 {
-	(void) argc;
-	(void) argv;
 	t_minishell	minishell;
 	t_cmd		cmd;
 
+	(void) argc;
+	(void) argv;
+	(void) minishell;
+	(void) cmd;
 	minishell = init_minishell();
 	cmd = init_cmd();
 	minishell.history.cmd = &cmd;
+	create_path_from_directory("/home/user/42");
 	exec_cd(&minishell, "./");
-	exec_pwd(&minishell);
+	// exec_pwd(&minishell);
 	return (0);
 }

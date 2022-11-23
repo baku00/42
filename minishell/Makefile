@@ -25,7 +25,8 @@ SRCS	=main.c \
 			$(CD_DIR)/cd.c \
 			$(ENV_DIR)/env.c \
 			$(PWD_DIR)/pwd.c \
-			$(UTILS_DIR)/dir.c
+			$(UTILS_DIR)/dir.c \
+			$(UTILS_DIR)/path.c
 
 # File objects
 OBJS	=$(SRCS:.c=.o)
