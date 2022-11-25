@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 20:11:28 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/23 20:20:58 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:57:18 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ t_path	init_path()
 {
 	t_path	path;
 
-	path.full_path = "/";
-	path.parent_path = "/";
-	path.current = "/";
+	path.full_path = NULL;
+	path.parent_path = NULL;
+	path.current = NULL;
+	path.is_root = 0;
 	path.prev = NULL;
 	path.next = NULL;
 	return (path);

@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 20:41:47 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/22 21:27:52 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:39:01 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define INTEGER_TYPE 1
 # define STRING_TYPE 2
 # define UNDEFINED_SPLITTER 0
-# define APOSTROPHE 1
-# define GUILLEMET 2
+# define APOSTROPHE 39
+# define GUILLEMET 34
 # define HOME_CHAR '~'
 # define ROOT_CHAR '~'
 # ifdef OS

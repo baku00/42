@@ -15,7 +15,9 @@ BUILTINS_DIR = builtins
 CD_DIR		= $(BUILTINS_DIR)/cd
 ENV_DIR		= $(BUILTINS_DIR)/env
 PWD_DIR		= $(BUILTINS_DIR)/pwd
-UTILS_DIR		= $(BUILTINS_DIR)/utils
+BUILTINS_UTILS_DIR		= $(BUILTINS_DIR)/utils
+UTILS_DIR	= utils
+LISTS_DIR	= $(UTILS_DIR)/lists
 
 # File sources
 SRCS	=main.c \
@@ -25,8 +27,10 @@ SRCS	=main.c \
 			$(CD_DIR)/cd.c \
 			$(ENV_DIR)/env.c \
 			$(PWD_DIR)/pwd.c \
-			$(UTILS_DIR)/dir.c \
-			$(UTILS_DIR)/path.c
+			$(BUILTINS_UTILS_DIR)/dir.c \
+			$(BUILTINS_UTILS_DIR)/path.c \
+			$(LISTS_DIR)/free_list.c
+
 
 # File objects
 OBJS	=$(SRCS:.c=.o)

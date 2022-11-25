@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:56:59 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/23 20:20:13 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:56:53 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_path
 	char	*full_path;
 	char	*parent_path;
 	char	*current;
+	int		is_root;
 	void	*prev;
 	void	*next;
 	void	*last;

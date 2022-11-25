@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 00:16:06 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/23 00:17:27 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:52:06 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,5 @@
 
 void	free_list(void *list)
 {
-	void	*last;
-
-	while (list)
-	{
-		last = list;
-		list = list->next;
-		free(last);
-		last = NULL;
-	}
+	(void) list;
 }

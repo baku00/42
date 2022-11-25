@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 21:36:29 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/22 23:33:10 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/24 03:35:31 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 char	*exec_pwd()
 {
-	return (getenv("PWD"));
+	char	buffer[1024];
+
+	return (getcwd(buffer, 1024));
 }
