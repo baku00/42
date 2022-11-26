@@ -19,6 +19,7 @@
 typedef struct s_args
 {
 	char	*arg;
+	char	*substr;
 	void	*next;
 	void	*prev;
 	int		splitter;
@@ -35,7 +36,26 @@ int	find_next(char *arg, int i, char c)
 	return (i);
 }
 
-t_args	*parser(char *arg, int i)
+char	*check_var(char	*str)
+{
+	int	i;
+	int	next;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == DOLLARS)
+			next = find_next(str, i, SPACE);
+		
+	}
+}
+
+int	is_char(char c, char c1, char c2, char c3)
+{
+	return (c == c1 || c == c2 || c == c3);
+}
+
+t_args	*parser(t_args *prev, char *arg, int i)
 {
 	t_args	*args;
 	int		next;
@@ -48,6 +68,7 @@ t_args	*parser(char *arg, int i)
 	args->next = NULL;
 	args->double_char = 0;
 	args->result = NULL;
+	args->prev = prev;
 	args->arg = ft_calloc(sizeof(char), 1);
 	if (!args->arg)
 		return (NULL);
@@ -60,10 +81,26 @@ t_args	*parser(char *arg, int i)
 			next = find_next(arg, i, c);
 			if (next == -1)
 				return (NULL);
-			args->arg = ft_strjoin(args->arg, ft_substr(arg, i + 1, (next - 1) - i));
+			args->substr = ft_substr(arg, i + 1, (next - 1) - i);
+			if (!args->substr)
+				return (NULL);
+			if (c == GUILLEMET)
+				args->substr = check_var(args->substr);
+			args->arg = ft_strjoin(args->arg, args->substr);
 			i = next;
 			if (!args->arg)
 				return (NULL);
+		}
+		else if (c == PIPE || c == MORE_THAN || c == LESS_THAN)
+		{
+			args->splitter = c;
+			args->double_char = is_char(arg[i + 1], PIPE, MORE_THAN, LESS_THAN);
+			if (is_char(arg[i + 2], PIPE, MORE_THAN, LESS_THAN))
+				return (NULL);
+			if (args->double_char)
+				i += 1;
+			args->next = parser(args, arg, i);
+			break;
 		}
 		else
 		{
@@ -72,6 +109,8 @@ t_args	*parser(char *arg, int i)
 				return (NULL);
 		}
 	}
+	if (args->splitter != PIPE && args->splitter != MORE_THAN && args->splitter != LESS_THAN)
+		args->splitter = 0;
 	return (args);
 }
 
@@ -79,14 +118,21 @@ int	main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
-	t_args *args = parser("'1\"1'   \"Hello ''\"  '22'   '\"Comment ça va ?\"'     '33''    ", -1);
+
+	//t_args *args = parser("'1\"1'   \"Hello ''\"  '22'  | '\"Comment ça va ?\"'     '33'    ", -1);
+	t_args *args = parser(NULL, argv[1], -1);
 	printf("\n\n\n");
 	if (!args)
 		printf("Error\n");
 	while(args)
 	{
+		printf("Pointer: (%p)\n", args);
+		printf("Next: (%p)\n", args->next);
+		printf("Prev: (%p)\n", args->prev);
 		printf("Arg: (%s)\n", args->arg);
-		printf("Splitter: (%c)\n\n", args->splitter);
+		printf("Splitter: (%c%c)\n", args->splitter, args->double_char ? args->splitter : '\0');
+		printf("Double char: (%d)\n", args->double_char);
+		printf("Result: (%s)\n\n", args->result);
 		args = args->next;
 	}
 	return (0);
