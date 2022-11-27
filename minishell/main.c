@@ -36,17 +36,35 @@ int	find_next(char *arg, int i, char c)
 	return (i);
 }
 
+int	find_next_2(char *arg, int i, char c, char c2)
+{
+	while (arg[++i] && arg[i] != c && arg[i] != c2)
+		;
+	if (!arg[i])
+		i = 0;
+	if (arg[i] == c2)
+		i *= -1;
+	return (i);
+}
+
 char	*check_var(char	*str)
 {
-	int	i;
-	int	next;
+	int		i;
+	int		next;
+	char	*formated;
+	char	*substr;
+	int		sub;
+
 
 	i = -1;
 	while (str[++i])
 	{
 		if (str[i] == DOLLARS)
-			next = find_next(str, i, SPACE);
-		
+			next = find_next_2(str, i, SPACE, DOLLARS);
+		sub = next;
+		if (sub < 0)
+			sub *= -1;
+		substr = ft_substr(str, i, sub);
 	}
 }
 
