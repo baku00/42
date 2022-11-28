@@ -27,12 +27,6 @@ typedef struct s_args
 	char	*result;
 }	t_args;
 
-int		find_next(char *arg, int i, char c);
-int		find_next_dollars(char *arg, int i, char c, char c2);
-char	*check_var(char	*str);
-int		is_char(char c, char c1, char c2, char c3);
-t_args	*parser(t_args *prev, char *arg, int i);
-
 int	find_next(char *arg, int i, char c)
 {
 	while (arg[++i] && arg[i] != c)
@@ -42,7 +36,7 @@ int	find_next(char *arg, int i, char c)
 	return (i);
 }
 
-int	find_next_dollars(char *arg, int i, char c, char c2)
+int	find_next_2(char *arg, int i, char c, char c2)
 {
 	while (arg[++i] && arg[i] != c && arg[i] != c2)
 		;
@@ -53,58 +47,49 @@ int	find_next_dollars(char *arg, int i, char c, char c2)
 	return (i);
 }
 
-int	get_sub(int	next)
-{
-	if (next < 0)
-		next *= -1;
-	return (next);
-}
-
-char	*get_string_if_dollars(char *str, int is_dollar)
-{
-	char	*env;
-
-	if (is_dollar)
-		env = ft_strdup(getenv(str));
-	else
-		env = ft_strdup(str);
-	free(str);
-	return (env);
-}
-
-typedef struct s_check_var
+char	*check_var(char	*str)
 {
 	int		i;
 	int		next;
 	char	*formated;
 	char	*substr;
-}	t_check_var;
+	int		sub;
+	char	*env;
 
-char	*check_var(char	*str)
-{
-	t_check_var	vc;
 
-	vc.i = -1;
-	vc.formated = ft_calloc(sizeof(char), 1);
-	if (!vc.formated)
+	i = -1;
+	formated = ft_calloc(sizeof(char), 1);
+	if (!formated)
 		return (NULL);
-	while (str[++vc.i])
+	while (str[++i])
 	{
-		vc.next = 1;
-		if (str[vc.i] == DOLLARS)
-			vc.next = find_next_dollars(str, vc.i, SPACE, DOLLARS);
-		vc.substr = ft_substr(str, vc.i + (str[vc.i] == DOLLARS), get_sub(vc.next));
-		if (!vc.substr)
-			return (NULL);
-		vc.substr = get_string_if_dollars(vc.substr, str[vc.i] == DOLLARS);
-		vc.formated = ft_strjoin(vc.formated, vc.substr);
-		if (!vc.formated)
-			return (NULL);
-		if (str[vc.i] == DOLLARS)
-			vc.i = vc.next;
+		if (str[i] == DOLLARS)
+		{
+			next = find_next_2(str, i, SPACE, DOLLARS);
+			sub = next;
+			if (sub < 0)
+				sub *= -1;
+			substr = ft_substr(str, i + 1, sub);
+			if (!substr)
+				return (NULL);
+			env = getenv(substr);
+			free(substr);
+			formated = ft_strjoin(formated, env);
+			if (!formated)
+				return (NULL);
+			i = next;
+		}
+		else
+		{
+			substr = ft_substr(str, i, 1);
+			if (!formated)
+				return (NULL);
+			formated = ft_strjoin(formated, substr);
+			if (!formated)
+				return (NULL);
+		}
 	}
-	free(str);
-	return (vc.formated);
+	return (formated);
 }
 
 int	is_char(char c, char c1, char c2, char c3)
@@ -117,7 +102,6 @@ t_args	*parser(t_args *prev, char *arg, int i)
 	t_args	*args;
 	int		next;
 	char	c;
-	char	next_c;
 
 	args = ft_calloc(sizeof(t_args), 1);
 	if (!args)
@@ -135,6 +119,7 @@ t_args	*parser(t_args *prev, char *arg, int i)
 		c = arg[i];
 		if (c == APOSTROPHE || c == GUILLEMET)
 		{
+			args->splitter = c;
 			next = find_next(arg, i, c);
 			if (next == -1)
 				return (NULL);
@@ -151,8 +136,7 @@ t_args	*parser(t_args *prev, char *arg, int i)
 		else if (c == PIPE || c == MORE_THAN || c == LESS_THAN)
 		{
 			args->splitter = c;
-			next_c = arg[i + 1];
-			args->double_char = next_c == PIPE || next_c == MORE_THAN || next_c == LESS_THAN;
+			args->double_char = is_char(arg[i + 1], PIPE, MORE_THAN, LESS_THAN);
 			if (is_char(arg[i + 2], PIPE, MORE_THAN, LESS_THAN))
 				return (NULL);
 			if (args->double_char)
@@ -162,12 +146,13 @@ t_args	*parser(t_args *prev, char *arg, int i)
 		}
 		else
 		{
-			args->substr = ft_substr(arg, i, 1);
-			args->arg = ft_strjoin(args->arg, args->substr);
+			args->arg = ft_strjoin(args->arg, ft_substr(arg, i, 1));
 			if (!args->arg)
 				return (NULL);
 		}
 	}
+	if (args->splitter != PIPE && args->splitter != MORE_THAN && args->splitter != LESS_THAN)
+		args->splitter = 0;
 	return (args);
 }
 
@@ -187,19 +172,10 @@ int	main(int argc, char **argv)
 		printf("Next: (%p)\n", args->next);
 		printf("Prev: (%p)\n", args->prev);
 		printf("Arg: (%s)\n", args->arg);
-		free(args->arg);
 		printf("Splitter: (%c%c)\n", args->splitter, args->double_char ? args->splitter : '\0');
 		printf("Double char: (%d)\n", args->double_char);
 		printf("Result: (%s)\n\n", args->result);
-		if (args->prev)
-			free(args->prev);
-		if (!args->next)
-		{
-			free(args);
-			args = NULL;
-		}
-		else
-			args = args->next;
+		args = args->next;
 	}
 	return (0);
 }
