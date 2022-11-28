@@ -54,18 +54,42 @@ char	*check_var(char	*str)
 	char	*formated;
 	char	*substr;
 	int		sub;
+	char	*env;
 
 
 	i = -1;
+	formated = ft_calloc(sizeof(char), 1);
+	if (!formated)
+		return (NULL);
 	while (str[++i])
 	{
 		if (str[i] == DOLLARS)
+		{
 			next = find_next_2(str, i, SPACE, DOLLARS);
-		sub = next;
-		if (sub < 0)
-			sub *= -1;
-		substr = ft_substr(str, i, sub);
+			sub = next;
+			if (sub < 0)
+				sub *= -1;
+			substr = ft_substr(str, i + 1, sub);
+			if (!substr)
+				return (NULL);
+			env = getenv(substr);
+			free(substr);
+			formated = ft_strjoin(formated, env);
+			if (!formated)
+				return (NULL);
+			i = next;
+		}
+		else
+		{
+			substr = ft_substr(str, i, 1);
+			if (!formated)
+				return (NULL);
+			formated = ft_strjoin(formated, substr);
+			if (!formated)
+				return (NULL);
+		}
 	}
+	return (formated);
 }
 
 int	is_char(char c, char c1, char c2, char c3)
