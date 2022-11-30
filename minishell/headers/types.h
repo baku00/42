@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:56:59 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/23 22:56:53 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/11/29 02:38:05 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_env
 {
 	char	*key;
 	char	*value;
-	int		type;
 	void	*next;
+	void	*prev;
 }	t_env;
 
 typedef struct s_path

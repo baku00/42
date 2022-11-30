@@ -16,22 +16,63 @@
 # define LESS_THAN '<'
 # define DOLLARS '$'
 
+int	find_next(char *arg, int i, char c)
+{
+	while (arg[++i] && arg[i] != c)
+		;
+	if (!arg[i])
+		i = -1;
+	return (i);
+}
+
+t_env	*create_env(t_env *prev, char **envp, int i)
+{
+	t_env	*env;
+	int		next;
+
+	env = ft_calloc(sizeof(t_env), 1);
+	if (!env)
+		return (NULL);
+	env->prev = prev;
+	next = find_next(envp[i], 0, '=');
+	if (next > 0)
+		env->key = ft_substr(envp[i], 0, next);
+	else
+		env->key = ft_strdup(envp[i]);
+	if (!env->key)
+		return (NULL);
+	if (next > 0)
+	{
+		env->value = ft_substr(envp[i], next + 1, ft_strlen(envp[i]) - next);
+		if (!env->value)
+			return (NULL);
+	}
+	else
+		env->value = NULL;
+	if (envp[i + 1])
+		env->next = create_env(env, envp, i + 1);
+	else
+		env->next = NULL;
+	return (env);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	(void) argc;
 	(void) argv;
-	(void) envp;
 	
-	char	**splitted;
+	t_env	*env;
 
-	splitted = ft_split(argv[1], ' ');
-	int i = -1;
-	while (splitted[++i])
+	env = create_env(NULL, envp, 0);
+	while (env)
 	{
-		printf("(%s)\n", splitted[i]);
-		free(splitted[i]);
+		printf("Key: (%s)\n", env->key);
+		printf("Value: (%s)\n", env->value);
+		printf("Next: (%p)\n", env->next);
+		printf("Prev: (%p)\n", env->prev);
+		printf("\n");
+		env = env->next;
 	}
-	free(splitted);
 	return (0);
 }
 
