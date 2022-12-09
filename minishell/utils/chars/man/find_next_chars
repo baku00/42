@@ -1,0 +1,19 @@
+/*
+	Find next:
+
+	Synopsis:
+		int	find_next_chars(char *arg, int i, char c1, char c2)
+
+	Description:
+		Permet de trouver le prochain caractère correspondant
+		à un des deux caractère passer en paramètre
+	
+	Return:
+		La position du prochain caractère, ou -1 si aucun caractère trouver
+	
+	Exemple:
+		find_next("Hello", 2, 'l')
+
+		Index 2 dans "Hello" était le premier 'l',
+		la fonction retournera 3 pour le prochain 'l'
+ */

@@ -16,5 +16,7 @@
 # include "headers/headers.h"
 
 int	main(int argc, char **argv, char **envp);
-
+t_args	*parser(t_args *prev, char *arg, int i);
+int	find_next(char *arg, int i, char c);
+void	get_cmd(t_args	**args);
 #endif

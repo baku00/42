@@ -6,15 +6,16 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 21:36:29 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/24 03:35:31 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/04 18:36:34 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pwd.h"
 
-char	*exec_pwd()
+char	*exec_pwd(t_minishell *minishell)
 {
 	char	buffer[1024];
 
+	(void) minishell;
 	return (getcwd(buffer, 1024));
 }

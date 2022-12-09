@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_structs_more.c                                :+:      :+:    :+:   */
+/*   strings.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 20:11:28 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/03 17:13:43 by my_name_         ###   ########.fr       */
+/*   Created: 2022/12/03 17:13:00 by my_name_          #+#    #+#             */
+/*   Updated: 2022/12/04 20:20:43 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.h"
-
-t_result	init_result()
-{
-	t_result	result;
-
-	result.line_number = 0;
-	result.line = NULL;
-	result.next = NULL;
-	return (result);
-}
-
-t_info_env	init_info_env()
-{
-	t_info_env	info_env;
-
-	info_env.last = NULL;
-	return (info_env);
-}
+#ifndef STRINGS_H
+# define STRINGS_H
+# include <main.h>
+t_string	*create_string(char *str);
+t_string	init_string();
+void		configure_string(t_string **string);
+#endif

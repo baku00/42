@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_structs_more.c                                :+:      :+:    :+:   */
+/*   create_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 20:11:28 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/03 17:13:43 by my_name_         ###   ########.fr       */
+/*   Created: 2022/12/03 17:12:25 by my_name_          #+#    #+#             */
+/*   Updated: 2022/12/04 20:20:25 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.h"
+#include "strings.h"
 
-t_result	init_result()
+t_string	*create_string(char *str)
 {
-	t_result	result;
+	t_string	*string;
 
-	result.line_number = 0;
-	result.line = NULL;
-	result.next = NULL;
-	return (result);
-}
-
-t_info_env	init_info_env()
-{
-	t_info_env	info_env;
-
-	info_env.last = NULL;
-	return (info_env);
+	string = ft_calloc(sizeof(t_string), 1);
+	configure_string(&string);
+	string->value = ft_strdup(str);
+	if (!string->value)
+	{
+		string->error = 1;
+		return (string);
+	}
+	string->length = ft_strlen(string->value);
+	return (string);
 }

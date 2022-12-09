@@ -15,21 +15,32 @@ BUILTINS_DIR = builtins
 CD_DIR		= $(BUILTINS_DIR)/cd
 ENV_DIR		= $(BUILTINS_DIR)/env
 PWD_DIR		= $(BUILTINS_DIR)/pwd
-BUILTINS_UTILS_DIR		= $(BUILTINS_DIR)/utils
+EXIT_DIR		= $(BUILTINS_DIR)/exit
+EXPORT_DIR		= $(BUILTINS_DIR)/export
+ECHO_DIR		= $(BUILTINS_DIR)/echo
+UNSET_DIR		= $(BUILTINS_DIR)/unset
 UTILS_DIR	= utils
 LISTS_DIR	= $(UTILS_DIR)/lists
+STRINGS_DIR	= $(UTILS_DIR)/strings
 
 # File sources
-SRCS	=main.c \
+SRCS	=main_env.c \
+			parser.c \
 			$(INIT_DIR)/init_structs.c \
 			$(INIT_DIR)/init_structs_more.c \
 			$(INPUT_DIR)/getcmd.c \
 			$(CD_DIR)/cd.c \
 			$(ENV_DIR)/env.c \
 			$(PWD_DIR)/pwd.c \
-			$(BUILTINS_UTILS_DIR)/dir.c \
-			$(BUILTINS_UTILS_DIR)/path.c \
-			$(LISTS_DIR)/free_list.c
+			$(EXIT_DIR)/exit.c \
+			$(EXPORT_DIR)/export.c \
+			$(ECHO_DIR)/echo.c \
+			$(UNSET_DIR)/unset.c \
+			$(LISTS_DIR)/free_list.c \
+			$(STRINGS_DIR)/create_string.c \
+			$(STRINGS_DIR)/init_string.c \
+			$(STRINGS_DIR)/configure_string.c \
+			$(BUILTINS_DIR)/exec_cmd.c
 
 
 # File objects

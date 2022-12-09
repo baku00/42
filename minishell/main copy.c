@@ -17,6 +17,78 @@
 #define DOLLARS '$'
 #define NEW_LINE '\n'
 
+int	find_next(char *arg, int i, char c)
+{
+	while (arg[++i] && arg[i] != c)
+		;
+	if (!arg[i])
+		i = -1;
+	return (i);
+}
+
+t_string	get_string(char *key, int start, int next)
+{
+	t_string	string;
+
+	string = init_string();
+	if (next > 0)
+		string.value = ft_substr(key, start, next);
+	else
+		string.value = ft_strdup(key);
+	if (!string.value)
+		string.error = 1;
+	if (!string.error)
+		string.length = ft_strlen(string.value);
+	return (string);
+}
+
+t_env	*create_env(t_env *prev, t_info_env *info, char **envp, int i)
+{
+	t_env	*env;
+	int		next;
+
+	env = ft_calloc(sizeof(t_env), 1);
+	if (!env)
+		return (NULL);
+	env->prev = prev;
+	env->info = info;
+	next = find_next(envp[i], 0, '=');
+	env->key = get_string(envp[i], 0, next);
+	if (env->key.error)
+		return (NULL);
+	if (next > 0)
+	{
+		env->value = get_string(envp[i], next + 1, ft_strlen(envp[i]) - next);
+		if (env->value.error)
+			return (NULL);
+	}
+	else
+		env->value = init_string();
+	if (envp[i + 1])
+		env->next = create_env(env, info, envp, i + 1);
+	else
+		env->next = NULL;
+	return (env);
+}
+
+char	*find_key(t_env *env, char *key)
+{
+	t_env	*finder;
+	int		length;
+	int		strncmp;
+
+	finder = env;
+	length = ft_strlen(key);
+	while (finder)
+	{
+		strncmp = ft_strncmp(finder->key.value, key, finder->key.length);
+		if (length == finder->key.length && !strncmp)
+			return (finder->value.value);
+		finder = finder->next;
+	}
+	return (NULL);
+}
+
 char	*_readline(char *display)
 {
 	char	*line;
@@ -43,91 +115,23 @@ char	*_readline(char *display)
 	return (line);
 }
 
-t_builtin	*create_builtin(char *str, void *function, int return_type)
-{
-	t_builtin	*builtin;
-
-	builtin = ft_calloc(sizeof(t_builtin), 1);
-	if (!builtin)
-		return (NULL);
-	builtin->string = create_string(str);
-	if (((t_string *) builtin->string)->error)
-		return (NULL);
-	builtin->function = function;
-	builtin->return_type = return_type;
-	return (builtin);
-}
-
-t_builtins	create_builtins()
-{
-	t_builtins	builtins;
-
-	builtins.echo = create_builtin("echo", &exec_echo, STRING);
-	builtins.cd = create_builtin("cd", &exec_cd, INT);
-	builtins.pwd = create_builtin("pwd", &exec_pwd, STRING);
-	builtins.export = create_builtin("export", &exec_export, STRING);
-	builtins.unset = create_builtin("unset", &exec_unset, STRING);
-	builtins.env = create_builtin("env", &exec_env, STRING);
-	builtins.exit = create_builtin("exit", &exec_exit, INT);
-	return (builtins);
-}
-
-static int	init_minishell(t_minishell **minishell)
-{
-	*minishell = ft_calloc(sizeof(t_minishell), 1);
-	if (!minishell)
-		return (0);
-	// minishell->history = init_history();
-	(*minishell)->read = NULL;
-	(*minishell)->have_to_exit = 0;
-	(*minishell)->builtins = create_builtins();
-	return (1);
-}
-
-// static void handler(int signum)
-// {
-// 	(void) signum;
-// }
-
 int	main(int argc, char **argv, char **envp)
 {
-	t_minishell	*minishell;
+	t_env		*env;
+	t_info_env	info_env;
 
 	(void) argc;
 	(void) argv;
 	(void) envp;
-	init_minishell(&minishell);
-	t_info_env	info_env;
-	t_args		*args;
-	(void) args;
-	minishell->env = create_env(NULL, &info_env, envp, 0);
-	// printf("%s: (%s)\n", argv[1], find_key(env, argv[1]));
-	minishell->read = _readline(": ");
-	printf("%s\n", minishell->read);
-	while (ft_strncmp(minishell->read, "exit", ft_strlen(minishell->read)))
+
+	char *line = _readline(": ");
+	while (ft_strncmp(line, "exit", ft_strlen(line)))
 	{
-		// printf("Before parser\n");
-		minishell->args = parser(NULL, minishell->read, -1);
-		get_cmd(&minishell->args);
-		// printf("After parser\n");
-		exec_cmd(minishell, minishell->args);
-		// args = minishell->args;
-		// while(args)
-		// {
-		// 	printf("Pointer: (%p)\n", args);
-		// 	printf("Next: (%p)\n", args->next);
-		// 	printf("Prev: (%p)\n", args->prev);
-		// 	printf("CMD: (%s)\n", args->cmd);
-		// 	printf("Arg: (%s)\n", args->arg);
-		// 	printf("Splitter: (%c%c)\n", args->splitter, args->double_char ? args->splitter : '\0');
-		// 	printf("Double char: (%d)\n", args->double_char);
-		// 	printf("Result: (%s)\n\n", args->result);
-		// 	args = args->next;
-		// }
-		free(minishell->read);
-		minishell->read = _readline(": ");
-		printf("%s\n", minishell->read);
+		printf("Line: (%s)\n", line);
+		line = _readline(": ");
 	}
+	env = create_env(NULL, &info_env, envp, 0);
+	printf("%s: (%s)\n", argv[1], find_key(env, argv[1]));
 	return (0);
 }
 

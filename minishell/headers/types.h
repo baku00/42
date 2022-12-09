@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:56:59 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/29 02:38:05 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/08 22:58:38 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,26 @@
 # define TYPES_H
 # include "headers.h"
 
-typedef struct s_export
+typedef struct s_string
 {
-	char	*export;
-	char	*key;
 	char	*value;
-	int		type;
-	void	*next;
-}	t_export;
+	int		length;
+	int		error;
+}	t_string;
+
+typedef struct s_info_env
+{
+	void	*last;
+}	t_info_env;
 
 typedef struct s_env
 {
-	char	*key;
-	char	*value;
+	t_string	*key;
+	t_string	*value;
+	void	*info;
 	void	*next;
 	void	*prev;
 }	t_env;
-
-typedef struct s_path
-{
-	char	*full_path;
-	char	*parent_path;
-	char	*current;
-	int		is_root;
-	void	*prev;
-	void	*next;
-	void	*last;
-}	t_path;
 
 typedef struct s_result
 {
@@ -66,20 +59,44 @@ typedef struct s_history
 	void	*prev;
 }	t_history;
 
-typedef struct s_minishell
+typedef struct s_args
 {
-	t_export	export;
-	t_env		env;
-	t_path		path;
-	t_history	history;
-	char		*cmd;
+	char	*cmd;
+	char	*arg;
+	char	*substr;
+	void	*next;
+	void	*prev;
+	int		splitter;
+	int		double_char;
+	char	*result;
+}	t_args;
+
+typedef struct s_builtin
+{
+	t_string	*string;
+	char		*(*function)(void *);
+	int			return_type;
+}	t_builtin;
+
+typedef struct s_builtins
+{
+	t_builtin	*echo;
+	t_builtin	*env;
+	t_builtin	*export;
+	t_builtin	*unset;
+	t_builtin	*pwd;
+	t_builtin	*cd;
+	t_builtin	*exit;
+}	t_builtins;
+
+typedef struct t_minishell
+{
+	t_env		*env;
+	t_history	*history;
+	t_args		*args;
+	t_builtins	builtins;
+	char		*read;
 	int			have_to_exit;
 }	t_minishell;
-
-typedef struct s_cd
-{
-	char	*path;
-	void	*next;
-}	t_cd;
 
 #endif

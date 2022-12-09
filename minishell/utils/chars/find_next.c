@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_structs_more.c                                :+:      :+:    :+:   */
+/*   find_next.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 20:11:28 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/03 17:13:43 by my_name_         ###   ########.fr       */
+/*   Created: 2022/12/01 15:40:57 by my_name_          #+#    #+#             */
+/*   Updated: 2022/12/01 16:14:39 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.h"
+#include "chars.h"
 
-t_result	init_result()
+int	find_next(char *arg, int i, char c)
 {
-	t_result	result;
-
-	result.line_number = 0;
-	result.line = NULL;
-	result.next = NULL;
-	return (result);
+	while (arg[++i] && arg[i] != c)
+		;
+	if (!arg[i])
+		i = -1;
+	return (i);
 }
 
-t_info_env	init_info_env()
+int	find_next_chars(char *arg, int i, char c1, char c2)
 {
-	t_info_env	info_env;
-
-	info_env.last = NULL;
-	return (info_env);
+	while (arg[++i] && arg[i] != c1 && arg[i] != c2)
+		;
+	if (!arg[i])
+		i = 0;
+	if (arg[i] == c2)
+		i *= -1;
+	return (i);
 }

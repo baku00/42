@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 21:36:54 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/24 03:35:49 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/04 18:36:02 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 # define PWD_H
 # include "../builtins.h"
 
-char	*exec_pwd();
+char	*exec_pwd(t_minishell *minishell);
 #endif

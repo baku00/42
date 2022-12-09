@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dir.c                                              :+:      :+:    :+:   */
+/*   unset.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 23:48:26 by my_name_          #+#    #+#             */
-/*   Updated: 2022/11/23 00:19:29 by my_name_         ###   ########.fr       */
+/*   Created: 2022/12/04 19:31:34 by my_name_          #+#    #+#             */
+/*   Updated: 2022/12/04 19:50:27 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#ifndef UNSET_H
+# define UNSET_H
+# include "../builtins.h"
 
-int	dir_exist(char *path)
-{
-	void	*dir;
-
-	dir = opendir(path);
-	if (!dir)
-		return (0);
-	closedir(dir);
-	return (1);
-}
+char	*exec_unset(t_minishell *minishell);
+#endif
