@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:56:59 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/08 22:58:38 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/11 04:09:26 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,33 @@ typedef struct s_string
 	int		error;
 }	t_string;
 
-typedef struct s_info_env
+typedef struct s_info
 {
+	int		length;
+	void	*first;
 	void	*last;
-}	t_info_env;
+	void	*save_after;
+}	t_info;
 
 typedef struct s_env
 {
 	t_string	*key;
 	t_string	*value;
+	int			n;
 	void	*info;
 	void	*next;
 	void	*prev;
 }	t_env;
+
+typedef struct s_export
+{
+	t_string	*key;
+	t_string	*value;
+	int			n;
+	void		*info;
+	void		*next;
+	void		*prev;
+}	t_export;
 
 typedef struct s_result
 {
