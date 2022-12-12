@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 01:54:31 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/11 04:11:04 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/12 02:50:40 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int	main(int argc, char **argv, char **envp)
 	// while (envp[++i])
 	// 	printf("[%d]: %s\n", i, envp[i]);
 	// printf("\n\n\n\n\n");
-	printf("%d\n", ft_strncmp(argv[1], argv[2], ft_strlen(argv[1])));
 	info_env.first = NULL;
 	info_env.last = NULL;
 	info_env.length = 0;
 	env = generate_env(NULL, envp, &info_env, 0);
 	// print_env(env);
 	(void) env;
-	export = generate_export(env, &info_env);
+	export = (t_export *) env;
+	print_env(env);
+	printf("\n");
+	export = generate_export(export, env, info_env.length);
 	(void) export;
 	return (0);
 }

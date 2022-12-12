@@ -6,39 +6,71 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 21:34:39 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/11 04:30:23 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/12 02:56:20 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "export.h"
 
-static t_export	*init_export()
+static t_env	*clear_env(t_env *env)
 {
-	t_export	*export;
+	t_env	*prev;
+	t_env	*next;
 
-	export = ft_calloc(sizeof(t_export), 1);
-	if (!export)
-		return (NULL);
-	export->key = NULL;
-	export->value = NULL;
-	export->next = NULL;
-	export->prev = NULL;
-	export->n = 0;
-	return (export);
+	prev = env->prev;
+	next = env->next;
+	if (prev)
+		prev->next = next;
+	if (next)
+		next->prev = prev;
+	if (next)
+		next = ((t_info *) next->info)->first;
+	else if (prev)
+		prev = ((t_info *) prev->info)->first;
+	return  (next);
 }
 
-t_export	*generate_export(t_env *env, t_info *info_export, int memory)
+static t_env	*remove_env(t_export *export, t_env *env, int length)
 {
-	t_export	*export;
-	int			length;
+	int	i;
 
-	export = init_export();
+	i = -1;
+	while (++i < length && export->n != env->n)
+		env = env->next;
+	if (export->n == env->n)
+		env = clear_env(env);
+	return (get_first_env(env));
+}
+
+t_export	*generate_export(t_export *export, t_env *env, int env_length)
+{
+	t_string	*key;
+	t_string	*value;
+	int			strncmp;
+
+	export = (t_export *) env;
 	if (!export)
 		return (NULL);
 	while (env->next)
 	{
-		length = ft_strlen(((t_string *) export->key)->value);
-		memory = ft_strncmp(((t_string *) export->key)->value, ((t_string *) env->key)->value, length);
+		env = env->next;
+		key = (t_string *) export->key;
+		value = (t_string *) env->key;
+		strncmp = ft_strncmp(key->value, value->value, key->length);
+		if (strncmp > 0)
+			export = (t_export *) env;
 	}
-	return ((t_export *) env);
+	env = ((t_info *) env->info)->first;
+	env = remove_env(export, env, env_length);
+	printf("%d\n", env_length);
+	if (env_length < 0)
+	{
+		print_env(env);
+		printf("\n\nExport\n");
+		print_env((t_env *) export);
+		exit(0);
+	}
+	if (env && env->next)
+		export->next = generate_export((t_export *) env, env, env_length - 1);
+	return (export);
 }

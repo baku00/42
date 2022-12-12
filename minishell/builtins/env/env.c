@@ -6,25 +6,31 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 21:34:39 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/11 04:11:15 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/12 02:50:28 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 
+t_env	*get_first_env(t_env *env)
+{
+	return (((t_info *) env->info)->first);
+}
+
 void	print_env(t_env *env)
 {
 	while (env)
 	{
-		printf("This: %p\n", env);
+		printf("N: %d => ", env->n);
+		// printf("This: %p\n", env);
 		printf("Key: (%s)\n", ((t_string *)env->key)->value);
-		printf("Value: (%s)\n", ((t_string *)env->value)->value);
-		printf("Info: %p\n", env->info);
-		printf("Info first: %p\n", ((t_info *) env->info)->first);
-		printf("Info last: %p\n", ((t_info *) env->info)->last);
-		printf("Next: %p\n", env->next);
-		printf("Prev: %p\n", env->prev);
-		printf("\n\n\n");
+		// printf("Value: (%s)\n", ((t_string *)env->value)->value);
+		// printf("Info: %p\n", env->info);
+		// printf("Info first: %p\n", ((t_info *) env->info)->first);
+		// printf("Info last: %p\n", ((t_info *) env->info)->last);
+		// printf("Next: %p\n", env->next);
+		// printf("Prev: %p\n", env->prev);
+		// printf("\n");
 		env = env->next;
 	}
 }
@@ -98,10 +104,10 @@ t_env	*generate_env(t_env *prev, char **envp, t_info *info_env, int i)
 	env = create_env_with_next(envp[i], find_next(envp[i], 0, '='));
 	if (!env)
 		return (NULL);
-	env->prev = prev;
-	env->n += 1;
-	env->info = info_env;
 	info_env->length += 1;
+	env->prev = prev;
+	env->n = info_env->length;
+	env->info = info_env;
 	if (!prev)
 		info_env->first = env;
 	if (envp[i + 1])
