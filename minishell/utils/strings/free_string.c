@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   free_string.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 21:34:39 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/13 01:09:05 by my_name_         ###   ########.fr       */
+/*   Created: 2022/12/13 00:40:39 by my_name_          #+#    #+#             */
+/*   Updated: 2022/12/13 00:41:12 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
-# include "../builtins.h"
+#include "strings.h"
 
-t_env	*generate_env(t_env *prev, char **envp, t_info *info_env, int i);
-t_env	*create_env(char *key, char *value);
-void	print_env(t_env *env);
-t_env	*get_first_env(t_env *env);
-void	free_env(t_env *env);
-t_env	*copy_env(t_env *env);
-
-#endif
+void	free_string(t_string *string)
+{
+	if (!string)
+		return ;
+	free(string->value);
+	free(string);
+}

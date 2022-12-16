@@ -40,6 +40,9 @@ SRCS	=main_env.c \
 			$(STRINGS_DIR)/create_string.c \
 			$(STRINGS_DIR)/init_string.c \
 			$(STRINGS_DIR)/configure_string.c \
+			$(STRINGS_DIR)/get_string.c \
+			$(STRINGS_DIR)/free_string.c \
+			$(STRINGS_DIR)/string_copy.c \
 			$(BUILTINS_DIR)/exec_cmd.c
 
 

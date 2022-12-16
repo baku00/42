@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 01:54:31 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/12 02:50:40 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:59:58 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ int	main(int argc, char **argv, char **envp)
 	info_env.last = NULL;
 	info_env.length = 0;
 	env = generate_env(NULL, envp, &info_env, 0);
+	// print_env((t_env *) env);
 	// print_env(env);
 	(void) env;
 	export = (t_export *) env;
-	print_env(env);
-	printf("\n");
-	export = generate_export(export, env, info_env.length);
+	// print_env(env);
+	// printf("\n");
+	export = generate_export(NULL, env, info_env.length);
 	(void) export;
+	register_export(&export, create_export_entry("Hello", "123"));
+	print_env((t_env *) export);
 	return (0);
 }

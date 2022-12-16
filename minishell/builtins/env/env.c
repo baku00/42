@@ -6,34 +6,11 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 21:34:39 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/12 02:50:28 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/13 01:24:24 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
-
-t_env	*get_first_env(t_env *env)
-{
-	return (((t_info *) env->info)->first);
-}
-
-void	print_env(t_env *env)
-{
-	while (env)
-	{
-		printf("N: %d => ", env->n);
-		// printf("This: %p\n", env);
-		printf("Key: (%s)\n", ((t_string *)env->key)->value);
-		// printf("Value: (%s)\n", ((t_string *)env->value)->value);
-		// printf("Info: %p\n", env->info);
-		// printf("Info first: %p\n", ((t_info *) env->info)->first);
-		// printf("Info last: %p\n", ((t_info *) env->info)->last);
-		// printf("Next: %p\n", env->next);
-		// printf("Prev: %p\n", env->prev);
-		// printf("\n");
-		env = env->next;
-	}
-}
 
 static t_env	*init_env()
 {
@@ -48,6 +25,56 @@ static t_env	*init_env()
 	env->prev = NULL;
 	env->n = 0;
 	return (env);
+}
+
+t_env	*get_first_env(t_env *env)
+{
+	return (((t_info *) env->info)->first);
+}
+
+void	free_env(t_env *env)
+{
+	if (!env)
+		return ;
+	free_string(env->key);
+	free_string(env->value);
+	free(env);
+}
+
+t_env	*copy_env(t_env *env)
+{
+	t_env	*copy;
+	
+	if (!env)
+		return (NULL);
+	copy = init_env();
+	if (!copy)
+		return (NULL);
+	copy->key = string_copy(env->key);
+	copy->value = string_copy(env->value);
+	copy->info = env->info;
+	copy->next = env->next;
+	copy->prev = env->prev;
+	copy->n = env->n;
+	return (copy);
+}
+
+void	print_env(t_env *env)
+{
+	while (env)
+	{
+		// printf("N: %d => ", env->n);
+		// printf("This: %p\n", env);
+		printf("%s=\"", get_string(env->key));
+		printf("%s\"\n", get_string(env->value));
+		// printf("Info: %p\n", env->info);
+		// printf("Info first: %p\n", ((t_info *) env->info)->first);
+		// printf("Info last: %p\n", ((t_info *) env->info)->last);
+		// printf("Next: %p\n", env->next);
+		// printf("Prev: %p\n", env->prev);
+		// printf("\n");
+		env = env->next;
+	}
 }
 
 t_env	*create_env(char *key, char *value)

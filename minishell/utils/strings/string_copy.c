@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   string_copy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 21:34:39 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/13 01:09:05 by my_name_         ###   ########.fr       */
+/*   Created: 2022/12/13 01:06:00 by my_name_          #+#    #+#             */
+/*   Updated: 2022/12/13 01:08:26 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
-# include "../builtins.h"
+#include "strings.h"
 
-t_env	*generate_env(t_env *prev, char **envp, t_info *info_env, int i);
-t_env	*create_env(char *key, char *value);
-void	print_env(t_env *env);
-t_env	*get_first_env(t_env *env);
-void	free_env(t_env *env);
-t_env	*copy_env(t_env *env);
+t_string	*string_copy(t_string *str)
+{
+	t_string	*copy;
 
-#endif
+	if (!str)
+		return (NULL);
+	copy = create_string(str->value);
+	return (copy);
+}

@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   get_string.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 21:34:39 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/13 01:09:05 by my_name_         ###   ########.fr       */
+/*   Created: 2022/12/13 00:22:37 by my_name_          #+#    #+#             */
+/*   Updated: 2022/12/13 00:28:47 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
-# include "../builtins.h"
+#include "strings.h"
 
-t_env	*generate_env(t_env *prev, char **envp, t_info *info_env, int i);
-t_env	*create_env(char *key, char *value);
-void	print_env(t_env *env);
-t_env	*get_first_env(t_env *env);
-void	free_env(t_env *env);
-t_env	*copy_env(t_env *env);
+char	*get_string(t_string *str)
+{
+	if (!str)
+		return (NULL);
+	return (str->value);
+}
 
-#endif
+int	get_string_length(t_string *str)
+{
+	if (!str)
+		return (0);
+	return (str->length);
+}
+
+int	get_string_error(t_string *str)
+{
+	if (!str)
+		return (0);
+	return (str->error);
+}

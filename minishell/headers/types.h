@@ -6,7 +6,7 @@
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:56:59 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/11 04:09:26 by my_name_         ###   ########.fr       */
+/*   Updated: 2022/12/15 23:14:34 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ typedef struct s_info
 {
 	int		length;
 	void	*first;
+	long int	first_address;
 	void	*last;
+	long int	last_address;
 	void	*save_after;
 }	t_info;
 
@@ -65,10 +67,19 @@ typedef struct s_cmd
 	void	*result;
 }	t_cmd;
 
+typedef struct s_info_history
+{
+	int		length;
+	void	*first;
+	void	*current;
+	void	*last;
+}	t_info_history;
+
 typedef struct s_history
 {
-	char	*cmd_executed;
-	void	*cmd;
+	int		id;
+	char	*cmd;
+	void	*info;
 	void	*next;
 	void	*prev;
 }	t_history;

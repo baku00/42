@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   info_history.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: my_name_ <my_name_@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 21:34:39 by my_name_          #+#    #+#             */
-/*   Updated: 2022/12/13 01:09:05 by my_name_         ###   ########.fr       */
+/*   Created: 2022/12/15 23:33:32 by my_name_          #+#    #+#             */
+/*   Updated: 2022/12/15 23:33:55 by my_name_         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
-# include "../builtins.h"
+#include "history.h"
 
-t_env	*generate_env(t_env *prev, char **envp, t_info *info_env, int i);
-t_env	*create_env(char *key, char *value);
-void	print_env(t_env *env);
-t_env	*get_first_env(t_env *env);
-void	free_env(t_env *env);
-t_env	*copy_env(t_env *env);
+t_info_history	*get_info_history(t_history *history)
+{
+	return (history->info);
+}
 
-#endif
+t_history	*get_first_history(t_history *history)
+{
+	return (get_info_history(history)->first);
+}
+
+t_history	*get_last_history(t_history *history)
+{
+	return (get_info_history(history)->last);
+}
+
+t_history	*get_current_history(t_history *history)
+{
+	return (get_info_history(history)->current);
+}
